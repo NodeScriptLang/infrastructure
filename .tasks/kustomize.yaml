@@ -1,0 +1,25 @@
+version: "3"
+
+tasks:
+
+  buildOne:
+    silent: true
+    cmds:
+      - mkdir -p manifests/{{.NAME}}
+      - kustomize build overlays/{{.NAME}} > manifests/{{.NAME}}/install.yaml
+
+  buildAll:
+    silent: true
+    cmds:
+      - |
+        {{range $i, $line := .TARGETS | splitLines -}}
+        {{ if not (empty $line) }}
+        NAME={{$line}} task kustomize:bootstrap
+        NAME={{$line}} task kustomize:buildOne
+        {{end}}
+        {{end}}
+
+  bootstrap:
+    silent: true
+    cmds:
+      - mkdir -p manifests/{{.NAME}} overlays/{{.NAME}}

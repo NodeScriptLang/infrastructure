@@ -1,0 +1,22 @@
+version: "3"
+
+tasks:
+  replace:
+    silent: true
+    cmds:
+      - sed -i '' -e "s/{{.SEARCH}}/{{.REPLACE}}/g" {{.TARGET}}
+
+  replaceAll:
+    silent: true
+    cmds:
+      - |
+        {{range $i, $line := .REPLACEMENTS | splitLines -}}
+        {{ if not (empty $line) }}
+          {{ $parts := splitn ":" 2 $line }}
+          {{ $target := index $parts "_0"}}
+          {{ $sed := splitn "," 2 (index $parts "_1")}}
+          {{ $search := index $sed "_0" }}
+          {{ $replace := index $sed "_1" }}
+          sed -i '' -e "s/{{$search}}/{{$replace}}/g" "manifests/{{$target}}/install.yaml"
+        {{end}}
+        {{end}}

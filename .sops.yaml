@@ -1,0 +1,9 @@
+creation_rules:
+  # Production
+  - path_regex: production/.*\.yaml$
+    gcp_kms: projects/nodescript-production/locations/europe-west1/keyRings/infra/cryptoKeys/infra-sops-01
+    encrypted_regex: ^(stringData|data)$
+  # Staging
+  - path_regex: staging/.*\.yaml$
+    gcp_kms: projects/nodescript-staging/locations/europe-west1/keyRings/infra/cryptoKeys/infra-sops-01
+    encrypted_regex: ^(stringData|data)$

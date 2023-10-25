@@ -1,0 +1,12 @@
+version: "3"
+
+includes:
+  secrets: .tasks/secrets.yaml
+
+tasks:
+  secrets:
+    silent: true
+    cmds:
+      - task: secrets:applyAll
+        vars:
+          ENV: "{{.CLI_ARGS}}"
