@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  namespace: argocd
+  name: infrastructure
+spec:
+  destinations:
+    - server: '*'
+      namespace: default
+    - server: '*'
+      namespace: argocd
+    - server: '*'
+      namespace: cert-manager
+    - server: '*'
+      namespace: monitoring
+  sourceRepos:
+    - '*'
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: Namespace
+    - group: '*'
+      kind: ClusterIssuer
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'

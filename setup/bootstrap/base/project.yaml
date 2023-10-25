@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  namespace: argocd
+  name: bootstrap
+spec:
+  description: Project for deploying all other ArgoCD Applications and AppProjects.
+  destinations:
+    - server: '*'
+      namespace: argocd
+  sourceRepos:
+    - '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: AppProject
+    - group: '*'
+      kind: Application

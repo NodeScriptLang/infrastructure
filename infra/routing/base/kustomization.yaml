@@ -1,0 +1,6 @@
+kind: Kustomization
+
+namespace: default
+
+resources:
+  - infra/cd.yaml

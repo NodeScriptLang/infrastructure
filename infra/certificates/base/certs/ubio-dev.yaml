@@ -1,0 +1,13 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  namespace: default
+  name: ubio-dev-certificate
+spec:
+  secretName: ubio-dev-certificate
+  dnsNames:
+    - '*.ns.ubio.dev'
+    - '*.staging.ns.ubio.dev'
+  issuerRef:
+    name: letsencrypt-issuer
+    kind: ClusterIssuer

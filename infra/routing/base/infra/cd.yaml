@@ -1,0 +1,26 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-cd
+  namespace: default
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - kind: Rule
+      match: Host(`CD_HOST`)
+      priority: 10
+      services:
+        - namespace: argocd
+          name: argocd-server
+          port: 80
+    - kind: Rule
+      match: Host(`CD_HOST`) && Headers(`Content-Type`, `application/grpc`)
+      priority: 11
+      services:
+        - namespace: argocd
+          name: argocd-server
+          port: 80
+          scheme: h2c
+  tls:
+    secretName: ubio-dev-certificate

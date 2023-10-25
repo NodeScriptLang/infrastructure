@@ -1,0 +1,152 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: traefik
+  namespace: default
+spec:
+  externalTrafficPolicy: Local
+  ports:
+  - name: admin
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  - name: metrics
+    port: 8082
+    protocol: TCP
+    targetPort: 8082
+  - name: websecure
+    port: 443
+    protocol: TCP
+    targetPort: 443
+  - name: secure-proxy
+    port: 8001
+    protocol: TCP
+    targetPort: 8001
+  selector:
+    app: traefik
+  sessionAffinity: None
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: traefik
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: traefik
+  template:
+    metadata:
+      labels:
+        app: traefik
+    spec:
+      automountServiceAccountToken: true
+      containers:
+      - args:
+        - --api.dashboard=true
+        - --serversTransport.insecureSkipVerify=true
+        - --accesslog
+        - --entryPoints.metrics.address=:8082
+        - --entrypoints.websecure.Address=:443
+        - --entrypoints.web.Address=:80
+        - --entrypoints.web.http.redirections.entryPoint.to=websecure
+        - --entrypoints.web.http.redirections.entryPoint.scheme=https
+        - --entrypoints.web.http.redirections.entrypoint.permanent=true
+        - --entrypoints.secure-proxy.Address=:8001
+        - --providers.kubernetescrd
+        - --providers.kubernetescrd.allowCrossNamespace=true
+        - --metrics=true
+        - --metrics.prometheus=true
+        - --metrics.prometheus.entryPoint=metrics
+        image: traefik:2.10.5
+        lifecycle:
+          preStop:
+            exec:
+              command:
+              - sh
+              - -c
+              - sleep 10s
+        name: traefik
+        ports:
+        - containerPort: 4443
+          name: websecure
+          protocol: TCP
+        - containerPort: 8080
+          name: admin
+          protocol: TCP
+        - containerPort: 8082
+          name: metrics
+          protocol: TCP
+        - containerPort: 8001
+          name: secure-proxy
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 1
+          httpGet:
+            path: /metrics
+            port: metrics
+            scheme: HTTP
+          initialDelaySeconds: 20
+          periodSeconds: 2
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources:
+          limits:
+            memory: 1Gi
+          requests:
+            cpu: 1000m
+            memory: 400Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            add:
+            - NET_BIND_SERVICE
+            drop:
+            - ALL
+          procMount: Default
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      nodeSelector:
+        workload/infrastructure: "true"
+      serviceAccount: traefik-ingress-controller
+      serviceAccountName: traefik-ingress-controller
+      terminationGracePeriodSeconds: 30
+      topologySpreadConstraints:
+      - labelSelector:
+          matchLabels:
+            app: traefik
+        maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: ScheduleAnyway
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: traefik
+  namespace: default
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: traefik
+---
+apiVersion: traefik.io/v1alpha1
+kind: TLSOption
+metadata:
+  name: default
+  namespace: default
+spec:
+  cipherSuites:
+  - TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256
+  - TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256
+  - TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
+  - TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384
+  - TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305
+  - TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305
+  minVersion: VersionTLS12
+  preferServerCipherSuites: true

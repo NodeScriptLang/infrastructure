@@ -1,0 +1,7 @@
+kind: Kustomization
+
+namespace: argocd
+
+resources:
+  - project.yaml
+  - projects/infra.yaml

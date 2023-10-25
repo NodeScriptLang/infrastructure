@@ -1,0 +1,37 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: bootstrap
+  namespace: argocd
+spec:
+  description: Project for deploying all other ArgoCD Applications and AppProjects.
+  destinations:
+  - namespace: argocd
+    server: '*'
+  namespaceResourceWhitelist:
+  - group: '*'
+    kind: AppProject
+  - group: '*'
+    kind: Application
+  sourceRepos:
+  - '*'
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bootstrap-infra
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  project: bootstrap
+  source:
+    path: projects/infra/manifests/production/
+    repoURL: git@github.com:NodeScriptLang/infrastructure.git
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true

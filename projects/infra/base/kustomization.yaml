@@ -1,0 +1,9 @@
+kind: Kustomization
+
+namespace: argocd
+
+resources:
+  - project.yaml
+  - apps/certificates.yaml
+  - apps/traefik.yaml
+  - apps/routing.yaml

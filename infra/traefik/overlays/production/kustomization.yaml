@@ -1,0 +1,15 @@
+kind: Kustomization
+
+namespace: default
+
+images:
+  - name: traefik
+    newName: traefik
+    newTag: 2.10.5
+
+resources:
+  - ../../base
+  - pdb.yaml
+
+patches:
+  - path: service-ips.yaml

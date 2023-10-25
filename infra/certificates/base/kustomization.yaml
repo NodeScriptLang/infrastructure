@@ -1,0 +1,7 @@
+kind: Kustomization
+
+namespace: default
+
+resources:
+  - letsencrypt-issuer.yaml
+  - certs/ubio-dev.yaml

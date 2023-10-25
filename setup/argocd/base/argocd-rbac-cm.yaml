@@ -6,4 +6,4 @@ data:
   # https://argo-cd.readthedocs.io/en/stable/operator-manual/rbac/#rbac-resources-and-actions
   policy.default: role:readonly
   policy.gh.csv: |
-    g, ubio:Engineering, role:admin
+    g, NodeScriptLang:Engineering, role:admin

@@ -1,0 +1,8 @@
+kind: Kustomization
+
+namespace: default
+
+resources:
+  - ./deployment.yaml
+  - ./service.yaml
+  - ./tls-option.yaml

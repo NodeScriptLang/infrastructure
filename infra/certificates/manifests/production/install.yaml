@@ -1,0 +1,37 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: ubio-dev-certificate
+  namespace: default
+spec:
+  dnsNames:
+  - '*.ns.ubio.dev'
+  - '*.staging.ns.ubio.dev'
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-issuer
+  secretName: ubio-dev-certificate
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-issuer
+  namespace: default
+spec:
+  acme:
+    email: dev@ub.io
+    privateKeySecretRef:
+      name: letsencrypt-issuer-private-key
+    server: https://acme-v02.api.letsencrypt.org/directory
+    solvers:
+    - dns01:
+        cloudflare:
+          apiTokenSecretRef:
+            key: token-ubio-dev
+            name: cloudflare-api-tokens
+          email: mg@ub.io
+        cnameStrategy: Follow
+      selector:
+        dnsZones:
+        - automationcloud.net
+        - ubio.dev

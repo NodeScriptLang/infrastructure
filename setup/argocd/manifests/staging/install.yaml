@@ -18881,7 +18881,7 @@ data:
           clientID: $dex.github.clientId
           clientSecret: $dex.github.clientSecret
           orgs:
-          - name: ubio
+          - name: NodeScriptLang
             teams:
             - Engineering
   resource.customizations.ignoreDifferences.all: |
@@ -18931,7 +18931,7 @@ apiVersion: v1
 data:
   policy.default: role:readonly
   policy.gh.csv: |
-    g, ubio:Engineering, role:admin
+    g, NodeScriptLang:Engineering, role:admin
 kind: ConfigMap
 metadata:
   labels:
