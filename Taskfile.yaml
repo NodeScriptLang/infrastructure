@@ -7,6 +7,6 @@ tasks:
   secrets:
     silent: true
     cmds:
-      - task: secrets:applyAll
+      - task: secrets:showAll
         vars:
-          ENV: "{{.CLI_ARGS}}"
+          DIR: "{{.CLI_ARGS}}"
