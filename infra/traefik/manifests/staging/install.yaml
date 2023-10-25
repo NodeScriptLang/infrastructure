@@ -4,9 +4,7 @@ metadata:
   name: traefik
   namespace: default
 spec:
-  clusterIP: 10.48.14.58
   externalTrafficPolicy: Local
-  loadBalancerIP: 34.38.56.81
   ports:
   - name: admin
     port: 8080
