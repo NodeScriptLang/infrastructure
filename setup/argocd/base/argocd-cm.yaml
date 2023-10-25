@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: argocd-cm
+data:
+  url: https://CD_HOST
+  resource.customizations.ignoreDifferences.all: |
+    jsonPointers:
+    - /spec/replicas
+    - /sops
+  dex.config: |
+    connectors:
+      - type: github
+        id: github
+        name: GitHub
+        config:
+          clientID: $dex.github.clientId
+          clientSecret: $dex.github.clientSecret
+          orgs:
+          - name: ubio
+            teams:
+            - Engineering

@@ -1,0 +1,24 @@
+version: "3"
+
+includes:
+  kustomize: ../../.tasks/kustomize.yaml
+  sed: ../../.tasks/sed.yaml
+
+vars:
+  TARGETS: |
+    staging
+    production
+  REPLACEMENTS: |
+    production:CD_HOST,cd.ns.ubio.dev
+    staging:CD_HOST,cd.staging.ns.ubio.dev
+
+tasks:
+  default:
+    silent: true
+    cmds:
+      - task: kustomize:buildAll
+        vars:
+          TARGETS: "{{.TARGETS}}"
+      - task: sed:replaceAll
+        vars:
+          REPLACEMENTS: "{{.REPLACEMENTS}}"

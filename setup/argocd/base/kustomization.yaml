@@ -1,0 +1,11 @@
+kind: Kustomization
+
+namespace: argocd
+
+resources:
+  - argocd-install.yaml
+
+patches:
+  - path: argocd-cm.yaml
+  - path: argocd-rbac-cm.yaml
+  - path: argocd-cmd-params-cm.yaml
