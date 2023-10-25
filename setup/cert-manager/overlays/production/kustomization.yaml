@@ -1,0 +1,6 @@
+kind: Kustomization
+
+# Note: do not add namespace, it interferes with cert-manager installation
+
+resources:
+  - ../../base

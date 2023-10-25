@@ -6,4 +6,4 @@ spec:
   template:
     spec:
       nodeSelector:
-        workload/cd: "true"
+        workload/infrastructure: "true"

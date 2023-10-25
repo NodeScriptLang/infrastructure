@@ -1,0 +1,11 @@
+kind: Kustomization
+
+# Note: do not add namespace, it interferes with cert-manager installation
+
+resources:
+  - install.yaml
+
+patches:
+  - path: node-selector.yaml
+    target:
+      kind: Deployment

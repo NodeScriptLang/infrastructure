@@ -1,0 +1,8 @@
+kind: Kustomization
+
+namespace: default
+
+resources:
+  - crd.yaml
+  - rbac.yaml
+  - service-account.yaml
