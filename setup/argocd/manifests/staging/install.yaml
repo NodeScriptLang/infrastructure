@@ -19323,6 +19323,8 @@ spec:
           name: tmp
         - mountPath: /app/config/reposerver/tls
           name: argocd-repo-server-tls
+      nodeSelector:
+        workload/cd: "true"
       serviceAccountName: argocd-applicationset-controller
       volumes:
       - configMap:
@@ -19434,6 +19436,8 @@ spec:
           name: static-files
         - mountPath: /tmp
           name: dexconfig
+      nodeSelector:
+        workload/cd: "true"
       serviceAccountName: argocd-dex-server
       volumes:
       - emptyDir: {}
@@ -19506,6 +19510,8 @@ spec:
         - mountPath: /app/config/reposerver/tls
           name: argocd-repo-server-tls
         workingDir: /app
+      nodeSelector:
+        workload/cd: "true"
       securityContext:
         runAsNonRoot: true
         seccompProfile:
@@ -19577,6 +19583,8 @@ spec:
             drop:
             - ALL
           readOnlyRootFilesystem: true
+      nodeSelector:
+        workload/cd: "true"
       securityContext:
         runAsNonRoot: true
         runAsUser: 999
@@ -19838,6 +19846,8 @@ spec:
         volumeMounts:
         - mountPath: /var/run/argocd
           name: var-files
+      nodeSelector:
+        workload/cd: "true"
       serviceAccountName: argocd-repo-server
       volumes:
       - configMap:
@@ -20153,6 +20163,8 @@ spec:
           name: plugins-home
         - mountPath: /tmp
           name: tmp
+      nodeSelector:
+        workload/cd: "true"
       serviceAccountName: argocd-server
       volumes:
       - emptyDir: {}
@@ -20385,6 +20397,8 @@ spec:
         - mountPath: /home/argocd
           name: argocd-home
         workingDir: /home/argocd
+      nodeSelector:
+        workload/cd: "true"
       serviceAccountName: argocd-application-controller
       volumes:
       - emptyDir: {}
