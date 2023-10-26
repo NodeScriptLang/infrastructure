@@ -1,0 +1,14 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: automation-cloud-certificate
+  namespace: default
+spec:
+  secretName: automation-cloud-certificate-secret
+  issuerRef:
+    name: automation-cloud-cluster-issuer
+    kind: ClusterIssuer
+  dnsNames:
+    - "automation.cloud"
+    - "*.automation.cloud"
+    - "*.smartfeed.automation.cloud"

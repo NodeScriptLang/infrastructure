@@ -1,6 +1,42 @@
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
+  name: automation-cloud-certificate
+  namespace: default
+spec:
+  dnsNames:
+  - automation.cloud
+  - '*.automation.cloud'
+  - '*.smartfeed.automation.cloud'
+  issuerRef:
+    kind: ClusterIssuer
+    name: automation-cloud-cluster-issuer
+  secretName: automation-cloud-certificate-secret
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: nodescript-dev-certificate
+  namespace: default
+spec:
+  dnsNames:
+  - nodescript.dev
+  - '*.nodescript.dev'
+  - '*.staging.nodescript.dev'
+  - '*.adapters.nodescript.dev'
+  - '*.adapters.staging.nodescript.dev'
+  - '*.edge.nodescript.dev'
+  - '*.edge.staging.nodescript.dev'
+  - '*.run.nodescript.dev'
+  - '*.run.staging.nodescript.dev'
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-issuer
+  secretName: nodescript-dev-certificate
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
   name: ubio-dev-certificate
   namespace: default
 spec:

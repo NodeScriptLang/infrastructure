@@ -4,4 +4,8 @@ namespace: default
 
 resources:
   - letsencrypt-issuer.yaml
+
   - certs/ubio-dev.yaml
+  - certs/nodescript-dev.yaml
+
+  - custom/automation-cloud.yaml
