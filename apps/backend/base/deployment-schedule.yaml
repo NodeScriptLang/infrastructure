@@ -1,0 +1,59 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-schedule
+spec:
+  selector:
+    matchLabels:
+      app: backend-schedule
+  replicas: 2
+  revisionHistoryLimit: 2
+  template:
+    metadata:
+      labels:
+        app: backend-schedule
+    spec:
+      terminationGracePeriodSeconds: 120
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      nodeSelector:
+        workload/default: 'true'
+      containers:
+        - name: backend-schedule
+          image: nodescript-backend
+          command:
+            - node
+            - out/bin/schedule.js
+          ports:
+            - name: http
+              containerPort: 8080
+          resources:
+            requests:
+              cpu: 100m
+              memory: 400Mi
+          envFrom:
+            - secretRef:
+                name: backend-secrets
+            - configMapRef:
+                name: backend-config
+          readinessProbe:
+            httpGet:
+              path: /status
+              port: http
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 5
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /status
+              port: http
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+            # TODO re-enable after k8s 1.25 is available
+            # terminationGracePeriodSeconds: 1

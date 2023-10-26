@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: backend-schedule
+  labels:
+    monitor: "true"
+spec:
+  type: ClusterIP
+  selector:
+    app: backend-schedule
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080

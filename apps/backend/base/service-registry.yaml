@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: backend-registry
+  labels:
+    monitor: "true"
+spec:
+  type: ClusterIP
+  selector:
+    app: backend-registry
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080

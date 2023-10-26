@@ -1,0 +1,16 @@
+kind: Kustomization
+
+namespace: default
+
+resources:
+- deployment-api.yaml
+- deployment-background.yaml
+- deployment-invoke.yaml
+- deployment-invoke-hpa.yaml
+- deployment-registry.yaml
+- deployment-schedule.yaml
+- service-api.yaml
+- service-background.yaml
+- service-invoke.yaml
+- service-registry.yaml
+- service-schedule.yaml

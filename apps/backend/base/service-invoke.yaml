@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: backend-invoke
+  labels:
+    monitor: "true"
+spec:
+  type: ClusterIP
+  selector:
+    app: backend-invoke
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080
