@@ -10,8 +10,8 @@ spec:
   - '*.smartfeed.automation.cloud'
   issuerRef:
     kind: ClusterIssuer
-    name: automation-cloud-cluster-issuer
-  secretName: automation-cloud-certificate-secret
+    name: letsencrypt-issuer
+  secretName: automation-cloud-certificate
 ---
 apiVersion: cert-manager.io/v1
 kind: Certificate
