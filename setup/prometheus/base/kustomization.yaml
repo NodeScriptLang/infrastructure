@@ -5,3 +5,4 @@ namespace: monitoring
 resources:
   - rbac.yaml
   - service-account.yaml
+  - storage-class.yaml

@@ -1,14 +1,3 @@
-allowVolumeExpansion: false
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: prometheus-storage-class
-parameters:
-  type: pd-ssd
-provisioner: pd.csi.storage.gke.io
-reclaimPolicy: Retain
-volumeBindingMode: WaitForFirstConsumer
----
 apiVersion: v1
 data:
   prometheus-config.yaml: |

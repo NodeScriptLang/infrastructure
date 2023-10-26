@@ -3,7 +3,6 @@ kind: Kustomization
 namespace: monitoring
 
 resources:
-  - storage-class.yaml
   - deployment.yaml
   - service.yaml
   - pdb.yaml
