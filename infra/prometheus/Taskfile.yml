@@ -8,6 +8,11 @@ vars:
   TARGETS: |
     production
     staging
+  REPLACEMENTS: |
+    production:RETENTION_TIME,30d
+    production:RETENTION_SIZE,80GB
+    staging:RETENTION_TIME,2d
+    staging:RETENTION_SIZE,8GB
 
 tasks:
   default:
@@ -16,3 +21,6 @@ tasks:
       - task: kustomize:buildAll
         vars:
           TARGETS: "{{.TARGETS}}"
+      - task: sed:replaceAll
+        vars:
+          REPLACEMENTS: "{{.REPLACEMENTS}}"
