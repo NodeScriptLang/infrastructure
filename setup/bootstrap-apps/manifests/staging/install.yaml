@@ -18,7 +18,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: bootstrap-infra
+  name: bootstrap-apps
   namespace: argocd
 spec:
   destination:
@@ -26,7 +26,7 @@ spec:
     namespace: argocd
   project: bootstrap
   source:
-    path: projects/infra/manifests/staging/
+    path: projects/apps/manifests/staging/
     repoURL: git@github.com:NodeScriptLang/infrastructure.git
   syncPolicy:
     automated:

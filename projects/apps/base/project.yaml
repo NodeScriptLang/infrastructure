@@ -2,15 +2,13 @@ apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
   namespace: argocd
-  name: bootstrap
+  name: apps
 spec:
   destinations:
     - server: '*'
-      namespace: argocd
+      namespace: default
   sourceRepos:
     - '*'
   namespaceResourceWhitelist:
     - group: '*'
-      kind: AppProject
-    - group: '*'
-      kind: Application
+      kind: '*'

@@ -4,7 +4,6 @@ metadata:
   name: bootstrap
   namespace: argocd
 spec:
-  description: Project for deploying all other ArgoCD Applications and AppProjects.
   destinations:
   - namespace: argocd
     server: '*'
