@@ -22,7 +22,7 @@ spec:
   destination:
     name: in-cluster
     namespace: argocd
-  project: infrastructure
+  project: apps
   source:
     path: apps/backend/manifests/staging/
     repoURL: git@github.com:NodeScriptLang/infrastructure.git

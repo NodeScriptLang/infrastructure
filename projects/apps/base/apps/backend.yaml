@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: git@github.com:NodeScriptLang/infrastructure.git
     path: apps/backend/manifests/TARGET/
-  project: infrastructure
+  project: apps
   syncPolicy:
     syncOptions:
       - CreateNamespace=true
