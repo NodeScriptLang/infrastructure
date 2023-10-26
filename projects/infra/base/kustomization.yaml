@@ -6,4 +6,5 @@ resources:
   - project.yaml
   - apps/certificates.yaml
   - apps/traefik.yaml
+  - apps/prometheus.yaml
   - apps/routing.yaml
