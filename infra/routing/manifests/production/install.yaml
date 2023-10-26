@@ -52,7 +52,6 @@ metadata:
 spec:
   entryPoints:
   - websecure
-  - metrics
   routes:
   - kind: Rule
     match: (Host(`prom.ns.ubio.dev`))

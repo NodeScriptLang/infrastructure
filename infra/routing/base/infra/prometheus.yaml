@@ -5,7 +5,6 @@ metadata:
 spec:
   entryPoints:
     - websecure
-    - metrics
   routes:
     - match: (Host(`PROMETHEUS_HOST`))
       kind: Rule
