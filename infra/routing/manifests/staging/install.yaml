@@ -35,7 +35,7 @@ spec:
   - websecure
   routes:
   - kind: Rule
-    match: Host(`GRAFANA_HOST`)
+    match: Host(`grafana.staging.ns.ubio.dev`)
     priority: 10
     services:
     - name: grafana
