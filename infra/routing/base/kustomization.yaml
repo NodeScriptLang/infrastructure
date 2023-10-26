@@ -4,3 +4,4 @@ namespace: default
 
 resources:
   - infra/cd.yaml
+  - infra/grafana.yaml

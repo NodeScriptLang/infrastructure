@@ -1,8 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: route-cd
-  namespace: default
+  name: route-infra-cd
 spec:
   entryPoints:
     - websecure

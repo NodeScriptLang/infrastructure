@@ -1,7 +1,7 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: route-cd
+  name: route-infra-cd
   namespace: default
 spec:
   entryPoints:
@@ -22,5 +22,24 @@ spec:
       namespace: argocd
       port: 80
       scheme: h2c
+  tls:
+    secretName: ubio-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-infra-grafana
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`GRAFANA_HOST`)
+    priority: 10
+    services:
+    - name: grafana
+      namespace: monitoring
+      port: 3000
   tls:
     secretName: ubio-dev-certificate
