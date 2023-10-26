@@ -91,10 +91,10 @@ spec:
         - containerPort: 9090
         resources:
           limits:
-            memory: 1Gi
+            memory: 2Gi
           requests:
-            cpu: 100m
-            memory: 200Mi
+            cpu: 200m
+            memory: 1Gi
         securityContext:
           allowPrivilegeEscalation: false
           capabilities:
