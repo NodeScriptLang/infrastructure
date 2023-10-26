@@ -70,4 +70,6 @@ spec:
       selector:
         dnsZones:
         - automationcloud.net
+        - automation.cloud
+        - nodescript.dev
         - ubio.dev

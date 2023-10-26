@@ -12,6 +12,8 @@ spec:
       - selector:
           dnsZones:
             - automationcloud.net
+            - automation.cloud
+            - nodescript.dev
             - ubio.dev
         dns01:
           cnameStrategy: Follow
