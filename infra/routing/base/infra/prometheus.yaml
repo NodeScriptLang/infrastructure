@@ -16,9 +16,6 @@ spec:
         - name: prometheus-basic-auth
   tls:
     secretName: ubio-dev-certificate
-    options:
-      name: secure
-      namespace: default
 ---
 apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware

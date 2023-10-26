@@ -62,9 +62,6 @@ spec:
       namespace: monitoring
       port: 9090
   tls:
-    options:
-      name: secure
-      namespace: default
     secretName: ubio-dev-certificate
 ---
 apiVersion: traefik.containo.us/v1alpha1
