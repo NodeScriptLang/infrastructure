@@ -110,7 +110,7 @@ metadata:
   name: backend-api
   namespace: default
 spec:
-  replicas: 3
+  replicas: 2
   revisionHistoryLimit: 1
   selector:
     matchLabels:
