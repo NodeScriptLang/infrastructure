@@ -14,7 +14,7 @@ data:
     enabled = true
     scopes = user:email,read:org
     token_url = https://github.com/login/oauth/access_token
-    role_attribute_path = contains(groups[*], '@NodeScriptLang/engineering') && 'Editor' || 'Viewer'
+
 
     [security]
     admin_user = inca
@@ -32,7 +32,7 @@ data:
     enable = topnav
 kind: ConfigMap
 metadata:
-  name: grafana-config-4h4dgtkmb2
+  name: grafana-config-g6d5bdh8f9
   namespace: monitoring
 ---
 apiVersion: v1
@@ -88,7 +88,7 @@ spec:
         - 0
       volumes:
       - configMap:
-          name: grafana-config-4h4dgtkmb2
+          name: grafana-config-g6d5bdh8f9
         name: config
 ---
 apiVersion: policy/v1
