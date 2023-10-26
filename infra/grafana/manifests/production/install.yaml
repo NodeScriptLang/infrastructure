@@ -8,13 +8,13 @@ data:
     [auth.github]
     allow_assign_grafana_admin = true
     allow_sign_up = true
-    allowed_organizations = ubio
+    allowed_organizations = NodeScriptLang
     api_url = https://api.github.com/user
     auth_url = https://github.com/login/oauth/authorize
     enabled = true
     scopes = user:email,read:org
     token_url = https://github.com/login/oauth/access_token
-    role_attribute_path = contains(groups[*], '@ubio/engineering') && 'Editor' || 'Viewer'
+    role_attribute_path = contains(groups[*], '@NodeScriptLang/engineering') && 'Editor' || 'Viewer'
 
     [security]
     admin_user = inca
@@ -32,7 +32,7 @@ data:
     enable = topnav
 kind: ConfigMap
 metadata:
-  name: grafana-config-6b85k7c829
+  name: grafana-config-4h4dgtkmb2
   namespace: monitoring
 ---
 apiVersion: v1
@@ -88,7 +88,7 @@ spec:
         - 0
       volumes:
       - configMap:
-          name: grafana-config-6b85k7c829
+          name: grafana-config-4h4dgtkmb2
         name: config
 ---
 apiVersion: policy/v1
