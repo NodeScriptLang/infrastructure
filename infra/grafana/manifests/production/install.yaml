@@ -1,0 +1,103 @@
+apiVersion: v1
+data:
+  grafana.ini: |
+    [auth]
+    disable_signout_menu = false
+    oauth_auto_login = false
+
+    [auth.github]
+    allow_assign_grafana_admin = true
+    allow_sign_up = true
+    allowed_organizations = ubio
+    api_url = https://api.github.com/user
+    auth_url = https://github.com/login/oauth/authorize
+    enabled = true
+    scopes = user:email,read:org
+    token_url = https://github.com/login/oauth/access_token
+    role_attribute_path = contains(groups[*], '@ubio/engineering') && 'Editor' || 'Viewer'
+
+    [security]
+    admin_user = inca
+
+    [users]
+    auto_assign_org = true
+    auto_assign_org_role = Viewer
+    editors_can_admin = true
+    viewers_can_edit = true
+
+    [plugins]
+    allow_loading_unsigned_plugins = doitintl-bigquery-datasource,jdbranham-diagram-panel,grafana-mongodb-atlas-datasource,grafana-mongodb-datasource,yesoreyeram-infinity-datasource,grafana-oncall-app
+
+    [feature_toggles]
+    enable = topnav
+kind: ConfigMap
+metadata:
+  name: grafana-config-6b85k7c829
+  namespace: monitoring
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  ports:
+  - port: 3000
+    targetPort: http
+  selector:
+    app: grafana
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: grafana
+  template:
+    metadata:
+      labels:
+        app: grafana
+    spec:
+      containers:
+      - envFrom:
+        - secretRef:
+            name: grafana-secrets
+        image: grafana/grafana:10.1.5
+        name: grafana
+        ports:
+        - containerPort: 3000
+          name: http
+        resources:
+          limits:
+            memory: 1Gi
+          requests:
+            cpu: 100m
+            memory: 500Mi
+        volumeMounts:
+        - mountPath: /etc/grafana
+          name: config
+      nodeSelector:
+        workload/monitoring: "true"
+      securityContext:
+        fsGroup: 472
+        supplementalGroups:
+        - 0
+      volumes:
+      - configMap:
+          name: grafana-config-6b85k7c829
+        name: config
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: grafana
+  namespace: monitoring
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: grafana
