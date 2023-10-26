@@ -8,7 +8,6 @@ spec:
   routes:
     - kind: Rule
       match: Host(`GRAFANA_HOST`)
-      priority: 10
       services:
         - namespace: monitoring
           name: grafana
