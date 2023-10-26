@@ -1,0 +1,31 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: prometheus
+spec:
+  entryPoints:
+    - websecure
+    - metrics
+  routes:
+    - match: (Host(`PROMETHEUS_HOST`))
+      kind: Rule
+      services:
+        - namespace: monitoring
+          name: prometheus
+          port: 9090
+      middlewares:
+        - name: prometheus-basic-auth
+  tls:
+    secretName: ubio-dev-certificate
+    options:
+      name: secure
+      namespace: default
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: prometheus-basic-auth
+spec:
+  basicAuth:
+    realm: Prometheus
+    secret: routing-auth-prometheus

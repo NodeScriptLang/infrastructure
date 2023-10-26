@@ -11,8 +11,10 @@ vars:
   REPLACEMENTS: |
     production:CD_HOST,cd.ns.ubio.dev
     production:GRAFANA_HOST,grafana.ns.ubio.dev
+    production:PROMETHEUS_HOST,prom.ns.ubio.dev
     staging:CD_HOST,cd.staging.ns.ubio.dev
     staging:GRAFANA_HOST,grafana.staging.ns.ubio.dev
+    staging:PROMETHEUS_HOST,prom.staging.ns.ubio.dev
 
 tasks:
   default:
