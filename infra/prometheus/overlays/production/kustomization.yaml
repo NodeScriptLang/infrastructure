@@ -1,0 +1,12 @@
+kind: Kustomization
+
+namespace: monitoring
+
+images:
+  - name: prometheus
+    newName: prom/prometheus
+    newTag: v2.47.2
+
+resources:
+  - ../../base
+  - pvc.yaml

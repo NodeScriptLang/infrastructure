@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: prometheus
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  source:
+    repoURL: git@github.com:NodeScriptLang/infrastructure.git
+    path: infra/prometheus/manifests/TARGET/
+  project: infrastructure
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    automated:
+      selfHeal: true

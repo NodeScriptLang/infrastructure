@@ -1,0 +1,14 @@
+kind: Kustomization
+
+namespace: monitoring
+
+resources:
+  - storage-class.yaml
+  - deployment.yaml
+  - service.yaml
+  - pdb.yaml
+
+configMapGenerator:
+  - name: prometheus-config
+    files:
+      - prometheus-config.yaml
