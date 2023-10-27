@@ -13,6 +13,13 @@ spec:
           port: 8080
       middlewares:
         - name: route-custom-automation-cloud-services-prefix
+    - match: HostRegexp(`{subdomain:[0-9a-z-]+}.smartfeed.automation.cloud`)
+      kind: Rule
+      services:
+        - name: backend-invoke
+          port: 8080
+      middlewares:
+        - name: route-custom-automation-cloud-services-prefix
   tls:
     secretName: automation-cloud-certificate
 ---
