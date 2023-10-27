@@ -1,0 +1,42 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: automation-cloud-certificate
+  namespace: default
+spec:
+  dnsNames:
+  - automation.cloud
+  - '*.automation.cloud'
+  - '*.smartfeed.automation.cloud'
+  issuerRef:
+    kind: ClusterIssuer
+    name: letsencrypt-issuer
+  secretName: automation-cloud-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-custom-automation-cloud-services
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: HostRegexp(`{subdomain:[0-9a-z-]+}.automation.cloud`)
+    middlewares:
+    - name: route-custom-automation-cloud-services-prefix
+    services:
+    - name: backend-invoke
+      port: 8080
+  tls:
+    secretName: automation-cloud-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: route-custom-automation-cloud-services-prefix
+  namespace: default
+spec:
+  addPrefix:
+    prefix: /~invoke

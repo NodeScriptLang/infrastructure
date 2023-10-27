@@ -1,0 +1,7 @@
+kind: Kustomization
+
+namespace: default
+
+resources:
+  - certs/automation-cloud.yaml
+  - routes/automation-cloud.yaml
