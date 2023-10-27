@@ -7,6 +7,7 @@ resources:
   - backend-capture.yaml
   - backend-invoke.yaml
   - backend-registry.yaml
+  - custom/automation-cloud.yaml
   - fetch-service.yaml
   - frontend.yaml
   - guides.yaml
