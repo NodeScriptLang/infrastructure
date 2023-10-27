@@ -1,0 +1,12 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: guides
+spec:
+  type: ClusterIP
+  selector:
+    app: guides
+  ports:
+    - name: http
+      port: 8900
+      targetPort: 8900

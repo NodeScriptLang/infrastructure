@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: guides
+spec:
+  selector:
+    matchLabels:
+      app: guides
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: guides
+    spec:
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      nodeSelector:
+        workload/default: "true"
+      containers:
+        - name: guides
+          image: nodescript-guides
+          ports:
+            - containerPort: 8900
