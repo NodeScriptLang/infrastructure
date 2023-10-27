@@ -110,7 +110,7 @@ metadata:
   name: backend-api
   namespace: default
 spec:
-  replicas: 2
+  replicas: 3
   revisionHistoryLimit: 1
   selector:
     matchLabels:
@@ -228,7 +228,7 @@ metadata:
   name: backend-invoke
   namespace: default
 spec:
-  revisionHistoryLimit: 2
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: backend-invoke
@@ -289,8 +289,8 @@ metadata:
   name: backend-registry
   namespace: default
 spec:
-  replicas: 2
-  revisionHistoryLimit: 2
+  replicas: 3
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: backend-registry
@@ -348,8 +348,8 @@ metadata:
   name: backend-schedule
   namespace: default
 spec:
-  replicas: 2
-  revisionHistoryLimit: 2
+  replicas: 3
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: backend-schedule

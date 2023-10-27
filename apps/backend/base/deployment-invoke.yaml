@@ -6,7 +6,7 @@ spec:
   selector:
     matchLabels:
       app: backend-invoke
-  revisionHistoryLimit: 2
+  revisionHistoryLimit: 1
   template:
     metadata:
       labels:
