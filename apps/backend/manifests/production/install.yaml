@@ -276,11 +276,11 @@ spec:
             memory: 1200Mi
           requests:
             cpu: 200m
-            memory: 600Mi
+            memory: 400Mi
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
-        workload/default: "true"
+        workload/compute: "true"
       terminationGracePeriodSeconds: 120
 ---
 apiVersion: apps/v1
@@ -398,7 +398,7 @@ spec:
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
-        workload/default: "true"
+        workload/compute: "true"
       terminationGracePeriodSeconds: 120
 ---
 apiVersion: policy/v1

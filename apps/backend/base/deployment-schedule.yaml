@@ -18,7 +18,7 @@ spec:
       imagePullSecrets:
         - name: gcp-registry-access
       nodeSelector:
-        workload/default: 'true'
+        workload/compute: 'true'
       containers:
         - name: backend-schedule
           image: nodescript-backend

@@ -17,7 +17,7 @@ spec:
       imagePullSecrets:
         - name: gcp-registry-access
       nodeSelector:
-        workload/default: 'true'
+        workload/compute: 'true'
       containers:
         - name: backend-invoke
           image: nodescript-backend
@@ -31,7 +31,7 @@ spec:
           resources:
             requests:
               cpu: 200m
-              memory: 600Mi
+              memory: 400Mi
             limits:
               memory: 1200Mi
           envFrom:
