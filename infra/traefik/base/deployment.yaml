@@ -20,13 +20,13 @@ spec:
       serviceAccountName: traefik-ingress-controller
       automountServiceAccountToken: true
       terminationGracePeriodSeconds: 30
-      topologySpreadConstraints:
-      - labelSelector:
-          matchLabels:
-            app: traefik
-        maxSkew: 1
-        topologyKey: kubernetes.io/hostname
-        whenUnsatisfiable: ScheduleAnyway
+      # topologySpreadConstraints:
+      # - labelSelector:
+      #     matchLabels:
+      #       app: traefik
+      #   maxSkew: 1
+      #   topologyKey: kubernetes.io/hostname
+      #   whenUnsatisfiable: ScheduleAnyway
       containers:
         - name: traefik
           args:

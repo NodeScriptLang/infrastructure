@@ -116,13 +116,6 @@ spec:
       serviceAccount: traefik-ingress-controller
       serviceAccountName: traefik-ingress-controller
       terminationGracePeriodSeconds: 30
-      topologySpreadConstraints:
-      - labelSelector:
-          matchLabels:
-            app: traefik
-        maxSkew: 1
-        topologyKey: kubernetes.io/hostname
-        whenUnsatisfiable: ScheduleAnyway
 ---
 apiVersion: policy/v1
 kind: PodDisruptionBudget
