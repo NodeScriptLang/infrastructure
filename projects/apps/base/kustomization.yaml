@@ -5,3 +5,4 @@ namespace: argocd
 resources:
   - project.yaml
   - apps/backend.yaml
+  - apps/fetch-service.yaml

@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: fetch-service
+  labels:
+    monitor: "true"
+spec:
+  type: ClusterIP
+  selector:
+    app: fetch-service
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080

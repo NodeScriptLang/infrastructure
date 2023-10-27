@@ -1,0 +1,56 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    monitor: "true"
+  name: fetch-service
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: 8080
+  selector:
+    app: fetch-service
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fetch-service
+  namespace: default
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: fetch-service
+  template:
+    metadata:
+      labels:
+        app: fetch-service
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - image: nodescript-fetch-service
+        name: fetch-service
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 50m
+            memory: 150Mi
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/default: "true"
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: fetch-service
+  namespace: default
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: fetch-service
