@@ -1,0 +1,12 @@
+kind: Kustomization
+
+namespace: default
+
+images:
+  - name: nodescript-frontend
+    newName: gcr.io/automation-cloud-registry/nodescript-frontend
+    newTag: 3.52.0
+
+resources:
+  - ../../base
+  - pdb.yaml
