@@ -348,7 +348,7 @@ metadata:
   name: backend-schedule
   namespace: default
 spec:
-  replicas: 3
+  replicas: 2
   revisionHistoryLimit: 1
   selector:
     matchLabels:
@@ -393,8 +393,8 @@ spec:
           timeoutSeconds: 5
         resources:
           requests:
-            cpu: 50m
-            memory: 400Mi
+            cpu: 100m
+            memory: 200Mi
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
