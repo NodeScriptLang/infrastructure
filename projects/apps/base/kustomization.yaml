@@ -5,6 +5,7 @@ namespace: argocd
 resources:
   - project.yaml
   - apps/backend.yaml
-  - apps/guides.yaml
   - apps/fetch-service.yaml
   - apps/frontend.yaml
+  - apps/guides.yaml
+  - apps/routing-apps.yaml
