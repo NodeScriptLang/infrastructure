@@ -155,7 +155,7 @@ spec:
           timeoutSeconds: 5
         resources:
           requests:
-            cpu: 100m
+            cpu: 50m
             memory: 400Mi
       imagePullSecrets:
       - name: gcp-registry-access
