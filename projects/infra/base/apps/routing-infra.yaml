@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: routing
+  name: routing-infra
 spec:
   destination:
     name: in-cluster
     namespace: argocd
   source:
     repoURL: git@github.com:NodeScriptLang/infrastructure.git
-    path: infra/routing/manifests/TARGET/
+    path: infra/routing-infra/manifests/TARGET/
   project: infrastructure
   syncPolicy:
     syncOptions:

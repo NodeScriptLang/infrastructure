@@ -1,0 +1,178 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-backend-api
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`api.nodescript.dev`) && Path(`/ws`)
+    services:
+    - name: backend-api
+      port: 8080
+  - kind: Rule
+    match: Host(`api.nodescript.dev`)
+    middlewares:
+    - name: route-backend-api-prefix
+    services:
+    - name: backend-api
+      port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-backend-capture
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`capture.run.nodescript.dev`)
+    middlewares:
+    - name: route-backend-capture-prefix
+    priority: 100
+    services:
+    - name: backend-invoke
+      port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-backend-invoke
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: HostRegexp(`{subdomain:[0-9a-z-]+}.run.nodescript.dev`)
+    middlewares:
+    - name: route-backend-invoke-prefix
+    services:
+    - name: backend-invoke
+      port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-backend-registry
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`registry.nodescript.dev`)
+    middlewares:
+    - name: route-backend-registry-prefix
+    services:
+    - name: backend-registry
+      port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-fetch-service
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`fetch.nodescript.dev`)
+    services:
+    - name: fetch-service
+      port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-frontend
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`nodescript.dev`)
+    services:
+    - name: frontend
+      port: 8080
+  - kind: Rule
+    match: Host(`embed.nodescript.dev`)
+    services:
+    - name: frontend
+      port: 8080
+  - kind: Rule
+    match: HostRegexp(`{subdomain:[0-9a-zA-Z_-]+}.edge.nodescript.dev`)
+    services:
+    - name: frontend
+      port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-guides
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`docs.nodescript.dev`)
+    services:
+    - name: guides
+      port: 8900
+  tls:
+    secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: route-backend-api-prefix
+  namespace: default
+spec:
+  addPrefix:
+    prefix: /~api
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: route-backend-capture-prefix
+  namespace: default
+spec:
+  addPrefix:
+    prefix: /~capture
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: route-backend-invoke-prefix
+  namespace: default
+spec:
+  addPrefix:
+    prefix: /~invoke
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: route-backend-registry-prefix
+  namespace: default
+spec:
+  addPrefix:
+    prefix: /~registry

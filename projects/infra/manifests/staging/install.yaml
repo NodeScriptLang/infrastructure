@@ -87,7 +87,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: routing
+  name: routing-infra
   namespace: argocd
 spec:
   destination:
@@ -95,7 +95,7 @@ spec:
     namespace: argocd
   project: infrastructure
   source:
-    path: infra/routing/manifests/staging/
+    path: infra/routing-infra/manifests/staging/
     repoURL: git@github.com:NodeScriptLang/infrastructure.git
   syncPolicy:
     automated:

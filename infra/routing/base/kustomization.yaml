@@ -1,8 +1,0 @@
-kind: Kustomization
-
-namespace: default
-
-resources:
-  - infra/cd.yaml
-  - infra/grafana.yaml
-  - infra/prometheus.yaml

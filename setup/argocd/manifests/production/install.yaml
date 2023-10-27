@@ -18886,8 +18886,8 @@ data:
             - Engineering
   resource.customizations.ignoreDifferences.all: |
     jsonPointers:
-    - /spec/replicas
     - /sops
+    # - /spec/replicas
   url: https://cd.ns.ubio.dev
 kind: ConfigMap
 metadata:

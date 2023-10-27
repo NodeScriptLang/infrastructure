@@ -6,8 +6,8 @@ data:
   url: https://CD_HOST
   resource.customizations.ignoreDifferences.all: |
     jsonPointers:
-    - /spec/replicas
     - /sops
+    # - /spec/replicas
   dex.config: |
     connectors:
       - type: github

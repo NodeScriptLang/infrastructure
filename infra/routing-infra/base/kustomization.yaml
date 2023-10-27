@@ -1,0 +1,8 @@
+kind: Kustomization
+
+namespace: default
+
+resources:
+  - cd.yaml
+  - grafana.yaml
+  - prometheus.yaml

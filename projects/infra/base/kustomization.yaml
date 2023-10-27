@@ -7,5 +7,5 @@ resources:
   - apps/certificates.yaml
   - apps/grafana.yaml
   - apps/prometheus.yaml
-  - apps/routing.yaml
+  - apps/routing-infra.yaml
   - apps/traefik.yaml
