@@ -15,7 +15,7 @@ spec:
         app: traefik
     spec:
       nodeSelector:
-        workload/ingess: "true"
+        workload/ingress: "true"
       serviceAccount: traefik-ingress-controller
       serviceAccountName: traefik-ingress-controller
       automountServiceAccountToken: true

@@ -112,7 +112,7 @@ spec:
           seccompProfile:
             type: RuntimeDefault
       nodeSelector:
-        workload/ingess: "true"
+        workload/ingress: "true"
       serviceAccount: traefik-ingress-controller
       serviceAccountName: traefik-ingress-controller
       terminationGracePeriodSeconds: 30
