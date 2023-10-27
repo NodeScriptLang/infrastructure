@@ -31,7 +31,7 @@ spec:
     spec:
       automountServiceAccountToken: false
       containers:
-      - image: nodescript-fetch-service
+      - image: gcr.io/automation-cloud-registry/nodescript-fetch-service:2.3.0
         name: fetch-service
         ports:
         - containerPort: 8080
