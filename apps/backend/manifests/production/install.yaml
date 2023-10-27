@@ -276,7 +276,7 @@ spec:
             memory: 1200Mi
           requests:
             cpu: 200m
-            memory: 400Mi
+            memory: 360Mi
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
