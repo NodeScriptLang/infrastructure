@@ -12,16 +12,5 @@ spec:
         - namespace: monitoring
           name: prometheus
           port: 9090
-      middlewares:
-        - name: prometheus-basic-auth
   tls:
     secretName: ubio-dev-certificate
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: prometheus-basic-auth
-spec:
-  basicAuth:
-    realm: Prometheus
-    secret: routing-auth-prometheus

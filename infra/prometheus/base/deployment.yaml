@@ -4,6 +4,13 @@ metadata:
   name: prometheus
 spec:
   replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      # This makes prometheus kill existing pods before adding new ones
+      # It means Prometheus downtime but works well with FS-based locks
+      maxSurge: 0
+      maxUnavailable: 1
   selector:
     matchLabels:
       app: prometheus
@@ -14,22 +21,25 @@ spec:
     spec:
       nodeSelector:
         workload/monitoring: "true"
-      affinity:
-        podAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            - topologyKey: kubernetes.io/hostname
-              labelSelector:
-                matchLabels:
-                  app: prometheus
+      # affinity:
+      #   podAffinity:
+      #     requiredDuringSchedulingIgnoredDuringExecution:
+      #       - topologyKey: kubernetes.io/hostname
+      #         labelSelector:
+      #           matchLabels:
+      #             app: prometheus
       serviceAccountName: prometheus
       automountServiceAccountToken: true
       volumes:
-        - name: config
-          configMap:
-            name: prometheus-config
         - name: storage
           persistentVolumeClaim:
             claimName: prometheus-storage
+        - name: config
+          configMap:
+            name: prometheus-config
+        - name: secrets
+          secret:
+            secretName: prometheus-secrets
       securityContext:
         runAsUser: 1000
         runAsGroup: 1000
@@ -40,16 +50,19 @@ spec:
           image: prometheus
           args:
             - --config.file=/etc/prometheus/prometheus-config.yaml
+            - --web.config.file=/secrets/web.yaml
             - --storage.tsdb.path=/data/prometheus
             - --storage.tsdb.retention.time=RETENTION_TIME
             - --storage.tsdb.retention.size=RETENTION_SIZE
           ports:
           - containerPort: 9090
           volumeMounts:
-            - name: config
-              mountPath: /etc/prometheus
             - name: storage
               mountPath: /data/prometheus
+            - name: config
+              mountPath: /etc/prometheus
+            - name: secrets
+              mountPath: /secrets
           resources:
             requests:
               cpu: 200m
