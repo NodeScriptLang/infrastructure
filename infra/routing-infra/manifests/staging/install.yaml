@@ -54,21 +54,9 @@ spec:
   routes:
   - kind: Rule
     match: (Host(`prom.staging.ns.ubio.dev`))
-    middlewares:
-    - name: prometheus-basic-auth
     services:
     - name: prometheus
       namespace: monitoring
       port: 9090
   tls:
     secretName: ubio-dev-certificate
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: prometheus-basic-auth
-  namespace: default
-spec:
-  basicAuth:
-    realm: Prometheus
-    secret: routing-auth-prometheus
