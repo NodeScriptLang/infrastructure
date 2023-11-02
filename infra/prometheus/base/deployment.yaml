@@ -7,7 +7,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      # This makes prometheus kill existing pods before adding new ones
+      # This makes k8s kill existing pods before adding new ones
       # It means Prometheus downtime but works well with FS-based locks
       maxSurge: 0
       maxUnavailable: 1
