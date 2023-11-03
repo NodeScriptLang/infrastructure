@@ -25,9 +25,8 @@ metadata:
   name: traefik
   namespace: default
 spec:
-  progressDeadlineSeconds: 600
   replicas: 2
-  revisionHistoryLimit: 10
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: traefik
@@ -92,7 +91,6 @@ spec:
         workload/ingress: "true"
       serviceAccount: traefik-ingress-controller
       serviceAccountName: traefik-ingress-controller
-      terminationGracePeriodSeconds: 30
 ---
 apiVersion: policy/v1
 kind: PodDisruptionBudget
