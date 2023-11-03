@@ -9,19 +9,11 @@ spec:
   selector:
     app: traefik
   ports:
-  - name: admin
-    port: 8080
+  - name: web
+    port: 80
     protocol: TCP
-    targetPort: 8080
-  - name: metrics
-    port: 8082
-    protocol: TCP
-    targetPort: 8082
+    targetPort: 80
   - name: websecure
     port: 443
     protocol: TCP
     targetPort: 443
-  - name: secure-proxy
-    port: 8001
-    protocol: TCP
-    targetPort: 8001

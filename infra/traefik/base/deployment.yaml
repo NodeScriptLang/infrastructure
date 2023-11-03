@@ -30,7 +30,6 @@ spec:
       containers:
         - name: traefik
           args:
-          - --api.dashboard=true
           - --serversTransport.insecureSkipVerify=true
           - --accesslog
           - --entryPoints.metrics.address=:8082
@@ -39,7 +38,6 @@ spec:
           - --entrypoints.web.http.redirections.entryPoint.to=websecure
           - --entrypoints.web.http.redirections.entryPoint.scheme=https
           - --entrypoints.web.http.redirections.entrypoint.permanent=true
-          - --entrypoints.secure-proxy.Address=:8001
           - --providers.kubernetescrd
           - --providers.kubernetescrd.allowCrossNamespace=true
           - --metrics=true
@@ -53,19 +51,6 @@ spec:
                 - sh
                 - -c
                 - sleep 10s
-          ports:
-          - containerPort: 4443
-            name: websecure
-            protocol: TCP
-          - containerPort: 8080
-            name: admin
-            protocol: TCP
-          - containerPort: 8082
-            name: metrics
-            protocol: TCP
-          - containerPort: 8001
-            name: secure-proxy
-            protocol: TCP
           readinessProbe:
             failureThreshold: 1
             httpGet:

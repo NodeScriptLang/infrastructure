@@ -6,22 +6,14 @@ metadata:
 spec:
   externalTrafficPolicy: Local
   ports:
-  - name: admin
-    port: 8080
+  - name: web
+    port: 80
     protocol: TCP
-    targetPort: 8080
-  - name: metrics
-    port: 8082
-    protocol: TCP
-    targetPort: 8082
+    targetPort: 80
   - name: websecure
     port: 443
     protocol: TCP
     targetPort: 443
-  - name: secure-proxy
-    port: 8001
-    protocol: TCP
-    targetPort: 8001
   selector:
     app: traefik
   sessionAffinity: None
@@ -47,7 +39,6 @@ spec:
       automountServiceAccountToken: true
       containers:
       - args:
-        - --api.dashboard=true
         - --serversTransport.insecureSkipVerify=true
         - --accesslog
         - --entryPoints.metrics.address=:8082
@@ -56,7 +47,6 @@ spec:
         - --entrypoints.web.http.redirections.entryPoint.to=websecure
         - --entrypoints.web.http.redirections.entryPoint.scheme=https
         - --entrypoints.web.http.redirections.entrypoint.permanent=true
-        - --entrypoints.secure-proxy.Address=:8001
         - --providers.kubernetescrd
         - --providers.kubernetescrd.allowCrossNamespace=true
         - --metrics=true
@@ -71,19 +61,6 @@ spec:
               - -c
               - sleep 10s
         name: traefik
-        ports:
-        - containerPort: 4443
-          name: websecure
-          protocol: TCP
-        - containerPort: 8080
-          name: admin
-          protocol: TCP
-        - containerPort: 8082
-          name: metrics
-          protocol: TCP
-        - containerPort: 8001
-          name: secure-proxy
-          protocol: TCP
         readinessProbe:
           failureThreshold: 1
           httpGet:
