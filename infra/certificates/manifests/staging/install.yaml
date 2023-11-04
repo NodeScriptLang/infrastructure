@@ -50,11 +50,4 @@ spec:
           apiTokenSecretRef:
             key: token-ubio-dev
             name: cloudflare-api-tokens
-          email: mg@ub.io
-        cnameStrategy: Follow
-      selector:
-        dnsZones:
-        - automationcloud.net
-        - automation.cloud
-        - nodescript.dev
-        - ubio.dev
+          email: dev@ub.io

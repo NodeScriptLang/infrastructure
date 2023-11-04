@@ -9,16 +9,10 @@ spec:
     privateKeySecretRef:
       name: letsencrypt-issuer-private-key
     solvers:
-      - selector:
-          dnsZones:
-            - automationcloud.net
-            - automation.cloud
-            - nodescript.dev
-            - ubio.dev
-        dns01:
-          cnameStrategy: Follow
+      - dns01:
+          # cnameStrategy: Follow
           cloudflare:
             apiTokenSecretRef:
               name: cloudflare-api-tokens
               key: token-ubio-dev
-            email: mg@ub.io
+            email: dev@ub.io
