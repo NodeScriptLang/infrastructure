@@ -48,6 +48,6 @@ spec:
     - dns01:
         cloudflare:
           apiTokenSecretRef:
-            key: token-ubio-dev
+            key: token-all-zones
             name: cloudflare-api-tokens
           email: dev@ub.io

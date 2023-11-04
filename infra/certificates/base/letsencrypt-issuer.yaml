@@ -14,5 +14,5 @@ spec:
           cloudflare:
             apiTokenSecretRef:
               name: cloudflare-api-tokens
-              key: token-ubio-dev
+              key: token-all-zones
             email: dev@ub.io
