@@ -1,0 +1,16 @@
+name: Create PR
+"on":
+    repository_dispatch:
+        types:
+            - cd-deploy
+jobs:
+    create-pr:
+        uses: ubio/github-actions/.github/workflows/cd-pr-generic.yaml@master
+        with:
+            image_name: ${{ github.event.client_payload.image_name }}
+            image_tag: ${{ github.event.client_payload.image_tag }}
+            env_name: ${{ github.event.client_payload.env_name }}
+            app_path: ${{ github.event.client_payload.app_path }}
+            auto_merge: ${{ github.event.client_payload.auto_merge }}
+        secrets:
+            ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
