@@ -7,6 +7,8 @@ jobs:
     create-pr:
         uses: ubio/github-actions/.github/workflows/cd-pr-generic.yaml@master
         with:
+            gh_user: NodeScriptLang
+            gh_repo: infrastructure
             image_name: ${{ github.event.client_payload.image_name }}
             image_tag: ${{ github.event.client_payload.image_tag }}
             env_name: ${{ github.event.client_payload.env_name }}
