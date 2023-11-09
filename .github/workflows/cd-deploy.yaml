@@ -9,6 +9,7 @@ jobs:
         with:
             gh_user: NodeScriptLang
             gh_repo: infrastructure
+            gh_base_branch: main
             image_name: ${{ github.event.client_payload.image_name }}
             image_tag: ${{ github.event.client_payload.image_tag }}
             env_name: ${{ github.event.client_payload.env_name }}
