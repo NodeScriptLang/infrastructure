@@ -65,10 +65,10 @@ spec:
               mountPath: /secrets
           resources:
             requests:
-              cpu: 200m
+              cpu: 2000m
               memory: 1Gi
             limits:
-              memory: 2Gi
+              memory: 8Gi
           securityContext:
             runAsUser: 1000
             procMount: Default
