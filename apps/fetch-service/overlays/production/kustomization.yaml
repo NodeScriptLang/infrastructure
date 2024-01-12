@@ -3,7 +3,7 @@ namespace: default
 images:
   - name: nodescript-fetch-service
     newName: gcr.io/automation-cloud-registry/nodescript-fetch-service
-    newTag: 2.3.5
+    newTag: 2.4.0
 resources:
   - ../../base
   - ./pdb.yaml
