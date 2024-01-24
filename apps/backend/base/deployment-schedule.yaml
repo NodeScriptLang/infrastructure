@@ -6,7 +6,6 @@ spec:
   selector:
     matchLabels:
       app: backend-schedule
-  replicas: 2
   revisionHistoryLimit: 1
   template:
     metadata:
