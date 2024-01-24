@@ -6,9 +6,10 @@ resources:
 - deployment-api.yaml
 - deployment-background.yaml
 - deployment-invoke.yaml
-- deployment-invoke-hpa.yaml
 - deployment-registry.yaml
 - deployment-schedule.yaml
+- hpa-invoke.yaml
+- hpa-schedule.yaml
 - service-api.yaml
 - service-background.yaml
 - service-invoke.yaml

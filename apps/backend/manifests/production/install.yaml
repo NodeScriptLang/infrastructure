@@ -475,3 +475,23 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: backend-invoke
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: backend-schedule-hpa
+  namespace: default
+spec:
+  maxReplicas: 50
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 85
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: backend-schedule
