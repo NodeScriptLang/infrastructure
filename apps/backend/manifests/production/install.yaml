@@ -15,6 +15,7 @@ data:
   INVOKE_PREFIX: /~invoke
   INVOKE_RECYCLE_THRESHOLD: "20000"
   LOG_LEVEL: info
+  MAGIC_LINK_REDIRECT_URI: https://nodescript.dev/magicLinkAuthCallback
   NS_ENV: production
   REGISTRY_PREFIX: /~registry
   REGISTRY_URL: https://registry.nodescript.dev

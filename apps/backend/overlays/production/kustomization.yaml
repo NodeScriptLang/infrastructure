@@ -26,6 +26,7 @@ configMapGenerator:
       - INVOKE_RECYCLE_THRESHOLD=20000
       - LOG_LEVEL=info
       - NS_ENV=production
+      - MAGIC_LINK_REDIRECT_URI=https://nodescript.dev/magicLinkAuthCallback
       - REGISTRY_PREFIX=/~registry
       - REGISTRY_URL=https://registry.nodescript.dev
       - WORKSPACE_DOMAIN_PATTERN={id}.run.nodescript.dev
