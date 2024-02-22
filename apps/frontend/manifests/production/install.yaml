@@ -29,7 +29,7 @@ spec:
     spec:
       automountServiceAccountToken: false
       containers:
-      - image: gcr.io/automation-cloud-registry/nodescript-frontend:3.70.2
+      - image: gcr.io/automation-cloud-registry/nodescript-frontend:4.0.0-beta.1
         name: frontend
         ports:
         - containerPort: 8080
