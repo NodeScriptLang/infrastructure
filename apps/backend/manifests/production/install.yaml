@@ -22,7 +22,7 @@ data:
   WORKSPACE_DOMAIN_PATTERN: '{id}.run.nodescript.dev'
 kind: ConfigMap
 metadata:
-  name: backend-config-tmft28gm4t
+  name: backend-config-dm4kmfdc22
   namespace: default
 ---
 apiVersion: v1
@@ -130,8 +130,8 @@ spec:
         - secretRef:
             name: backend-secrets
         - configMapRef:
-            name: backend-config-tmft28gm4t
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.1.2
+            name: backend-config-dm4kmfdc22
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.1.3
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -189,8 +189,8 @@ spec:
         - secretRef:
             name: backend-secrets
         - configMapRef:
-            name: backend-config-tmft28gm4t
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.1.2
+            name: backend-config-dm4kmfdc22
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.1.3
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -248,8 +248,8 @@ spec:
         - secretRef:
             name: backend-secrets
         - configMapRef:
-            name: backend-config-tmft28gm4t
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.1.2
+            name: backend-config-dm4kmfdc22
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.1.3
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -309,8 +309,8 @@ spec:
         - secretRef:
             name: backend-secrets
         - configMapRef:
-            name: backend-config-tmft28gm4t
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.1.2
+            name: backend-config-dm4kmfdc22
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.1.3
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -367,8 +367,8 @@ spec:
         - secretRef:
             name: backend-secrets
         - configMapRef:
-            name: backend-config-tmft28gm4t
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.1.2
+            name: backend-config-dm4kmfdc22
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.1.3
         livenessProbe:
           failureThreshold: 3
           httpGet:
