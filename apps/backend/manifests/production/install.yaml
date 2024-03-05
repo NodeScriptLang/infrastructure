@@ -5,6 +5,7 @@ data:
   CAPTURE_PREFIX: /~capture
   DEPLOYMENT_GCP_CONTAINER_IMAGE: gcr.io/automation-cloud-registry/nodescript-service-runner
   DEPLOYMENT_GCP_SERVICE_ACCOUNT: nodescript-platform@automation-cloud-production.iam.gserviceaccount.com
+  EMAIL_VERIFICATION_REDIRECT_URI: https://nodescript.dev/emailVerificationCallback
   GCLOUD_ARTIFACTS_BUCKET: nodescript-platform-artifacts
   GCLOUD_LOCATION: europe-west1
   GCLOUD_PROJECT_ID: automation-cloud-production
