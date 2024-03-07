@@ -10,11 +10,12 @@ data:
       - job_name: "k8s-services"
         kubernetes_sd_configs:
           - role: endpoints
+        # See https://github.com/prometheus/prometheus/blob/main/documentation/examples/prometheus-kubernetes.yml
         relabel_configs:
           - source_labels: [__meta_kubernetes_service_annotation_metricsPort]
             action: keep
             regex: (\d+)
-          - source_labels: [__meta_kubernetes_service_annotation_metricsPort]
+          - source_labels: [__address__, __meta_kubernetes_service_annotation_metricsPort]
             action: replace
             regex: ([^:]+)(?::\d+)?;(\d+)
             replacement: $1:$2
@@ -30,7 +31,7 @@ data:
             target_label: service
 kind: ConfigMap
 metadata:
-  name: prometheus-config-t4956f4869
+  name: prometheus-config-5cg72d5b97
   namespace: monitoring
 ---
 apiVersion: v1
@@ -128,7 +129,7 @@ spec:
         persistentVolumeClaim:
           claimName: prometheus-storage
       - configMap:
-          name: prometheus-config-t4956f4869
+          name: prometheus-config-5cg72d5b97
         name: config
       - name: secrets
         secret:
