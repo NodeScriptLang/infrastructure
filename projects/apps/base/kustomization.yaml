@@ -3,10 +3,11 @@ kind: Kustomization
 namespace: argocd
 
 resources:
-  - project.yaml
   - apps/backend.yaml
   - apps/custom-domain-mapping.yaml
   - apps/fetch-service.yaml
   - apps/frontend.yaml
   - apps/guides.yaml
+  - apps/registry-service.yaml
   - apps/routing-apps.yaml
+  - project.yaml

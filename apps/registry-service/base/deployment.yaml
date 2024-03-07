@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: registry-service
+spec:
+  selector:
+    matchLabels:
+      app: registry-service
+  replicas: 3
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: registry-service
+    spec:
+      terminationGracePeriodSeconds: 30
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      nodeSelector:
+        workload/default: 'true'
+      containers:
+        - name: registry-service
+          image: nodescript-backend
+          workingDir: /app/packages/registry-service
+          command:
+            - node
+            - out/bin/http.js
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 100m
+              memory: 400Mi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          envFrom:
+            - secretRef:
+                name: backend-secrets
+          readinessProbe:
+            httpGet:
+              path: /status
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 5
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /status
+              port: aux
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
