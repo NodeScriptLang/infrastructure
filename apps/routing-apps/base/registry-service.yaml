@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-registry-service
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`REGISTRY_SERVICE_HOST`)
+      kind: Rule
+      services:
+        - name: registry-service
+          port: 8080
+  tls:
+    secretName: nodescript-dev-certificate

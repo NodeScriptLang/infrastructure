@@ -64,25 +64,6 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: route-backend-registry
-  namespace: default
-spec:
-  entryPoints:
-  - websecure
-  routes:
-  - kind: Rule
-    match: Host(`registry.staging.nodescript.dev`)
-    middlewares:
-    - name: route-backend-registry-prefix
-    services:
-    - name: backend-registry
-      port: 8080
-  tls:
-    secretName: nodescript-dev-certificate
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
   name: route-fetch-service
   namespace: default
 spec:
@@ -142,6 +123,23 @@ spec:
     secretName: nodescript-dev-certificate
 ---
 apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-registry-service
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`registry.staging.nodescript.dev`)
+    services:
+    - name: registry-service
+      port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: route-backend-api-prefix
@@ -167,12 +165,3 @@ metadata:
 spec:
   addPrefix:
     prefix: /~invoke
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: route-backend-registry-prefix
-  namespace: default
-spec:
-  addPrefix:
-    prefix: /~registry

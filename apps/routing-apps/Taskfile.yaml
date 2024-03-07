@@ -12,22 +12,21 @@ vars:
     production:BACKEND_API_HOST,api.nodescript.dev
     production:BACKEND_CAPTURE_HOST,capture.run.nodescript.dev
     production:BACKEND_INVOKE_HOST,run.nodescript.dev
-    production:BACKEND_REGISTRY_HOST,registry.nodescript.dev
     production:FETCH_SERVICE_HOST,fetch.nodescript.dev
-    production:FRONTEND_HOST,nodescript.dev
-    production:FRONTEND_EMBED_HOST,embed.nodescript.dev
     production:FRONTEND_EDGE_HOST,edge.nodescript.dev
+    production:FRONTEND_EMBED_HOST,embed.nodescript.dev
+    production:FRONTEND_HOST,nodescript.dev
     production:GUIDES_HOST,docs.nodescript.dev
-
+    production:REGISTRY_SERVICE_HOST,registry.nodescript.dev
     staging:BACKEND_API_HOST,api.staging.nodescript.dev
     staging:BACKEND_CAPTURE_HOST,capture.run.staging.nodescript.dev
     staging:BACKEND_INVOKE_HOST,run.staging.nodescript.dev
-    staging:BACKEND_REGISTRY_HOST,registry.staging.nodescript.dev
     staging:FETCH_SERVICE_HOST,fetch.staging.nodescript.dev
-    staging:FRONTEND_HOST,staging.nodescript.dev
-    staging:FRONTEND_EMBED_HOST,embed.staging.nodescript.dev
     staging:FRONTEND_EDGE_HOST,edge.staging.nodescript.dev
+    staging:FRONTEND_EMBED_HOST,embed.staging.nodescript.dev
+    staging:FRONTEND_HOST,staging.nodescript.dev
     staging:GUIDES_HOST,docs.staging.nodescript.dev
+    staging:REGISTRY_SERVICE_HOST,registry.staging.nodescript.dev
 
 tasks:
   default:

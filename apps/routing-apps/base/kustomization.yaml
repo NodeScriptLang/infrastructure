@@ -6,7 +6,7 @@ resources:
   - backend-api.yaml
   - backend-capture.yaml
   - backend-invoke.yaml
-  - backend-registry.yaml
   - fetch-service.yaml
   - frontend.yaml
   - guides.yaml
+  - registry-service.yaml
