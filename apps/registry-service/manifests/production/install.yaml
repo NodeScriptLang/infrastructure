@@ -7,7 +7,7 @@ spec:
   ports:
   - name: http
     port: 8080
-    targetPort: 8080
+    targetPort: http
   selector:
     app: registry-service
   type: ClusterIP
@@ -23,7 +23,7 @@ spec:
   ports:
   - name: aux
     port: 8081
-    targetPort: 8081
+    targetPort: aux
   selector:
     app: registry-service
   type: ClusterIP

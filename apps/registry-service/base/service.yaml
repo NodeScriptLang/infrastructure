@@ -9,7 +9,7 @@ spec:
   ports:
     - name: http
       port: 8080
-      targetPort: 8080
+      targetPort: http
 ---
 kind: Service
 apiVersion: v1
@@ -24,4 +24,4 @@ spec:
   ports:
     - name: aux
       port: 8081
-      targetPort: 8081
+      targetPort: aux
