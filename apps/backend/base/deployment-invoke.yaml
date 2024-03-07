@@ -21,6 +21,7 @@ spec:
       containers:
         - name: backend-invoke
           image: nodescript-backend
+          workingDir: /app/backend
           command:
             - node
             - --experimental-network-imports

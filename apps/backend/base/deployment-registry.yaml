@@ -22,6 +22,7 @@ spec:
       containers:
         - name: backend-registry
           image: nodescript-backend
+          workingDir: /app/backend
           command:
             - node
             - out/bin/registry.js

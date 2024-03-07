@@ -21,6 +21,7 @@ spec:
       containers:
         - name: backend-schedule
           image: nodescript-backend
+          workingDir: /app/backend
           command:
             - node
             - out/bin/schedule.js

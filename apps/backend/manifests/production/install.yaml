@@ -159,6 +159,7 @@ spec:
           requests:
             cpu: 50m
             memory: 400Mi
+        workingDir: /app/backend
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
@@ -218,6 +219,7 @@ spec:
           requests:
             cpu: 50m
             memory: 200Mi
+        workingDir: /app/backend
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
@@ -279,6 +281,7 @@ spec:
           requests:
             cpu: 200m
             memory: 400Mi
+        workingDir: /app/backend
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
@@ -338,6 +341,7 @@ spec:
           requests:
             cpu: 100m
             memory: 400Mi
+        workingDir: /app/backend
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
@@ -396,6 +400,7 @@ spec:
           requests:
             cpu: 100m
             memory: 200Mi
+        workingDir: /app/backend
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
