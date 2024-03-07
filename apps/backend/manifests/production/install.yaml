@@ -79,22 +79,6 @@ kind: Service
 metadata:
   labels:
     monitor: "true"
-  name: backend-registry
-  namespace: default
-spec:
-  ports:
-  - name: http
-    port: 8080
-    targetPort: 8080
-  selector:
-    app: backend-registry
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  labels:
-    monitor: "true"
   name: backend-schedule
   namespace: default
 spec:
@@ -287,66 +271,6 @@ spec:
       nodeSelector:
         workload/compute: "true"
       terminationGracePeriodSeconds: 120
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: backend-registry
-  namespace: default
-spec:
-  replicas: 3
-  revisionHistoryLimit: 1
-  selector:
-    matchLabels:
-      app: backend-registry
-  template:
-    metadata:
-      labels:
-        app: backend-registry
-    spec:
-      automountServiceAccountToken: false
-      containers:
-      - command:
-        - node
-        - out/bin/registry.js
-        envFrom:
-        - secretRef:
-            name: backend-secrets
-        - configMapRef:
-            name: backend-config-mtc6bm5592
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.5.0
-        livenessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /status
-            port: http
-          initialDelaySeconds: 60
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 5
-        name: backend-registry
-        ports:
-        - containerPort: 8080
-          name: http
-        readinessProbe:
-          failureThreshold: 5
-          httpGet:
-            path: /status
-            port: http
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 5
-        resources:
-          requests:
-            cpu: 100m
-            memory: 400Mi
-        workingDir: /app/backend
-      imagePullSecrets:
-      - name: gcp-registry-access
-      nodeSelector:
-        workload/default: "true"
-      terminationGracePeriodSeconds: 30
 ---
 apiVersion: apps/v1
 kind: Deployment
