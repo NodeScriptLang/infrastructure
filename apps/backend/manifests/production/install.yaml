@@ -29,8 +29,8 @@ metadata:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    monitor: "true"
+  annotations:
+    metricsPort: "8080"
   name: backend-api
   namespace: default
 spec:
@@ -45,8 +45,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    monitor: "true"
+  annotations:
+    metricsPort: "8080"
   name: backend-background
   namespace: default
 spec:
@@ -61,8 +61,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    monitor: "true"
+  annotations:
+    metricsPort: "8080"
   name: backend-invoke
   namespace: default
 spec:
@@ -77,8 +77,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    monitor: "true"
+  annotations:
+    metricsPort: "8080"
   name: backend-schedule
   namespace: default
 spec:

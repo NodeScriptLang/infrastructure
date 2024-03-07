@@ -7,17 +7,18 @@ data:
         project: nodescript
 
     scrape_configs:
-      - job_name: 'k8s-services'
+      - job_name: "k8s-services"
         kubernetes_sd_configs:
           - role: endpoints
-            # Note: this does not work as expected, use relabel_configs to filter services
-            # selectors:
-            #   - role: service
-            #     label: "monitor=true"
         relabel_configs:
-          - source_labels: [__meta_kubernetes_service_label_monitor]
+          - source_labels: [__meta_kubernetes_service_annotation_metricsPort]
             action: keep
-            regex: "true"
+            regex: (.+)
+          - source_labels: [__meta_kubernetes_service_annotation_metricsPort]
+            action: replace
+            regex: (.+)
+            replacement: $1
+            target_label: __address__
           - source_labels: [__meta_kubernetes_namespace]
             action: replace
             target_label: namespace
@@ -29,7 +30,7 @@ data:
             target_label: service
 kind: ConfigMap
 metadata:
-  name: prometheus-config-kdchg5ddfk
+  name: prometheus-config-7k622cd784
   namespace: monitoring
 ---
 apiVersion: v1
@@ -127,7 +128,7 @@ spec:
         persistentVolumeClaim:
           claimName: prometheus-storage
       - configMap:
-          name: prometheus-config-kdchg5ddfk
+          name: prometheus-config-7k622cd784
         name: config
       - name: secrets
         secret:

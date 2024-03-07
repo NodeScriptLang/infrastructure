@@ -2,6 +2,8 @@ kind: Service
 apiVersion: v1
 metadata:
   name: registry-service
+  annotations:
+    metricsPort: "8081"
 spec:
   type: ClusterIP
   selector:
@@ -10,18 +12,6 @@ spec:
     - name: http
       port: 8080
       targetPort: http
----
-kind: Service
-apiVersion: v1
-metadata:
-  name: registry-service-aux
-  labels:
-    monitor: "true"
-spec:
-  type: ClusterIP
-  selector:
-    app: registry-service
-  ports:
     - name: aux
       port: 8081
       targetPort: aux
