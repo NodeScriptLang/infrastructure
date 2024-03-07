@@ -132,7 +132,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: backend-config-mtc6bm5592
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.4.1
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.5.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -191,7 +191,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: backend-config-mtc6bm5592
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.4.1
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.5.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -250,7 +250,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: backend-config-mtc6bm5592
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.4.1
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.5.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -311,7 +311,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: backend-config-mtc6bm5592
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.4.1
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.5.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -369,7 +369,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: backend-config-mtc6bm5592
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.4.1
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.5.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
