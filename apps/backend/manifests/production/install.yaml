@@ -13,6 +13,7 @@ data:
   GRAPH_CAPTURE_URL: https://capture.run.nodescript.dev/g/{graphId}
   GRAPH_SOURCE_URL: https://nodescript.dev/graph/{graphId}
   HUB_PREFIX: /~api
+  INVITE_LINK_REDIRECT_URI: https://nodescript.dev/inviteLinkAuthCallback
   INVOKE_PREFIX: /~invoke
   INVOKE_RECYCLE_THRESHOLD: "20000"
   LOG_LEVEL: info
