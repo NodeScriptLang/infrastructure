@@ -8,6 +8,7 @@ resources:
   - apps/fetch-service.yaml
   - apps/frontend.yaml
   - apps/guides.yaml
+  - apps/invoke-groups.yaml
   - apps/registry-service.yaml
   - apps/routing-apps.yaml
   - project.yaml

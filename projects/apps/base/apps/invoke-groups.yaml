@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: invoke-groups
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  source:
+    repoURL: git@github.com:NodeScriptLang/infrastructure.git
+    path: apps/invoke-groups/manifests/TARGET/
+  project: apps
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    automated:
+      selfHeal: true
