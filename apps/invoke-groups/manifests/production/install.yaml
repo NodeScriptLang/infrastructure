@@ -1,0 +1,1259 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: invoke-group-default-a
+  namespace: invoke
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: invoke-group-default-a
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: invoke-group-default-b
+  namespace: invoke
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: invoke-group-default-b
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: invoke-group-default-c
+  namespace: invoke
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: invoke-group-default-c
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: invoke-group-default-d
+  namespace: invoke
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: invoke-group-default-d
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: invoke-group-default-e
+  namespace: invoke
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: invoke-group-default-e
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: invoke-group-default-f
+  namespace: invoke
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: invoke-group-default-f
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: invoke-group-default-g
+  namespace: invoke
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: invoke-group-default-g
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: invoke-group-default-h
+  namespace: invoke
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: invoke-group-default-h
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: invoke-group-incubator-a
+  namespace: invoke
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: invoke-group-incubator-a
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: invoke-group-incubator-b
+  namespace: invoke
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: invoke-group-incubator-b
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-a
+  namespace: invoke
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-a
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-a
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - --experimental-network-imports
+        - --experimental-vm-modules
+        - --no-warnings
+        - out/bin/http.js
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: INVOKE_TIER_NAME
+          value: default
+        - name: INVOKE_GROUP_NAME
+          value: a
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: invoke-group-default-a
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 200m
+            memory: 400Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          procMount: Default
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/invoke-tier: default
+      terminationGracePeriodSeconds: 150
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-b
+  namespace: invoke
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-b
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-b
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - --experimental-network-imports
+        - --experimental-vm-modules
+        - --no-warnings
+        - out/bin/http.js
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: INVOKE_TIER_NAME
+          value: default
+        - name: INVOKE_GROUP_NAME
+          value: b
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: invoke-group-default-b
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 200m
+            memory: 400Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          procMount: Default
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/invoke-tier: default
+      terminationGracePeriodSeconds: 150
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-c
+  namespace: invoke
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-c
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-c
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - --experimental-network-imports
+        - --experimental-vm-modules
+        - --no-warnings
+        - out/bin/http.js
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: INVOKE_TIER_NAME
+          value: default
+        - name: INVOKE_GROUP_NAME
+          value: c
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: invoke-group-default-c
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 200m
+            memory: 400Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          procMount: Default
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/invoke-tier: default
+      terminationGracePeriodSeconds: 150
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-d
+  namespace: invoke
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-d
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-d
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - --experimental-network-imports
+        - --experimental-vm-modules
+        - --no-warnings
+        - out/bin/http.js
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: INVOKE_TIER_NAME
+          value: default
+        - name: INVOKE_GROUP_NAME
+          value: d
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: invoke-group-default-d
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 200m
+            memory: 400Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          procMount: Default
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/invoke-tier: default
+      terminationGracePeriodSeconds: 150
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-e
+  namespace: invoke
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-e
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-e
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - --experimental-network-imports
+        - --experimental-vm-modules
+        - --no-warnings
+        - out/bin/http.js
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: INVOKE_TIER_NAME
+          value: default
+        - name: INVOKE_GROUP_NAME
+          value: e
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: invoke-group-default-e
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 200m
+            memory: 400Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          procMount: Default
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/invoke-tier: default
+      terminationGracePeriodSeconds: 150
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-f
+  namespace: invoke
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-f
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-f
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - --experimental-network-imports
+        - --experimental-vm-modules
+        - --no-warnings
+        - out/bin/http.js
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: INVOKE_TIER_NAME
+          value: default
+        - name: INVOKE_GROUP_NAME
+          value: f
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: invoke-group-default-f
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 200m
+            memory: 400Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          procMount: Default
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/invoke-tier: default
+      terminationGracePeriodSeconds: 150
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-g
+  namespace: invoke
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-g
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-g
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - --experimental-network-imports
+        - --experimental-vm-modules
+        - --no-warnings
+        - out/bin/http.js
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: INVOKE_TIER_NAME
+          value: default
+        - name: INVOKE_GROUP_NAME
+          value: g
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: invoke-group-default-g
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 200m
+            memory: 400Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          procMount: Default
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/invoke-tier: default
+      terminationGracePeriodSeconds: 150
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-h
+  namespace: invoke
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-h
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-h
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - --experimental-network-imports
+        - --experimental-vm-modules
+        - --no-warnings
+        - out/bin/http.js
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: INVOKE_TIER_NAME
+          value: default
+        - name: INVOKE_GROUP_NAME
+          value: h
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: invoke-group-default-h
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 200m
+            memory: 400Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          procMount: Default
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/invoke-tier: default
+      terminationGracePeriodSeconds: 150
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-incubator-a
+  namespace: invoke
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: invoke-group-incubator-a
+  template:
+    metadata:
+      labels:
+        app: invoke-group-incubator-a
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - --experimental-network-imports
+        - --experimental-vm-modules
+        - --no-warnings
+        - out/bin/http.js
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: INVOKE_TIER_NAME
+          value: incubator
+        - name: INVOKE_GROUP_NAME
+          value: a
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: invoke-group-incubator-a
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 200m
+            memory: 400Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          procMount: Default
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/invoke-tier: incubator
+      terminationGracePeriodSeconds: 150
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-incubator-b
+  namespace: invoke
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: invoke-group-incubator-b
+  template:
+    metadata:
+      labels:
+        app: invoke-group-incubator-b
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - --experimental-network-imports
+        - --experimental-vm-modules
+        - --no-warnings
+        - out/bin/http.js
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: INVOKE_TIER_NAME
+          value: incubator
+        - name: INVOKE_GROUP_NAME
+          value: b
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: invoke-group-incubator-b
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /liveness
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 200m
+            memory: 400Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          procMount: Default
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/invoke-tier: incubator
+      terminationGracePeriodSeconds: 150
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-a
+  namespace: invoke
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-a
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-b
+  namespace: invoke
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-b
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-c
+  namespace: invoke
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-c
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-d
+  namespace: invoke
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-d
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-e
+  namespace: invoke
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-e
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-f
+  namespace: invoke
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-f
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-g
+  namespace: invoke
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-g
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-h
+  namespace: invoke
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-h
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-incubator-a
+  namespace: invoke
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-incubator-a
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-incubator-b
+  namespace: invoke
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-incubator-b
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: invoke-group-default-a
+  namespace: invoke
+spec:
+  maxReplicas: 50
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 95
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: invoke-group-default-a
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: invoke-group-default-b
+  namespace: invoke
+spec:
+  maxReplicas: 50
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 95
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: invoke-group-default-b
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: invoke-group-default-c
+  namespace: invoke
+spec:
+  maxReplicas: 50
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 95
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: invoke-group-default-c
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: invoke-group-default-d
+  namespace: invoke
+spec:
+  maxReplicas: 50
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 95
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: invoke-group-default-d
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: invoke-group-default-e
+  namespace: invoke
+spec:
+  maxReplicas: 50
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 95
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: invoke-group-default-e
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: invoke-group-default-f
+  namespace: invoke
+spec:
+  maxReplicas: 50
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 95
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: invoke-group-default-f
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: invoke-group-default-g
+  namespace: invoke
+spec:
+  maxReplicas: 50
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 95
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: invoke-group-default-g
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: invoke-group-default-h
+  namespace: invoke
+spec:
+  maxReplicas: 50
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 95
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: invoke-group-default-h
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: invoke-group-incubator-a
+  namespace: invoke
+spec:
+  maxReplicas: 50
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 95
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: invoke-group-incubator-a
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: invoke-group-incubator-b
+  namespace: invoke
+spec:
+  maxReplicas: 50
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 95
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: invoke-group-incubator-b

@@ -1,0 +1,107 @@
+
+###########################################################
+# THESE FILES ARE AUTO-GENERATED                          #
+#                                                         #
+# Do not edit them manually.                              #
+# Instead, make changes to files inside "template/"       #
+# and regenerate with "node generate.mjs"                 #
+###########################################################
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-a
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-a
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-b
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-b
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-c
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-c
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-d
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-d
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-e
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-e
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-f
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-f
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-g
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-g
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-default-h
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-default-h
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-incubator-a
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-incubator-a
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-incubator-b
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-incubator-b

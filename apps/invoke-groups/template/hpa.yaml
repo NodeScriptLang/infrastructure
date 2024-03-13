@@ -1,12 +1,12 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: backend-schedule-hpa
+  name: invoke-group-$TIER-$GROUP
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: backend-schedule
+    name: invoke-group-$TIER-$GROUP
   minReplicas: 1
   maxReplicas: 50
   metrics:
@@ -15,4 +15,4 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 85
+          averageUtilization: 95
