@@ -11,4 +11,4 @@ resources:
 configMapGenerator:
   - name: gateway-service-tiers
     files:
-      - tiers.txt
+      - tiers.json

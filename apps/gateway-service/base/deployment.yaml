@@ -45,7 +45,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: gateway-service-tiers
-                  key: tiers.txt
+                  key: tiers.json
           envFrom:
             - secretRef:
                 name: backend-secrets
