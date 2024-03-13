@@ -8,6 +8,8 @@ spec:
     - server: '*'
       namespace: default
     - server: '*'
+      namespace: invoke
+    - server: '*'
       namespace: argocd
   sourceRepos:
     - '*'
