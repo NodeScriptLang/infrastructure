@@ -117,7 +117,7 @@ spec:
   - kind: Rule
     match: HostRegexp(`w8132bq0.run.nodescript.dev`)
     services:
-    - name: backend-invoke
+    - name: gateway-service
       port: 8080
   tls:
     secretName: nodescript-dev-certificate
