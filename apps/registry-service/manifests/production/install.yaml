@@ -23,7 +23,6 @@ metadata:
   name: registry-service
   namespace: default
 spec:
-  replicas: 3
   revisionHistoryLimit: 1
   selector:
     matchLabels:
@@ -96,3 +95,23 @@ spec:
   selector:
     matchLabels:
       app: registry-service
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: registry-service
+  namespace: default
+spec:
+  maxReplicas: 10
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 80
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: registry-service

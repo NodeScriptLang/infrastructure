@@ -6,7 +6,6 @@ spec:
   selector:
     matchLabels:
       app: registry-service
-  replicas: 3
   revisionHistoryLimit: 1
   template:
     metadata:

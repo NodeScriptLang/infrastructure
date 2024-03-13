@@ -7,3 +7,4 @@ images:
 resources:
   - ../../base
   - ./pdb.yaml
+  - ./hpa.yaml
