@@ -44,8 +44,6 @@ spec:
           envFrom:
             - secretRef:
                 name: backend-secrets
-            - configMapRef:
-                name: backend-config
           readinessProbe:
             httpGet:
               path: /status
