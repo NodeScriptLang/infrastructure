@@ -7,6 +7,7 @@ resources:
   - apps/custom-domain-mapping.yaml
   - apps/fetch-service.yaml
   - apps/frontend.yaml
+  - apps/gateway-service.yaml
   - apps/guides.yaml
   - apps/invoke-groups.yaml
   - apps/registry-service.yaml

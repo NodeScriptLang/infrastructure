@@ -1,0 +1,130 @@
+apiVersion: v1
+data:
+  tiers.txt: |
+    default=invoke-group-default-a.invoke.svc.cluster,invoke-group-default-b.invoke.svc.cluster,invoke-group-default-c.invoke.svc.cluster,invoke-group-default-d.invoke.svc.cluster,invoke-group-default-e.invoke.svc.cluster,invoke-group-default-f.invoke.svc.cluster,invoke-group-default-g.invoke.svc.cluster,invoke-group-default-h.invoke.svc.cluster
+    incubator=invoke-group-incubator-a.invoke.svc.cluster,invoke-group-incubator-b.invoke.svc.cluster
+kind: ConfigMap
+metadata:
+  name: gateway-service-tiers-b5f275k45h
+  namespace: default
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: gateway-service
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: gateway-service
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gateway-service
+  namespace: default
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: gateway-service
+  template:
+    metadata:
+      labels:
+        app: gateway-service
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - out/bin/http.js
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: INVOKE_TIERS
+          valueFrom:
+            configMapKeyRef:
+              key: tiers.txt
+              name: gateway-service-tiers-b5f275k45h
+        envFrom:
+        - secretRef:
+            name: backend-secrets
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.7.1
+        livenessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /status
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: gateway-service
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /status
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          limits:
+            memory: 1000Mi
+          requests:
+            cpu: 100m
+            memory: 400Mi
+        workingDir: /app/packages/gateway-service
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/default: "true"
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: gateway-service
+  namespace: default
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: gateway-service
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: gateway-service
+  namespace: default
+spec:
+  maxReplicas: 20
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 80
+        type: Utilization
+    type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: gateway-service
