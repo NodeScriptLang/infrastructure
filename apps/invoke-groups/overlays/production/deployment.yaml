@@ -78,7 +78,7 @@ spec:
             httpGet:
               path: /liveness
               port: aux
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
@@ -167,7 +167,7 @@ spec:
             httpGet:
               path: /liveness
               port: aux
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
@@ -256,7 +256,7 @@ spec:
             httpGet:
               path: /liveness
               port: aux
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
@@ -345,7 +345,7 @@ spec:
             httpGet:
               path: /liveness
               port: aux
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
@@ -434,7 +434,7 @@ spec:
             httpGet:
               path: /liveness
               port: aux
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
@@ -523,7 +523,7 @@ spec:
             httpGet:
               path: /liveness
               port: aux
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
@@ -612,7 +612,7 @@ spec:
             httpGet:
               path: /liveness
               port: aux
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
@@ -701,7 +701,7 @@ spec:
             httpGet:
               path: /liveness
               port: aux
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
@@ -790,7 +790,7 @@ spec:
             httpGet:
               path: /liveness
               port: aux
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
@@ -879,7 +879,7 @@ spec:
             httpGet:
               path: /liveness
               port: aux
-            initialDelaySeconds: 5
+            initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
