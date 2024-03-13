@@ -35,6 +35,8 @@ spec:
             requests:
               cpu: 100m
               memory: 400Mi
+            limits:
+              memory: 1000Mi
           env:
             - name: HTTP_PORT
               value: '8080'
