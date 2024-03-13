@@ -34,7 +34,7 @@ spec:
         - name: gcp-registry-access
       # Different tiers will be deployed into separate node pools
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: 'true'
       containers:
         - name: invoke-group-default-a
           image: nodescript-invoke-service
@@ -123,7 +123,7 @@ spec:
         - name: gcp-registry-access
       # Different tiers will be deployed into separate node pools
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: 'true'
       containers:
         - name: invoke-group-default-b
           image: nodescript-invoke-service
@@ -212,7 +212,7 @@ spec:
         - name: gcp-registry-access
       # Different tiers will be deployed into separate node pools
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: 'true'
       containers:
         - name: invoke-group-default-c
           image: nodescript-invoke-service
@@ -301,7 +301,7 @@ spec:
         - name: gcp-registry-access
       # Different tiers will be deployed into separate node pools
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: 'true'
       containers:
         - name: invoke-group-default-d
           image: nodescript-invoke-service
@@ -390,7 +390,7 @@ spec:
         - name: gcp-registry-access
       # Different tiers will be deployed into separate node pools
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: 'true'
       containers:
         - name: invoke-group-default-e
           image: nodescript-invoke-service
@@ -479,7 +479,7 @@ spec:
         - name: gcp-registry-access
       # Different tiers will be deployed into separate node pools
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: 'true'
       containers:
         - name: invoke-group-default-f
           image: nodescript-invoke-service
@@ -568,7 +568,7 @@ spec:
         - name: gcp-registry-access
       # Different tiers will be deployed into separate node pools
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: 'true'
       containers:
         - name: invoke-group-default-g
           image: nodescript-invoke-service
@@ -657,7 +657,7 @@ spec:
         - name: gcp-registry-access
       # Different tiers will be deployed into separate node pools
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: 'true'
       containers:
         - name: invoke-group-default-h
           image: nodescript-invoke-service
@@ -746,7 +746,7 @@ spec:
         - name: gcp-registry-access
       # Different tiers will be deployed into separate node pools
       nodeSelector:
-        workload/invoke-tier: incubator
+        workload/invoke-tier-incubator: 'true'
       containers:
         - name: invoke-group-incubator-a
           image: nodescript-invoke-service
@@ -835,7 +835,7 @@ spec:
         - name: gcp-registry-access
       # Different tiers will be deployed into separate node pools
       nodeSelector:
-        workload/invoke-tier: incubator
+        workload/invoke-tier-incubator: 'true'
       containers:
         - name: invoke-group-incubator-b
           image: nodescript-invoke-service

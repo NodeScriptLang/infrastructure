@@ -259,7 +259,7 @@ spec:
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: "true"
       terminationGracePeriodSeconds: 150
 ---
 apiVersion: apps/v1
@@ -333,7 +333,7 @@ spec:
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: "true"
       terminationGracePeriodSeconds: 150
 ---
 apiVersion: apps/v1
@@ -407,7 +407,7 @@ spec:
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: "true"
       terminationGracePeriodSeconds: 150
 ---
 apiVersion: apps/v1
@@ -481,7 +481,7 @@ spec:
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: "true"
       terminationGracePeriodSeconds: 150
 ---
 apiVersion: apps/v1
@@ -555,7 +555,7 @@ spec:
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: "true"
       terminationGracePeriodSeconds: 150
 ---
 apiVersion: apps/v1
@@ -629,7 +629,7 @@ spec:
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: "true"
       terminationGracePeriodSeconds: 150
 ---
 apiVersion: apps/v1
@@ -703,7 +703,7 @@ spec:
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: "true"
       terminationGracePeriodSeconds: 150
 ---
 apiVersion: apps/v1
@@ -777,7 +777,7 @@ spec:
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
-        workload/invoke-tier: default
+        workload/invoke-tier-default: "true"
       terminationGracePeriodSeconds: 150
 ---
 apiVersion: apps/v1
@@ -851,7 +851,7 @@ spec:
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
-        workload/invoke-tier: incubator
+        workload/invoke-tier-incubator: "true"
       terminationGracePeriodSeconds: 150
 ---
 apiVersion: apps/v1
@@ -925,7 +925,7 @@ spec:
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
-        workload/invoke-tier: incubator
+        workload/invoke-tier-incubator: "true"
       terminationGracePeriodSeconds: 150
 ---
 apiVersion: policy/v1

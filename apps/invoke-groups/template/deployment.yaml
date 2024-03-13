@@ -26,7 +26,7 @@ spec:
         - name: gcp-registry-access
       # Different tiers will be deployed into separate node pools
       nodeSelector:
-        workload/invoke-tier: $TIER
+        workload/invoke-tier-$TIER: 'true'
       containers:
         - name: invoke-group-$TIER-$GROUP
           image: nodescript-invoke-service
