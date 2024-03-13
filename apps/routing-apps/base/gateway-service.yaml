@@ -6,7 +6,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`1w8132bq0.run.nodescript.dev`)
+    - match: Host(`w8132bq0.run.nodescript.dev`)
       kind: Rule
       priority: 1000
       services:
