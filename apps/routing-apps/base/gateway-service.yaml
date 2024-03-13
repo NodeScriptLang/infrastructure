@@ -6,8 +6,9 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: HostRegexp(`w8132bq0.run.nodescript.dev`)
+    - match: Host(`w8132bq0.run.nodescript.dev`)
       kind: Rule
+      priority: 1000
       services:
         - name: gateway-service
           port: 8080
