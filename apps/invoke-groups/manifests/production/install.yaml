@@ -216,10 +216,6 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        - name: INVOKE_TIER_NAME
-          value: default
-        - name: INVOKE_GROUP_NAME
-          value: a
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
         livenessProbe:
           failureThreshold: 3
@@ -246,6 +242,8 @@ spec:
           successThreshold: 1
           timeoutSeconds: 5
         resources:
+          limits:
+            memory: 1Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -292,10 +290,6 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        - name: INVOKE_TIER_NAME
-          value: default
-        - name: INVOKE_GROUP_NAME
-          value: b
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
         livenessProbe:
           failureThreshold: 3
@@ -322,6 +316,8 @@ spec:
           successThreshold: 1
           timeoutSeconds: 5
         resources:
+          limits:
+            memory: 1Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -368,10 +364,6 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        - name: INVOKE_TIER_NAME
-          value: default
-        - name: INVOKE_GROUP_NAME
-          value: c
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
         livenessProbe:
           failureThreshold: 3
@@ -398,6 +390,8 @@ spec:
           successThreshold: 1
           timeoutSeconds: 5
         resources:
+          limits:
+            memory: 1Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -444,10 +438,6 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        - name: INVOKE_TIER_NAME
-          value: default
-        - name: INVOKE_GROUP_NAME
-          value: d
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
         livenessProbe:
           failureThreshold: 3
@@ -474,6 +464,8 @@ spec:
           successThreshold: 1
           timeoutSeconds: 5
         resources:
+          limits:
+            memory: 1Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -520,10 +512,6 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        - name: INVOKE_TIER_NAME
-          value: default
-        - name: INVOKE_GROUP_NAME
-          value: e
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
         livenessProbe:
           failureThreshold: 3
@@ -550,6 +538,8 @@ spec:
           successThreshold: 1
           timeoutSeconds: 5
         resources:
+          limits:
+            memory: 1Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -596,10 +586,6 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        - name: INVOKE_TIER_NAME
-          value: default
-        - name: INVOKE_GROUP_NAME
-          value: f
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
         livenessProbe:
           failureThreshold: 3
@@ -626,6 +612,8 @@ spec:
           successThreshold: 1
           timeoutSeconds: 5
         resources:
+          limits:
+            memory: 1Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -672,10 +660,6 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        - name: INVOKE_TIER_NAME
-          value: default
-        - name: INVOKE_GROUP_NAME
-          value: g
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
         livenessProbe:
           failureThreshold: 3
@@ -702,6 +686,8 @@ spec:
           successThreshold: 1
           timeoutSeconds: 5
         resources:
+          limits:
+            memory: 1Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -748,10 +734,6 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        - name: INVOKE_TIER_NAME
-          value: default
-        - name: INVOKE_GROUP_NAME
-          value: h
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
         livenessProbe:
           failureThreshold: 3
@@ -778,6 +760,8 @@ spec:
           successThreshold: 1
           timeoutSeconds: 5
         resources:
+          limits:
+            memory: 1Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -824,10 +808,6 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        - name: INVOKE_TIER_NAME
-          value: incubator
-        - name: INVOKE_GROUP_NAME
-          value: a
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
         livenessProbe:
           failureThreshold: 3
@@ -854,6 +834,8 @@ spec:
           successThreshold: 1
           timeoutSeconds: 5
         resources:
+          limits:
+            memory: 1Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -900,10 +882,6 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        - name: INVOKE_TIER_NAME
-          value: incubator
-        - name: INVOKE_GROUP_NAME
-          value: b
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.1
         livenessProbe:
           failureThreshold: 3
@@ -930,6 +908,8 @@ spec:
           successThreshold: 1
           timeoutSeconds: 5
         resources:
+          limits:
+            memory: 1Gi
           requests:
             cpu: 200m
             memory: 400Mi

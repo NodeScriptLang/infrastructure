@@ -45,15 +45,13 @@ spec:
             requests:
               cpu: 200m
               memory: 400Mi
+            limits:
+              memory: 1Gi
           env:
             - name: HTTP_PORT
               value: '8080'
             - name: AUX_HTTP_PORT
               value: '8081'
-            - name: INVOKE_TIER_NAME
-              value: $TIER
-            - name: INVOKE_GROUP_NAME
-              value: $GROUP
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:

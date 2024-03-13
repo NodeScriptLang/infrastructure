@@ -53,15 +53,13 @@ spec:
             requests:
               cpu: 200m
               memory: 400Mi
+            limits:
+              memory: 1Gi
           env:
             - name: HTTP_PORT
               value: '8080'
             - name: AUX_HTTP_PORT
               value: '8081'
-            - name: INVOKE_TIER_NAME
-              value: default
-            - name: INVOKE_GROUP_NAME
-              value: a
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
@@ -144,15 +142,13 @@ spec:
             requests:
               cpu: 200m
               memory: 400Mi
+            limits:
+              memory: 1Gi
           env:
             - name: HTTP_PORT
               value: '8080'
             - name: AUX_HTTP_PORT
               value: '8081'
-            - name: INVOKE_TIER_NAME
-              value: default
-            - name: INVOKE_GROUP_NAME
-              value: b
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
@@ -235,15 +231,13 @@ spec:
             requests:
               cpu: 200m
               memory: 400Mi
+            limits:
+              memory: 1Gi
           env:
             - name: HTTP_PORT
               value: '8080'
             - name: AUX_HTTP_PORT
               value: '8081'
-            - name: INVOKE_TIER_NAME
-              value: default
-            - name: INVOKE_GROUP_NAME
-              value: c
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
@@ -326,15 +320,13 @@ spec:
             requests:
               cpu: 200m
               memory: 400Mi
+            limits:
+              memory: 1Gi
           env:
             - name: HTTP_PORT
               value: '8080'
             - name: AUX_HTTP_PORT
               value: '8081'
-            - name: INVOKE_TIER_NAME
-              value: default
-            - name: INVOKE_GROUP_NAME
-              value: d
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
@@ -417,15 +409,13 @@ spec:
             requests:
               cpu: 200m
               memory: 400Mi
+            limits:
+              memory: 1Gi
           env:
             - name: HTTP_PORT
               value: '8080'
             - name: AUX_HTTP_PORT
               value: '8081'
-            - name: INVOKE_TIER_NAME
-              value: default
-            - name: INVOKE_GROUP_NAME
-              value: e
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
@@ -508,15 +498,13 @@ spec:
             requests:
               cpu: 200m
               memory: 400Mi
+            limits:
+              memory: 1Gi
           env:
             - name: HTTP_PORT
               value: '8080'
             - name: AUX_HTTP_PORT
               value: '8081'
-            - name: INVOKE_TIER_NAME
-              value: default
-            - name: INVOKE_GROUP_NAME
-              value: f
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
@@ -599,15 +587,13 @@ spec:
             requests:
               cpu: 200m
               memory: 400Mi
+            limits:
+              memory: 1Gi
           env:
             - name: HTTP_PORT
               value: '8080'
             - name: AUX_HTTP_PORT
               value: '8081'
-            - name: INVOKE_TIER_NAME
-              value: default
-            - name: INVOKE_GROUP_NAME
-              value: g
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
@@ -690,15 +676,13 @@ spec:
             requests:
               cpu: 200m
               memory: 400Mi
+            limits:
+              memory: 1Gi
           env:
             - name: HTTP_PORT
               value: '8080'
             - name: AUX_HTTP_PORT
               value: '8081'
-            - name: INVOKE_TIER_NAME
-              value: default
-            - name: INVOKE_GROUP_NAME
-              value: h
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
@@ -781,15 +765,13 @@ spec:
             requests:
               cpu: 200m
               memory: 400Mi
+            limits:
+              memory: 1Gi
           env:
             - name: HTTP_PORT
               value: '8080'
             - name: AUX_HTTP_PORT
               value: '8081'
-            - name: INVOKE_TIER_NAME
-              value: incubator
-            - name: INVOKE_GROUP_NAME
-              value: a
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
@@ -872,15 +854,13 @@ spec:
             requests:
               cpu: 200m
               memory: 400Mi
+            limits:
+              memory: 1Gi
           env:
             - name: HTTP_PORT
               value: '8080'
             - name: AUX_HTTP_PORT
               value: '8081'
-            - name: INVOKE_TIER_NAME
-              value: incubator
-            - name: INVOKE_GROUP_NAME
-              value: b
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
