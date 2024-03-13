@@ -59,7 +59,7 @@ spec:
               path: /liveness
               port: aux
             # Every second, 5 sec timeout, 3 failures in a row => dead.
-            initialDelaySeconds: 10
+            initialDelaySeconds: 5
             periodSeconds: 1
             failureThreshold: 3
             successThreshold: 1
@@ -70,7 +70,7 @@ spec:
             httpGet:
               path: /liveness
               port: aux
-            initialDelaySeconds: 10
+            initialDelaySeconds: 5
             periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
