@@ -8,5 +8,6 @@ resources:
   - backend-invoke.yaml
   - fetch-service.yaml
   - frontend.yaml
+  - gateway-service.yaml
   - guides.yaml
   - registry-service.yaml
