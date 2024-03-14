@@ -5,19 +5,17 @@ data:
   CAPTURE_PREFIX: /~capture
   DEPLOYMENT_GCP_CONTAINER_IMAGE: gcr.io/automation-cloud-registry/nodescript-service-runner
   DEPLOYMENT_GCP_SERVICE_ACCOUNT: nodescript-platform@automation-cloud-production.iam.gserviceaccount.com
-  EMAIL_VERIFICATION_REDIRECT_URI: https://nodescript.dev/emailVerificationCallback
   GCLOUD_ARTIFACTS_BUCKET: nodescript-platform-artifacts
   GCLOUD_LOCATION: europe-west1
   GCLOUD_PROJECT_ID: automation-cloud-production
-  GOOGLE_REDIRECT_URI: https://nodescript.dev/googleAuthCallback
   GRAPH_CAPTURE_URL: https://capture.run.nodescript.dev/g/{graphId}
   GRAPH_SOURCE_URL: https://nodescript.dev/graph/{graphId}
   HUB_PREFIX: /~api
   INVOKE_PREFIX: /~invoke
   INVOKE_RECYCLE_THRESHOLD: "20000"
   LOG_LEVEL: info
-  MAGIC_LINK_REDIRECT_URI: https://nodescript.dev/magicLinkAuthCallback
   NS_ENV: production
+  NS_FRONTEND_URL: https://nodescript.dev
   REGISTRY_PREFIX: /~registry
   REGISTRY_URL: https://registry.nodescript.dev
   WORKSPACE_DOMAIN_PATTERN: '{id}.run.nodescript.dev'
