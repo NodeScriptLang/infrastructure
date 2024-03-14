@@ -216,7 +216,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.3.0
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.2
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -290,7 +290,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.3.0
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.2
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -364,7 +364,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.3.0
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.2
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -438,7 +438,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.3.0
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.2
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -512,7 +512,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.3.0
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.2
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -586,7 +586,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.3.0
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.2
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -660,7 +660,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.3.0
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.2
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -734,7 +734,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.3.0
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.2
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -808,7 +808,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.3.0
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.2
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -882,7 +882,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.3.0
+        image: gcr.io/automation-cloud-registry/nodescript-invoke-service:1.2.2
         livenessProbe:
           failureThreshold: 3
           httpGet:
