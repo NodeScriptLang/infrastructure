@@ -8,7 +8,6 @@ data:
   GCLOUD_ARTIFACTS_BUCKET: nodescript-platform-artifacts
   GCLOUD_LOCATION: europe-west1
   GCLOUD_PROJECT_ID: automation-cloud-production
-  GOOGLE_CALLBACK_PATH: /googleAuthCallback
   GRAPH_CAPTURE_URL: https://capture.run.nodescript.dev/g/{graphId}
   GRAPH_SOURCE_URL: https://nodescript.dev/graph/{graphId}
   HUB_PREFIX: /~api
