@@ -1,0 +1,187 @@
+
+###########################################################
+# THESE FILES ARE AUTO-GENERATED                          #
+#                                                         #
+# Do not edit them manually.                              #
+# Instead, make changes to files inside "template/"       #
+# and regenerate with "node generate.mjs"                 #
+###########################################################
+kind: Service
+apiVersion: v1
+metadata:
+  name: invoke-group-default-a
+  annotations:
+    metricsPort: "8081"
+spec:
+  type: ClusterIP
+  selector:
+    app: invoke-group-default-a
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+    - name: aux
+      port: 8081
+      targetPort: aux
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: invoke-group-default-b
+  annotations:
+    metricsPort: "8081"
+spec:
+  type: ClusterIP
+  selector:
+    app: invoke-group-default-b
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+    - name: aux
+      port: 8081
+      targetPort: aux
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: invoke-group-default-c
+  annotations:
+    metricsPort: "8081"
+spec:
+  type: ClusterIP
+  selector:
+    app: invoke-group-default-c
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+    - name: aux
+      port: 8081
+      targetPort: aux
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: invoke-group-default-d
+  annotations:
+    metricsPort: "8081"
+spec:
+  type: ClusterIP
+  selector:
+    app: invoke-group-default-d
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+    - name: aux
+      port: 8081
+      targetPort: aux
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: invoke-group-default-e
+  annotations:
+    metricsPort: "8081"
+spec:
+  type: ClusterIP
+  selector:
+    app: invoke-group-default-e
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+    - name: aux
+      port: 8081
+      targetPort: aux
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: invoke-group-default-f
+  annotations:
+    metricsPort: "8081"
+spec:
+  type: ClusterIP
+  selector:
+    app: invoke-group-default-f
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+    - name: aux
+      port: 8081
+      targetPort: aux
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: invoke-group-default-g
+  annotations:
+    metricsPort: "8081"
+spec:
+  type: ClusterIP
+  selector:
+    app: invoke-group-default-g
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+    - name: aux
+      port: 8081
+      targetPort: aux
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: invoke-group-default-h
+  annotations:
+    metricsPort: "8081"
+spec:
+  type: ClusterIP
+  selector:
+    app: invoke-group-default-h
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+    - name: aux
+      port: 8081
+      targetPort: aux
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: invoke-group-incubator-a
+  annotations:
+    metricsPort: "8081"
+spec:
+  type: ClusterIP
+  selector:
+    app: invoke-group-incubator-a
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+    - name: aux
+      port: 8081
+      targetPort: aux
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: invoke-group-incubator-b
+  annotations:
+    metricsPort: "8081"
+spec:
+  type: ClusterIP
+  selector:
+    app: invoke-group-incubator-b
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
+    - name: aux
+      port: 8081
+      targetPort: aux

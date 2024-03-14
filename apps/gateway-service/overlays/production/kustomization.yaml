@@ -8,3 +8,7 @@ resources:
   - ../../base
   - ./pdb.yaml
   - ./hpa.yaml
+configMapGenerator:
+  - name: gateway-service-tiers
+    files:
+      - tiers.json

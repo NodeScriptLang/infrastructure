@@ -1,0 +1,13 @@
+kind: Kustomization
+namespace: invoke
+
+images:
+  - name: nodescript-invoke-service
+    newName: gcr.io/automation-cloud-registry/nodescript-invoke-service
+    newTag: 1.2.2
+
+resources:
+  - deployment.yaml
+  - service.yaml
+  - hpa.yaml
+  - pdb.yaml

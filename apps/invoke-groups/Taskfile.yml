@@ -1,0 +1,22 @@
+version: "3"
+
+includes:
+  kustomize: ../../.tasks/kustomize.yaml
+  sed: ../../.tasks/sed.yaml
+
+vars:
+  TARGETS: |
+    production
+  REPLACEMENTS: |
+
+tasks:
+  default:
+    silent: true
+    cmds:
+      - node generate.mjs
+      - task: kustomize:buildAll
+        vars:
+          TARGETS: "{{.TARGETS}}"
+      - task: sed:replaceAll
+        vars:
+          REPLACEMENTS: "{{.REPLACEMENTS}}"

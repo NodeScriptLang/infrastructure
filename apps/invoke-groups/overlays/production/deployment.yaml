@@ -1,0 +1,897 @@
+
+###########################################################
+# THESE FILES ARE AUTO-GENERATED                          #
+#                                                         #
+# Do not edit them manually.                              #
+# Instead, make changes to files inside "template/"       #
+# and regenerate with "node generate.mjs"                 #
+###########################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-a
+spec:
+  selector:
+    matchLabels:
+      app: invoke-group-default-a
+  revisionHistoryLimit: 1
+  # Note: these pods MUST NOT have common backend secrets
+  # (e.g. do not mount secrets, do not push secrets to env)
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-a
+    spec:
+      # Graceful termination should be greater than INVOKE_TIMEOUT in Gateway
+      # Also HTTP_TIMEOUT should be greater than INVOKE_TIMEOUT
+      terminationGracePeriodSeconds: 150
+      # By default, Service Account credentials are mounted by K8s, allowing pods
+      # to access Kube APIs.
+      # This is disabled on ServiceAccount level, but here we duplicate it again
+      # accessing K8s APIs should be prevented at all cost.
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      # Different tiers will be deployed into separate node pools
+      nodeSelector:
+        workload/invoke-tier-default: 'true'
+      containers:
+        - name: invoke-group-default-a
+          image: nodescript-invoke-service
+          command:
+            - node
+            - --experimental-network-imports
+            - --experimental-vm-modules
+            - --no-warnings
+            - out/bin/http.js
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 200m
+              memory: 400Mi
+            limits:
+              memory: 1Gi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          # Pods failing readiness checks will get disconnected from the service.
+          # They should run frequently, as we should aggressively remove traffic from failing pods.
+          readinessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            # Every second, 5 sec timeout, 3 failures in a row => dead.
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Pods failing liveness probes get terminated by K8s.
+          # These can be a little bit less aggressive.
+          livenessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Note stricter container security here.
+          # Once again, do not add secrets!
+          securityContext:
+            procMount: Default
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-b
+spec:
+  selector:
+    matchLabels:
+      app: invoke-group-default-b
+  revisionHistoryLimit: 1
+  # Note: these pods MUST NOT have common backend secrets
+  # (e.g. do not mount secrets, do not push secrets to env)
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-b
+    spec:
+      # Graceful termination should be greater than INVOKE_TIMEOUT in Gateway
+      # Also HTTP_TIMEOUT should be greater than INVOKE_TIMEOUT
+      terminationGracePeriodSeconds: 150
+      # By default, Service Account credentials are mounted by K8s, allowing pods
+      # to access Kube APIs.
+      # This is disabled on ServiceAccount level, but here we duplicate it again
+      # accessing K8s APIs should be prevented at all cost.
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      # Different tiers will be deployed into separate node pools
+      nodeSelector:
+        workload/invoke-tier-default: 'true'
+      containers:
+        - name: invoke-group-default-b
+          image: nodescript-invoke-service
+          command:
+            - node
+            - --experimental-network-imports
+            - --experimental-vm-modules
+            - --no-warnings
+            - out/bin/http.js
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 200m
+              memory: 400Mi
+            limits:
+              memory: 1Gi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          # Pods failing readiness checks will get disconnected from the service.
+          # They should run frequently, as we should aggressively remove traffic from failing pods.
+          readinessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            # Every second, 5 sec timeout, 3 failures in a row => dead.
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Pods failing liveness probes get terminated by K8s.
+          # These can be a little bit less aggressive.
+          livenessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Note stricter container security here.
+          # Once again, do not add secrets!
+          securityContext:
+            procMount: Default
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-c
+spec:
+  selector:
+    matchLabels:
+      app: invoke-group-default-c
+  revisionHistoryLimit: 1
+  # Note: these pods MUST NOT have common backend secrets
+  # (e.g. do not mount secrets, do not push secrets to env)
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-c
+    spec:
+      # Graceful termination should be greater than INVOKE_TIMEOUT in Gateway
+      # Also HTTP_TIMEOUT should be greater than INVOKE_TIMEOUT
+      terminationGracePeriodSeconds: 150
+      # By default, Service Account credentials are mounted by K8s, allowing pods
+      # to access Kube APIs.
+      # This is disabled on ServiceAccount level, but here we duplicate it again
+      # accessing K8s APIs should be prevented at all cost.
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      # Different tiers will be deployed into separate node pools
+      nodeSelector:
+        workload/invoke-tier-default: 'true'
+      containers:
+        - name: invoke-group-default-c
+          image: nodescript-invoke-service
+          command:
+            - node
+            - --experimental-network-imports
+            - --experimental-vm-modules
+            - --no-warnings
+            - out/bin/http.js
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 200m
+              memory: 400Mi
+            limits:
+              memory: 1Gi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          # Pods failing readiness checks will get disconnected from the service.
+          # They should run frequently, as we should aggressively remove traffic from failing pods.
+          readinessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            # Every second, 5 sec timeout, 3 failures in a row => dead.
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Pods failing liveness probes get terminated by K8s.
+          # These can be a little bit less aggressive.
+          livenessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Note stricter container security here.
+          # Once again, do not add secrets!
+          securityContext:
+            procMount: Default
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-d
+spec:
+  selector:
+    matchLabels:
+      app: invoke-group-default-d
+  revisionHistoryLimit: 1
+  # Note: these pods MUST NOT have common backend secrets
+  # (e.g. do not mount secrets, do not push secrets to env)
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-d
+    spec:
+      # Graceful termination should be greater than INVOKE_TIMEOUT in Gateway
+      # Also HTTP_TIMEOUT should be greater than INVOKE_TIMEOUT
+      terminationGracePeriodSeconds: 150
+      # By default, Service Account credentials are mounted by K8s, allowing pods
+      # to access Kube APIs.
+      # This is disabled on ServiceAccount level, but here we duplicate it again
+      # accessing K8s APIs should be prevented at all cost.
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      # Different tiers will be deployed into separate node pools
+      nodeSelector:
+        workload/invoke-tier-default: 'true'
+      containers:
+        - name: invoke-group-default-d
+          image: nodescript-invoke-service
+          command:
+            - node
+            - --experimental-network-imports
+            - --experimental-vm-modules
+            - --no-warnings
+            - out/bin/http.js
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 200m
+              memory: 400Mi
+            limits:
+              memory: 1Gi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          # Pods failing readiness checks will get disconnected from the service.
+          # They should run frequently, as we should aggressively remove traffic from failing pods.
+          readinessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            # Every second, 5 sec timeout, 3 failures in a row => dead.
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Pods failing liveness probes get terminated by K8s.
+          # These can be a little bit less aggressive.
+          livenessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Note stricter container security here.
+          # Once again, do not add secrets!
+          securityContext:
+            procMount: Default
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-e
+spec:
+  selector:
+    matchLabels:
+      app: invoke-group-default-e
+  revisionHistoryLimit: 1
+  # Note: these pods MUST NOT have common backend secrets
+  # (e.g. do not mount secrets, do not push secrets to env)
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-e
+    spec:
+      # Graceful termination should be greater than INVOKE_TIMEOUT in Gateway
+      # Also HTTP_TIMEOUT should be greater than INVOKE_TIMEOUT
+      terminationGracePeriodSeconds: 150
+      # By default, Service Account credentials are mounted by K8s, allowing pods
+      # to access Kube APIs.
+      # This is disabled on ServiceAccount level, but here we duplicate it again
+      # accessing K8s APIs should be prevented at all cost.
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      # Different tiers will be deployed into separate node pools
+      nodeSelector:
+        workload/invoke-tier-default: 'true'
+      containers:
+        - name: invoke-group-default-e
+          image: nodescript-invoke-service
+          command:
+            - node
+            - --experimental-network-imports
+            - --experimental-vm-modules
+            - --no-warnings
+            - out/bin/http.js
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 200m
+              memory: 400Mi
+            limits:
+              memory: 1Gi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          # Pods failing readiness checks will get disconnected from the service.
+          # They should run frequently, as we should aggressively remove traffic from failing pods.
+          readinessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            # Every second, 5 sec timeout, 3 failures in a row => dead.
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Pods failing liveness probes get terminated by K8s.
+          # These can be a little bit less aggressive.
+          livenessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Note stricter container security here.
+          # Once again, do not add secrets!
+          securityContext:
+            procMount: Default
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-f
+spec:
+  selector:
+    matchLabels:
+      app: invoke-group-default-f
+  revisionHistoryLimit: 1
+  # Note: these pods MUST NOT have common backend secrets
+  # (e.g. do not mount secrets, do not push secrets to env)
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-f
+    spec:
+      # Graceful termination should be greater than INVOKE_TIMEOUT in Gateway
+      # Also HTTP_TIMEOUT should be greater than INVOKE_TIMEOUT
+      terminationGracePeriodSeconds: 150
+      # By default, Service Account credentials are mounted by K8s, allowing pods
+      # to access Kube APIs.
+      # This is disabled on ServiceAccount level, but here we duplicate it again
+      # accessing K8s APIs should be prevented at all cost.
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      # Different tiers will be deployed into separate node pools
+      nodeSelector:
+        workload/invoke-tier-default: 'true'
+      containers:
+        - name: invoke-group-default-f
+          image: nodescript-invoke-service
+          command:
+            - node
+            - --experimental-network-imports
+            - --experimental-vm-modules
+            - --no-warnings
+            - out/bin/http.js
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 200m
+              memory: 400Mi
+            limits:
+              memory: 1Gi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          # Pods failing readiness checks will get disconnected from the service.
+          # They should run frequently, as we should aggressively remove traffic from failing pods.
+          readinessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            # Every second, 5 sec timeout, 3 failures in a row => dead.
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Pods failing liveness probes get terminated by K8s.
+          # These can be a little bit less aggressive.
+          livenessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Note stricter container security here.
+          # Once again, do not add secrets!
+          securityContext:
+            procMount: Default
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-g
+spec:
+  selector:
+    matchLabels:
+      app: invoke-group-default-g
+  revisionHistoryLimit: 1
+  # Note: these pods MUST NOT have common backend secrets
+  # (e.g. do not mount secrets, do not push secrets to env)
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-g
+    spec:
+      # Graceful termination should be greater than INVOKE_TIMEOUT in Gateway
+      # Also HTTP_TIMEOUT should be greater than INVOKE_TIMEOUT
+      terminationGracePeriodSeconds: 150
+      # By default, Service Account credentials are mounted by K8s, allowing pods
+      # to access Kube APIs.
+      # This is disabled on ServiceAccount level, but here we duplicate it again
+      # accessing K8s APIs should be prevented at all cost.
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      # Different tiers will be deployed into separate node pools
+      nodeSelector:
+        workload/invoke-tier-default: 'true'
+      containers:
+        - name: invoke-group-default-g
+          image: nodescript-invoke-service
+          command:
+            - node
+            - --experimental-network-imports
+            - --experimental-vm-modules
+            - --no-warnings
+            - out/bin/http.js
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 200m
+              memory: 400Mi
+            limits:
+              memory: 1Gi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          # Pods failing readiness checks will get disconnected from the service.
+          # They should run frequently, as we should aggressively remove traffic from failing pods.
+          readinessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            # Every second, 5 sec timeout, 3 failures in a row => dead.
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Pods failing liveness probes get terminated by K8s.
+          # These can be a little bit less aggressive.
+          livenessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Note stricter container security here.
+          # Once again, do not add secrets!
+          securityContext:
+            procMount: Default
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-default-h
+spec:
+  selector:
+    matchLabels:
+      app: invoke-group-default-h
+  revisionHistoryLimit: 1
+  # Note: these pods MUST NOT have common backend secrets
+  # (e.g. do not mount secrets, do not push secrets to env)
+  template:
+    metadata:
+      labels:
+        app: invoke-group-default-h
+    spec:
+      # Graceful termination should be greater than INVOKE_TIMEOUT in Gateway
+      # Also HTTP_TIMEOUT should be greater than INVOKE_TIMEOUT
+      terminationGracePeriodSeconds: 150
+      # By default, Service Account credentials are mounted by K8s, allowing pods
+      # to access Kube APIs.
+      # This is disabled on ServiceAccount level, but here we duplicate it again
+      # accessing K8s APIs should be prevented at all cost.
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      # Different tiers will be deployed into separate node pools
+      nodeSelector:
+        workload/invoke-tier-default: 'true'
+      containers:
+        - name: invoke-group-default-h
+          image: nodescript-invoke-service
+          command:
+            - node
+            - --experimental-network-imports
+            - --experimental-vm-modules
+            - --no-warnings
+            - out/bin/http.js
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 200m
+              memory: 400Mi
+            limits:
+              memory: 1Gi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          # Pods failing readiness checks will get disconnected from the service.
+          # They should run frequently, as we should aggressively remove traffic from failing pods.
+          readinessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            # Every second, 5 sec timeout, 3 failures in a row => dead.
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Pods failing liveness probes get terminated by K8s.
+          # These can be a little bit less aggressive.
+          livenessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Note stricter container security here.
+          # Once again, do not add secrets!
+          securityContext:
+            procMount: Default
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-incubator-a
+spec:
+  selector:
+    matchLabels:
+      app: invoke-group-incubator-a
+  revisionHistoryLimit: 1
+  # Note: these pods MUST NOT have common backend secrets
+  # (e.g. do not mount secrets, do not push secrets to env)
+  template:
+    metadata:
+      labels:
+        app: invoke-group-incubator-a
+    spec:
+      # Graceful termination should be greater than INVOKE_TIMEOUT in Gateway
+      # Also HTTP_TIMEOUT should be greater than INVOKE_TIMEOUT
+      terminationGracePeriodSeconds: 150
+      # By default, Service Account credentials are mounted by K8s, allowing pods
+      # to access Kube APIs.
+      # This is disabled on ServiceAccount level, but here we duplicate it again
+      # accessing K8s APIs should be prevented at all cost.
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      # Different tiers will be deployed into separate node pools
+      nodeSelector:
+        workload/invoke-tier-incubator: 'true'
+      containers:
+        - name: invoke-group-incubator-a
+          image: nodescript-invoke-service
+          command:
+            - node
+            - --experimental-network-imports
+            - --experimental-vm-modules
+            - --no-warnings
+            - out/bin/http.js
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 200m
+              memory: 400Mi
+            limits:
+              memory: 1Gi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          # Pods failing readiness checks will get disconnected from the service.
+          # They should run frequently, as we should aggressively remove traffic from failing pods.
+          readinessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            # Every second, 5 sec timeout, 3 failures in a row => dead.
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Pods failing liveness probes get terminated by K8s.
+          # These can be a little bit less aggressive.
+          livenessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Note stricter container security here.
+          # Once again, do not add secrets!
+          securityContext:
+            procMount: Default
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-incubator-b
+spec:
+  selector:
+    matchLabels:
+      app: invoke-group-incubator-b
+  revisionHistoryLimit: 1
+  # Note: these pods MUST NOT have common backend secrets
+  # (e.g. do not mount secrets, do not push secrets to env)
+  template:
+    metadata:
+      labels:
+        app: invoke-group-incubator-b
+    spec:
+      # Graceful termination should be greater than INVOKE_TIMEOUT in Gateway
+      # Also HTTP_TIMEOUT should be greater than INVOKE_TIMEOUT
+      terminationGracePeriodSeconds: 150
+      # By default, Service Account credentials are mounted by K8s, allowing pods
+      # to access Kube APIs.
+      # This is disabled on ServiceAccount level, but here we duplicate it again
+      # accessing K8s APIs should be prevented at all cost.
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      # Different tiers will be deployed into separate node pools
+      nodeSelector:
+        workload/invoke-tier-incubator: 'true'
+      containers:
+        - name: invoke-group-incubator-b
+          image: nodescript-invoke-service
+          command:
+            - node
+            - --experimental-network-imports
+            - --experimental-vm-modules
+            - --no-warnings
+            - out/bin/http.js
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 200m
+              memory: 400Mi
+            limits:
+              memory: 1Gi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          # Pods failing readiness checks will get disconnected from the service.
+          # They should run frequently, as we should aggressively remove traffic from failing pods.
+          readinessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            # Every second, 5 sec timeout, 3 failures in a row => dead.
+            initialDelaySeconds: 5
+            periodSeconds: 1
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Pods failing liveness probes get terminated by K8s.
+          # These can be a little bit less aggressive.
+          livenessProbe:
+            httpGet:
+              path: /liveness
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
+          # Note stricter container security here.
+          # Once again, do not add secrets!
+          securityContext:
+            procMount: Default
+            readOnlyRootFilesystem: true
+            seccompProfile:
+              type: RuntimeDefault
+            allowPrivilegeEscalation: false
+            capabilities:
+              drop:
+                - ALL

@@ -1,0 +1,16 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-gateway-service
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`w8132bq0.run.nodescript.dev`) || Host(`afjdsem6.run.nodescript.dev`)
+      kind: Rule
+      priority: 1000
+      services:
+        - name: gateway-service
+          port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
