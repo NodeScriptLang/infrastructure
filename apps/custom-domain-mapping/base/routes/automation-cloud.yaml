@@ -9,12 +9,24 @@ spec:
     - match: HostRegexp(`{subdomain:[0-9a-z-]+}.automation.cloud`)
       kind: Rule
       services:
-        - name: gateway-service
+        - name: backend-invoke
           port: 8080
+      middlewares:
+        - name: route-custom-automation-cloud-services-prefix
     - match: HostRegexp(`{subdomain:[0-9a-z-]+}.smartfeed.automation.cloud`)
       kind: Rule
       services:
-        - name: gateway-service
+        - name: backend-invoke
           port: 8080
+      middlewares:
+        - name: route-custom-automation-cloud-services-prefix
   tls:
     secretName: automation-cloud-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: Middleware
+metadata:
+  name: route-custom-automation-cloud-services-prefix
+spec:
+  addPrefix:
+    prefix: /~invoke
