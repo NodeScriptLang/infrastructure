@@ -11,7 +11,7 @@ apiVersion: v1
 metadata:
   name: invoke-group-default-a
   annotations:
-    metricsPort: "8081"
+    metricsPort: "8080"
 spec:
   type: ClusterIP
   selector:
@@ -20,16 +20,13 @@ spec:
     - name: http
       port: 8080
       targetPort: http
-    - name: aux
-      port: 8081
-      targetPort: aux
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: invoke-group-default-b
   annotations:
-    metricsPort: "8081"
+    metricsPort: "8080"
 spec:
   type: ClusterIP
   selector:
@@ -38,16 +35,13 @@ spec:
     - name: http
       port: 8080
       targetPort: http
-    - name: aux
-      port: 8081
-      targetPort: aux
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: invoke-group-default-c
   annotations:
-    metricsPort: "8081"
+    metricsPort: "8080"
 spec:
   type: ClusterIP
   selector:
@@ -56,16 +50,13 @@ spec:
     - name: http
       port: 8080
       targetPort: http
-    - name: aux
-      port: 8081
-      targetPort: aux
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: invoke-group-default-d
   annotations:
-    metricsPort: "8081"
+    metricsPort: "8080"
 spec:
   type: ClusterIP
   selector:
@@ -74,16 +65,13 @@ spec:
     - name: http
       port: 8080
       targetPort: http
-    - name: aux
-      port: 8081
-      targetPort: aux
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: invoke-group-default-e
   annotations:
-    metricsPort: "8081"
+    metricsPort: "8080"
 spec:
   type: ClusterIP
   selector:
@@ -92,16 +80,13 @@ spec:
     - name: http
       port: 8080
       targetPort: http
-    - name: aux
-      port: 8081
-      targetPort: aux
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: invoke-group-default-f
   annotations:
-    metricsPort: "8081"
+    metricsPort: "8080"
 spec:
   type: ClusterIP
   selector:
@@ -110,16 +95,13 @@ spec:
     - name: http
       port: 8080
       targetPort: http
-    - name: aux
-      port: 8081
-      targetPort: aux
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: invoke-group-default-g
   annotations:
-    metricsPort: "8081"
+    metricsPort: "8080"
 spec:
   type: ClusterIP
   selector:
@@ -128,16 +110,13 @@ spec:
     - name: http
       port: 8080
       targetPort: http
-    - name: aux
-      port: 8081
-      targetPort: aux
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: invoke-group-default-h
   annotations:
-    metricsPort: "8081"
+    metricsPort: "8080"
 spec:
   type: ClusterIP
   selector:
@@ -146,16 +125,13 @@ spec:
     - name: http
       port: 8080
       targetPort: http
-    - name: aux
-      port: 8081
-      targetPort: aux
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: invoke-group-incubator-a
   annotations:
-    metricsPort: "8081"
+    metricsPort: "8080"
 spec:
   type: ClusterIP
   selector:
@@ -164,16 +140,13 @@ spec:
     - name: http
       port: 8080
       targetPort: http
-    - name: aux
-      port: 8081
-      targetPort: aux
 ---
 kind: Service
 apiVersion: v1
 metadata:
   name: invoke-group-incubator-b
   annotations:
-    metricsPort: "8081"
+    metricsPort: "8080"
 spec:
   type: ClusterIP
   selector:
@@ -182,6 +155,3 @@ spec:
     - name: http
       port: 8080
       targetPort: http
-    - name: aux
-      port: 8081
-      targetPort: aux
