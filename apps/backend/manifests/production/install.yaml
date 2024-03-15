@@ -72,22 +72,6 @@ spec:
     app: backend-invoke
   type: ClusterIP
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    metricsPort: "8080"
-  name: backend-schedule
-  namespace: default
-spec:
-  ports:
-  - name: http
-    port: 8080
-    targetPort: 8080
-  selector:
-    app: backend-schedule
-  type: ClusterIP
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -270,65 +254,6 @@ spec:
         workload/compute: "true"
       terminationGracePeriodSeconds: 120
 ---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: backend-schedule
-  namespace: default
-spec:
-  revisionHistoryLimit: 1
-  selector:
-    matchLabels:
-      app: backend-schedule
-  template:
-    metadata:
-      labels:
-        app: backend-schedule
-    spec:
-      automountServiceAccountToken: false
-      containers:
-      - command:
-        - node
-        - out/bin/schedule.js
-        envFrom:
-        - secretRef:
-            name: backend-secrets
-        - configMapRef:
-            name: backend-config-k8g68fftcc
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.9.0
-        livenessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /status
-            port: http
-          initialDelaySeconds: 60
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 5
-        name: backend-schedule
-        ports:
-        - containerPort: 8080
-          name: http
-        readinessProbe:
-          failureThreshold: 5
-          httpGet:
-            path: /status
-            port: http
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 5
-        resources:
-          requests:
-            cpu: 100m
-            memory: 200Mi
-        workingDir: /app/backend
-      imagePullSecrets:
-      - name: gcp-registry-access
-      nodeSelector:
-        workload/compute: "true"
-      terminationGracePeriodSeconds: 120
----
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
@@ -403,23 +328,3 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: backend-invoke
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: backend-schedule-hpa
-  namespace: default
-spec:
-  maxReplicas: 50
-  metrics:
-  - resource:
-      name: cpu
-      target:
-        averageUtilization: 85
-        type: Utilization
-    type: Resource
-  minReplicas: 1
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: backend-schedule
