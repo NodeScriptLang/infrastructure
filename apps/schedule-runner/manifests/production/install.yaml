@@ -1,0 +1,143 @@
+apiVersion: v1
+data:
+  tiers.json: |
+    [
+        {
+            "tier": "default",
+            "targets": [
+                "invoke-group-default-a.invoke.svc.cluster.local:8080",
+                "invoke-group-default-b.invoke.svc.cluster.local:8080",
+                "invoke-group-default-c.invoke.svc.cluster.local:8080",
+                "invoke-group-default-d.invoke.svc.cluster.local:8080",
+                "invoke-group-default-e.invoke.svc.cluster.local:8080",
+                "invoke-group-default-f.invoke.svc.cluster.local:8080",
+                "invoke-group-default-g.invoke.svc.cluster.local:8080",
+                "invoke-group-default-h.invoke.svc.cluster.local:8080"
+            ]
+        },
+        {
+            "tier": "incubator",
+            "targets": [
+                "invoke-group-incubator-a.invoke.svc.cluster.local:8080",
+                "invoke-group-incubator-b.invoke.svc.cluster.local:8080"
+            ]
+        }
+    ]
+kind: ConfigMap
+metadata:
+  name: schedule-runner-tiers-d97f5dmmdg
+  namespace: default
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: schedule-runner
+  namespace: default
+spec:
+  ports:
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: schedule-runner
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: schedule-runner
+  namespace: default
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: schedule-runner
+  template:
+    metadata:
+      labels:
+        app: schedule-runner
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - out/bin/http.js
+        env:
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: INVOKE_TIERS
+          valueFrom:
+            configMapKeyRef:
+              key: tiers.json
+              name: schedule-runner-tiers-d97f5dmmdg
+        envFrom:
+        - secretRef:
+            name: backend-secrets
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.8.0
+        livenessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /status
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: schedule-runner
+        ports:
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /status
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          limits:
+            memory: 1000Mi
+          requests:
+            cpu: 100m
+            memory: 400Mi
+        workingDir: /app/packages/schedule-runner
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/default: "true"
+      terminationGracePeriodSeconds: 30
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: schedule-runner
+  namespace: default
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: schedule-runner
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: schedule-runner
+  namespace: default
+spec:
+  maxReplicas: 20
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 95
+        type: Utilization
+    type: Resource
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: schedule-runner

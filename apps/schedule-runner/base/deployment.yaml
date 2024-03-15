@@ -1,46 +1,58 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: backend-schedule
+  name: schedule-runner
 spec:
   selector:
     matchLabels:
-      app: backend-schedule
+      app: schedule-runner
   revisionHistoryLimit: 1
   template:
     metadata:
       labels:
-        app: backend-schedule
+        app: schedule-runner
     spec:
-      terminationGracePeriodSeconds: 120
+      terminationGracePeriodSeconds: 30
       automountServiceAccountToken: false
       imagePullSecrets:
         - name: gcp-registry-access
       nodeSelector:
-        workload/compute: 'true'
+        workload/default: 'true'
       containers:
-        - name: backend-schedule
+        - name: schedule-runner
           image: nodescript-backend
-          workingDir: /app/backend
+          workingDir: /app/packages/schedule-runner
           command:
             - node
-            - out/bin/schedule.js
+            - out/bin/http.js
           ports:
-            - name: http
-              containerPort: 8080
+            # - name: http
+            #   containerPort: 8080
+            - name: aux
+              containerPort: 8081
           resources:
             requests:
               cpu: 100m
-              memory: 200Mi
+              memory: 400Mi
+            limits:
+              memory: 1000Mi
+          env:
+            # - name: HTTP_PORT
+            #   value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+            - name: INVOKE_TIERS
+              valueFrom:
+                configMapKeyRef:
+                  name: schedule-runner-tiers
+                  key: tiers.json
           envFrom:
             - secretRef:
                 name: backend-secrets
-            - configMapRef:
-                name: backend-config
           readinessProbe:
             httpGet:
               path: /status
-              port: http
+              port: aux
             initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 5
@@ -49,11 +61,9 @@ spec:
           livenessProbe:
             httpGet:
               path: /status
-              port: http
-            initialDelaySeconds: 60
+              port: aux
+            initialDelaySeconds: 10
             periodSeconds: 10
-            failureThreshold: 3
+            failureThreshold: 5
             successThreshold: 1
             timeoutSeconds: 5
-            # TODO re-enable after k8s 1.25 is available
-            # terminationGracePeriodSeconds: 1
