@@ -12,5 +12,11 @@ spec:
       services:
         - name: gateway-service
           port: 8080
+    - match: HostRegexp(`{subdomain:[0-9a-z-]+}.BACKEND_INVOKE_HOST`)
+      kind: Rule
+      priority: 1000
+      services:
+        - name: gateway-service
+          port: 8080
   tls:
     secretName: nodescript-dev-certificate

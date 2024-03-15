@@ -120,6 +120,12 @@ spec:
     services:
     - name: gateway-service
       port: 8080
+  - kind: Rule
+    match: HostRegexp(`{subdomain:[0-9a-z-]+}.run.staging.nodescript.dev`)
+    priority: 1000
+    services:
+    - name: gateway-service
+      port: 8080
   tls:
     secretName: nodescript-dev-certificate
 ---
