@@ -6,12 +6,6 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`w8132bq0.run.nodescript.dev`) || Host(`afjdsem6.run.nodescript.dev`)
-      kind: Rule
-      priority: 1000
-      services:
-        - name: gateway-service
-          port: 8080
     - match: HostRegexp(`{subdomain:[0-9a-z-]+}.BACKEND_INVOKE_HOST`)
       kind: Rule
       priority: 1000
