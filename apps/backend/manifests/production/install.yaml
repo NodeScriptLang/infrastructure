@@ -56,22 +56,6 @@ spec:
     app: backend-background
   type: ClusterIP
 ---
-apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    metricsPort: "8080"
-  name: backend-invoke
-  namespace: default
-spec:
-  ports:
-  - name: http
-    port: 8080
-    targetPort: 8080
-  selector:
-    app: backend-invoke
-  type: ClusterIP
----
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -192,68 +176,6 @@ spec:
         workload/default: "true"
       terminationGracePeriodSeconds: 30
 ---
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: backend-invoke
-  namespace: default
-spec:
-  revisionHistoryLimit: 1
-  selector:
-    matchLabels:
-      app: backend-invoke
-  template:
-    metadata:
-      labels:
-        app: backend-invoke
-    spec:
-      automountServiceAccountToken: false
-      containers:
-      - command:
-        - node
-        - --experimental-network-imports
-        - out/bin/invoke.js
-        envFrom:
-        - secretRef:
-            name: backend-secrets
-        - configMapRef:
-            name: backend-config-k8g68fftcc
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.9.4
-        livenessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /status
-            port: http
-          initialDelaySeconds: 60
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 5
-        name: backend-invoke
-        ports:
-        - containerPort: 8080
-          name: http
-        readinessProbe:
-          failureThreshold: 5
-          httpGet:
-            path: /status
-            port: http
-          initialDelaySeconds: 10
-          periodSeconds: 10
-          successThreshold: 1
-          timeoutSeconds: 5
-        resources:
-          limits:
-            memory: 1200Mi
-          requests:
-            cpu: 200m
-            memory: 400Mi
-        workingDir: /app/backend
-      imagePullSecrets:
-      - name: gcp-registry-access
-      nodeSelector:
-        workload/compute: "true"
-      terminationGracePeriodSeconds: 120
----
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
@@ -308,23 +230,3 @@ spec:
   selector:
     matchLabels:
       app: backend-schedule
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: backend-invoke-hpa
-  namespace: default
-spec:
-  maxReplicas: 50
-  metrics:
-  - resource:
-      name: cpu
-      target:
-        averageUtilization: 95
-        type: Utilization
-    type: Resource
-  minReplicas: 1
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: backend-invoke
