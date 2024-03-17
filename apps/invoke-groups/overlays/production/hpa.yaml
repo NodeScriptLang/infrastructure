@@ -15,7 +15,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-default-a
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 50
   metrics:
     - type: Resource
@@ -34,7 +34,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-default-b
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 50
   metrics:
     - type: Resource
@@ -53,7 +53,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-default-c
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 50
   metrics:
     - type: Resource
@@ -72,7 +72,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-default-d
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 50
   metrics:
     - type: Resource
@@ -91,7 +91,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-default-e
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 50
   metrics:
     - type: Resource
@@ -110,7 +110,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-default-f
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 50
   metrics:
     - type: Resource
@@ -129,7 +129,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-default-g
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 50
   metrics:
     - type: Resource
@@ -148,7 +148,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-default-h
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 50
   metrics:
     - type: Resource
@@ -167,7 +167,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-incubator-a
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 50
   metrics:
     - type: Resource
@@ -186,7 +186,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-incubator-b
-  minReplicas: 1
+  minReplicas: 2
   maxReplicas: 50
   metrics:
     - type: Resource
