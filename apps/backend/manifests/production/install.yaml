@@ -82,7 +82,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: backend-config-k8g68fftcc
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.11.2
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.11.3
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -142,7 +142,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: backend-config-k8g68fftcc
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.11.2
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.11.3
         livenessProbe:
           failureThreshold: 3
           httpGet:
