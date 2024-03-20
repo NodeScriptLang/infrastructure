@@ -3,6 +3,6 @@ namespace: default
 images:
   - name: nodescript-guides
     newName: gcr.io/automation-cloud-registry/nodescript-guides
-    newTag: 0.0.40
+    newTag: 0.0.41
 resources:
   - ../../base
