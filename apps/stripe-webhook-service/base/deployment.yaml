@@ -15,7 +15,7 @@ spec:
       terminationGracePeriodSeconds: 30
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: gcp-stripe-webhook-access
+        - name: gcp-registry-access
       nodeSelector:
         workload/default: 'true'
       containers:

@@ -11,3 +11,4 @@ resources:
   - gateway-service.yaml
   - guides.yaml
   - registry-service.yaml
+  - stripe-webhook-service.yaml
