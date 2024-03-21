@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stripe-webhook-service
+spec:
+  selector:
+    matchLabels:
+      app: stripe-webhook-service
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: stripe-webhook-service
+    spec:
+      terminationGracePeriodSeconds: 30
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-stripe-webhook-access
+      nodeSelector:
+        workload/default: 'true'
+      containers:
+        - name: stripe-webhook-service
+          image: nodescript-backend
+          workingDir: /app/packages/stripe-webhook-service
+          command:
+            - node
+            - out/bin/http.js
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 100m
+              memory: 400Mi
+            limits:
+              memory: 1000Mi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          envFrom:
+            - secretRef:
+                name: backend-secrets
+          readinessProbe:
+            httpGet:
+              path: /status
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 5
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /status
+              port: aux
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5

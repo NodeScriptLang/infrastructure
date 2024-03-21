@@ -13,4 +13,5 @@ resources:
   - apps/registry-service.yaml
   - apps/routing-apps.yaml
   - apps/schedule-runner.yaml
+  - apps/stripe-webhook-service.yaml
   - project.yaml
