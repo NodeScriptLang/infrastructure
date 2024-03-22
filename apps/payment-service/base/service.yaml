@@ -1,13 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: stripe-webhook-service
+  name: payment-service
   annotations:
     metricsPort: "8081"
 spec:
   type: ClusterIP
   selector:
-    app: stripe-webhook-service
+    app: payment-service
   ports:
     - name: http
       port: 8080

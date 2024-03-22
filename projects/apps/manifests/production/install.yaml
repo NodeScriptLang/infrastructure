@@ -180,7 +180,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: stripe-webhook-service
+  name: payment-service
   namespace: argocd
 spec:
   destination:
@@ -188,7 +188,7 @@ spec:
     namespace: argocd
   project: apps
   source:
-    path: apps/stripe-webhook-service/manifests/production/
+    path: apps/payment-service/manifests/production/
     repoURL: git@github.com:NodeScriptLang/infrastructure.git
   syncPolicy:
     automated:

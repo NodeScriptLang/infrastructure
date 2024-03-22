@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: stripe-webhook-service
+  name: payment-service
 spec:
   selector:
     matchLabels:
-      app: stripe-webhook-service
+      app: payment-service
   revisionHistoryLimit: 1
   template:
     metadata:
       labels:
-        app: stripe-webhook-service
+        app: payment-service
     spec:
       terminationGracePeriodSeconds: 30
       automountServiceAccountToken: false
@@ -19,9 +19,9 @@ spec:
       nodeSelector:
         workload/default: 'true'
       containers:
-        - name: stripe-webhook-service
+        - name: payment-service
           image: nodescript-backend
-          workingDir: /app/packages/stripe-webhook-service
+          workingDir: /app/packages/payment-service
           command:
             - node
             - out/bin/http.js

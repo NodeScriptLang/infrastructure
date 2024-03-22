@@ -28,5 +28,5 @@ configMapGenerator:
       - NS_FRONTEND_URL=https://nodescript.dev
       - REGISTRY_PREFIX=/~registry
       - REGISTRY_URL=https://registry.nodescript.dev
-      - STRIPE_WEBHOOK_URL=https://webhook.nodescript.dev
+      - PAYMENT_URL=https://payment.nodescript.dev
       - WORKSPACE_DOMAIN_PATTERN={id}.run.nodescript.dev

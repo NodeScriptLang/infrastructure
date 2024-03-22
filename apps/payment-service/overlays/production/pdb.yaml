@@ -1,9 +1,9 @@
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: stripe-webhook-service
+  name: payment-service
 spec:
   minAvailable: 1
   selector:
     matchLabels:
-      app: stripe-webhook-service
+      app: payment-service

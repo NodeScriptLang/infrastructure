@@ -10,8 +10,8 @@ resources:
   - apps/gateway-service.yaml
   - apps/guides.yaml
   - apps/invoke-groups.yaml
+  - apps/payment-service.yaml
   - apps/registry-service.yaml
   - apps/routing-apps.yaml
   - apps/schedule-runner.yaml
-  - apps/stripe-webhook-service.yaml
   - project.yaml

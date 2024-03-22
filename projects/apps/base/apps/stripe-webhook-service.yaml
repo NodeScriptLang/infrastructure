@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: stripe-webhook-service
+  name: payment-service
 spec:
   destination:
     name: in-cluster
     namespace: argocd
   source:
     repoURL: git@github.com:NodeScriptLang/infrastructure.git
-    path: apps/stripe-webhook-service/manifests/TARGET/
+    path: apps/payment-service/manifests/TARGET/
   project: apps
   syncPolicy:
     syncOptions:

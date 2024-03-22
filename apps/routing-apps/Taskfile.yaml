@@ -17,6 +17,7 @@ vars:
     production:FRONTEND_EMBED_HOST,embed.nodescript.dev
     production:FRONTEND_HOST,nodescript.dev
     production:GUIDES_HOST,docs.nodescript.dev
+    production:PAYMENT_SERVICE_HOST,payment.nodescript.dev
     production:REGISTRY_SERVICE_HOST,registry.nodescript.dev
     staging:BACKEND_API_HOST,api.staging.nodescript.dev
     staging:BACKEND_CAPTURE_HOST,capture.run.staging.nodescript.dev
@@ -26,6 +27,7 @@ vars:
     staging:FRONTEND_EMBED_HOST,embed.staging.nodescript.dev
     staging:FRONTEND_HOST,staging.nodescript.dev
     staging:GUIDES_HOST,docs.staging.nodescript.dev
+    staging:PAYMENT_SERVICE_HOST,payment.staging.nodescript.dev
     staging:REGISTRY_SERVICE_HOST,registry.staging.nodescript.dev
 
 tasks:

@@ -10,5 +10,5 @@ resources:
   - frontend.yaml
   - gateway-service.yaml
   - guides.yaml
+  - payment-service.yaml
   - registry-service.yaml
-  - stripe-webhook-service.yaml

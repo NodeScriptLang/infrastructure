@@ -3,7 +3,7 @@ kind: Service
 metadata:
   annotations:
     metricsPort: "8081"
-  name: stripe-webhook-service
+  name: payment-service
   namespace: default
 spec:
   ports:
@@ -14,23 +14,23 @@ spec:
     port: 8081
     targetPort: aux
   selector:
-    app: stripe-webhook-service
+    app: payment-service
   type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: stripe-webhook-service
+  name: payment-service
   namespace: default
 spec:
   revisionHistoryLimit: 1
   selector:
     matchLabels:
-      app: stripe-webhook-service
+      app: payment-service
   template:
     metadata:
       labels:
-        app: stripe-webhook-service
+        app: payment-service
     spec:
       automountServiceAccountToken: false
       containers:
@@ -45,7 +45,7 @@ spec:
         envFrom:
         - secretRef:
             name: backend-secrets
-        image: gcr.io/automation-cloud-stripe-webhook/nodescript-backend:4.11.0
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.11.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -55,7 +55,7 @@ spec:
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
-        name: stripe-webhook-service
+        name: payment-service
         ports:
         - containerPort: 8080
           name: http
@@ -76,9 +76,9 @@ spec:
           requests:
             cpu: 100m
             memory: 400Mi
-        workingDir: /app/packages/stripe-webhook-service
+        workingDir: /app/packages/payment-service
       imagePullSecrets:
-      - name: gcp-stripe-webhook-access
+      - name: gcp-registry-access
       nodeSelector:
         workload/default: "true"
       terminationGracePeriodSeconds: 30
@@ -86,18 +86,18 @@ spec:
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: stripe-webhook-service
+  name: payment-service
   namespace: default
 spec:
   minAvailable: 1
   selector:
     matchLabels:
-      app: stripe-webhook-service
+      app: payment-service
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: stripe-webhook-service
+  name: payment-service
   namespace: default
 spec:
   maxReplicas: 10
@@ -112,4 +112,4 @@ spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: stripe-webhook-service
+    name: payment-service

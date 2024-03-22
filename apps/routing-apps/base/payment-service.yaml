@@ -1,15 +1,15 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: route-stripe-webhook-service
+  name: route-payment-service
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`REGISTRY_SERVICE_HOST`)
+    - match: Host(`PAYMENT_SERVICE_HOST`)
       kind: Rule
       services:
-        - name: stripe-webhook-service
+        - name: payment-service
           port: 8080
   tls:
     secretName: nodescript-dev-certificate
