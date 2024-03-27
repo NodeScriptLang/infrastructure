@@ -180,7 +180,7 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: payment-service
+  name: payment-provider-service
   namespace: argocd
 spec:
   destination:
@@ -188,7 +188,7 @@ spec:
     namespace: argocd
   project: apps
   source:
-    path: apps/payment-service/manifests/production/
+    path: apps/payment-provider-service/manifests/production/
     repoURL: git@github.com:NodeScriptLang/infrastructure.git
   syncPolicy:
     automated:

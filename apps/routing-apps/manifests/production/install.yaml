@@ -166,7 +166,7 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: route-payment-service
+  name: route-payment-provider-service
   namespace: default
 spec:
   entryPoints:
@@ -175,7 +175,7 @@ spec:
   - kind: Rule
     match: Host(`payment.nodescript.dev`)
     services:
-    - name: payment-service
+    - name: payment-provider-service
       port: 8080
   tls:
     secretName: nodescript-dev-certificate

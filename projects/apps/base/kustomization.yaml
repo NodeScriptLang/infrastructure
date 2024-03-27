@@ -10,7 +10,7 @@ resources:
   - apps/gateway-service.yaml
   - apps/guides.yaml
   - apps/invoke-groups.yaml
-  - apps/payment-service.yaml
+  - apps/payment-provider-service.yaml
   - apps/registry-service.yaml
   - apps/routing-apps.yaml
   - apps/schedule-runner.yaml

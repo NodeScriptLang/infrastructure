@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: payment-service
+  name: payment-provider-service
 spec:
   destination:
     name: in-cluster
     namespace: argocd
   source:
     repoURL: git@github.com:NodeScriptLang/infrastructure.git
-    path: apps/payment-service/manifests/TARGET/
+    path: apps/payment-provider-service/manifests/TARGET/
   project: apps
   syncPolicy:
     syncOptions:

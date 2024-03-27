@@ -1,13 +1,13 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: payment-service
+  name: payment-provider-service
   annotations:
     metricsPort: "8081"
 spec:
   type: ClusterIP
   selector:
-    app: payment-service
+    app: payment-provider-service
   ports:
     - name: http
       port: 8080

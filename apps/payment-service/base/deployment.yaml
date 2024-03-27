@@ -1,16 +1,16 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: payment-service
+  name: payment-provider-service
 spec:
   selector:
     matchLabels:
-      app: payment-service
+      app: payment-provider-service
   revisionHistoryLimit: 1
   template:
     metadata:
       labels:
-        app: payment-service
+        app: payment-provider-service
     spec:
       terminationGracePeriodSeconds: 30
       automountServiceAccountToken: false
@@ -19,9 +19,9 @@ spec:
       nodeSelector:
         workload/default: 'true'
       containers:
-        - name: payment-service
+        - name: payment-provider-service
           image: nodescript-backend
-          workingDir: /app/packages/payment-service
+          workingDir: /app/packages/payment-provider-service
           command:
             - node
             - out/bin/http.js
