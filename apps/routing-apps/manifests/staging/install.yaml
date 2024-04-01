@@ -173,7 +173,7 @@ spec:
   - websecure
   routes:
   - kind: Rule
-    match: Host(`payment.staging.nodescript.dev`)
+    match: Host(`payment-provider.staging.nodescript.dev`)
     services:
     - name: payment-provider-service
       port: 8080
