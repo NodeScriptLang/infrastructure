@@ -18,6 +18,8 @@ data:
   NS_FRONTEND_URL: https://nodescript.dev
   REGISTRY_PREFIX: /~registry
   REGISTRY_URL: https://registry.nodescript.dev
+  STRIPE_BILLING_PORTAL_ID: bpc_1P1CjOK3j0VnFpMHImKAuxrn
+  STRIPE_FREE_TIER_PRICE_ID: price_1P1UhHK3j0VnFpMHjxmXdkpD
   WORKSPACE_DOMAIN_PATTERN: '{id}.run.nodescript.dev'
 kind: ConfigMap
 metadata:
@@ -82,7 +84,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: backend-config-k8g68fftcc
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.13.0
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.15.1
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -142,7 +144,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: backend-config-k8g68fftcc
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.13.0
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.15.1
         livenessProbe:
           failureThreshold: 3
           httpGet:

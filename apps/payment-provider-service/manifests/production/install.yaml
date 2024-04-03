@@ -1,63 +1,36 @@
 apiVersion: v1
-data:
-  tiers.json: |
-    [
-        {
-            "tier": "default",
-            "targets": [
-                "invoke-group-default-a.invoke.svc.cluster.local:8080",
-                "invoke-group-default-b.invoke.svc.cluster.local:8080",
-                "invoke-group-default-c.invoke.svc.cluster.local:8080",
-                "invoke-group-default-d.invoke.svc.cluster.local:8080",
-                "invoke-group-default-e.invoke.svc.cluster.local:8080",
-                "invoke-group-default-f.invoke.svc.cluster.local:8080",
-                "invoke-group-default-g.invoke.svc.cluster.local:8080",
-                "invoke-group-default-h.invoke.svc.cluster.local:8080"
-            ]
-        },
-        {
-            "tier": "incubator",
-            "targets": [
-                "invoke-group-incubator-a.invoke.svc.cluster.local:8080",
-                "invoke-group-incubator-b.invoke.svc.cluster.local:8080"
-            ]
-        }
-    ]
-kind: ConfigMap
-metadata:
-  name: schedule-runner-tiers-d97f5dmmdg
-  namespace: default
----
-apiVersion: v1
 kind: Service
 metadata:
   annotations:
     metricsPort: "8081"
-  name: schedule-runner
+  name: payment-provider-service
   namespace: default
 spec:
   ports:
+  - name: http
+    port: 8080
+    targetPort: http
   - name: aux
     port: 8081
     targetPort: aux
   selector:
-    app: schedule-runner
+    app: payment-provider-service
   type: ClusterIP
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: schedule-runner
+  name: payment-provider-service
   namespace: default
 spec:
   revisionHistoryLimit: 1
   selector:
     matchLabels:
-      app: schedule-runner
+      app: payment-provider-service
   template:
     metadata:
       labels:
-        app: schedule-runner
+        app: payment-provider-service
     spec:
       automountServiceAccountToken: false
       containers:
@@ -65,28 +38,27 @@ spec:
         - node
         - out/bin/http.js
         env:
+        - name: HTTP_PORT
+          value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        - name: INVOKE_TIERS
-          valueFrom:
-            configMapKeyRef:
-              key: tiers.json
-              name: schedule-runner-tiers-d97f5dmmdg
         envFrom:
         - secretRef:
             name: backend-secrets
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.15.1
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.14.0
         livenessProbe:
-          failureThreshold: 5
+          failureThreshold: 3
           httpGet:
             path: /status
             port: aux
-          initialDelaySeconds: 10
+          initialDelaySeconds: 60
           periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
-        name: schedule-runner
+        name: payment-provider-service
         ports:
+        - containerPort: 8080
+          name: http
         - containerPort: 8081
           name: aux
         readinessProbe:
@@ -104,7 +76,7 @@ spec:
           requests:
             cpu: 100m
             memory: 400Mi
-        workingDir: /app/packages/schedule-runner
+        workingDir: /app/packages/payment-provider-service
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
@@ -114,30 +86,30 @@ spec:
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: schedule-runner
+  name: payment-provider-service
   namespace: default
 spec:
   minAvailable: 1
   selector:
     matchLabels:
-      app: schedule-runner
+      app: payment-provider-service
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: schedule-runner
+  name: payment-provider-service
   namespace: default
 spec:
-  maxReplicas: 20
+  maxReplicas: 10
   metrics:
   - resource:
       name: cpu
       target:
-        averageUtilization: 95
+        averageUtilization: 80
         type: Utilization
     type: Resource
   minReplicas: 2
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: schedule-runner
+    name: payment-provider-service
