@@ -34,7 +34,7 @@ spec:
     spec:
       automountServiceAccountToken: false
       containers:
-      - image: gcr.io/automation-cloud-registry/nodescript-guides:0.0.41
+      - image: gcr.io/automation-cloud-registry/nodescript-guides:v0.1.4
         name: guides
         ports:
         - containerPort: 8900
