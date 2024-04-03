@@ -23,7 +23,7 @@ data:
   WORKSPACE_DOMAIN_PATTERN: '{id}.run.nodescript.dev'
 kind: ConfigMap
 metadata:
-  name: backend-config-k8g68fftcc
+  name: backend-config-ch9d654675
   namespace: default
 ---
 apiVersion: v1
@@ -83,8 +83,8 @@ spec:
         - secretRef:
             name: backend-secrets
         - configMapRef:
-            name: backend-config-k8g68fftcc
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.15.1
+            name: backend-config-ch9d654675
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.16.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -143,8 +143,8 @@ spec:
         - secretRef:
             name: backend-secrets
         - configMapRef:
-            name: backend-config-k8g68fftcc
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.15.1
+            name: backend-config-ch9d654675
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.16.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
