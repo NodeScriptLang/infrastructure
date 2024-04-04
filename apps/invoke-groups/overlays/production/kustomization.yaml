@@ -3,7 +3,7 @@ namespace: invoke
 images:
   - name: nodescript-invoke-service
     newName: gcr.io/automation-cloud-registry/nodescript-invoke-service
-    newTag: 2.0.4
+    newTag: 2.0.7
 resources:
   - deployment.yaml
   - service.yaml
