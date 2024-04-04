@@ -10,23 +10,23 @@ vars:
     staging
   REPLACEMENTS: |
     production:BACKEND_API_HOST,api.nodescript.dev
-    production:BACKEND_CAPTURE_HOST,capture.run.nodescript.dev
-    production:BACKEND_INVOKE_HOST,run.nodescript.dev
+    production:CAPTURE_SERVICE_HOST,capture.nodescript.dev
     production:FETCH_SERVICE_HOST,fetch.nodescript.dev
     production:FRONTEND_EDGE_HOST,edge.nodescript.dev
     production:FRONTEND_EMBED_HOST,embed.nodescript.dev
     production:FRONTEND_HOST,nodescript.dev
     production:GUIDES_HOST,docs.nodescript.dev
+    production:INVOKE_HOST,run.nodescript.dev
     production:PAYMENT_PROVIDER_SERVICE_HOST,payment-provider.nodescript.dev
     production:REGISTRY_SERVICE_HOST,registry.nodescript.dev
     staging:BACKEND_API_HOST,api.staging.nodescript.dev
-    staging:BACKEND_CAPTURE_HOST,capture.run.staging.nodescript.dev
-    staging:BACKEND_INVOKE_HOST,run.staging.nodescript.dev
+    staging:CAPTURE_SERVICE_HOST,capture.staging.nodescript.dev
     staging:FETCH_SERVICE_HOST,fetch.staging.nodescript.dev
     staging:FRONTEND_EDGE_HOST,edge.staging.nodescript.dev
     staging:FRONTEND_EMBED_HOST,embed.staging.nodescript.dev
     staging:FRONTEND_HOST,staging.nodescript.dev
     staging:GUIDES_HOST,docs.staging.nodescript.dev
+    staging:INVOKE_HOST,run.staging.nodescript.dev
     staging:PAYMENT_PROVIDER_SERVICE_HOST,payment-provider.staging.nodescript.dev
     staging:REGISTRY_SERVICE_HOST,registry.staging.nodescript.dev
 

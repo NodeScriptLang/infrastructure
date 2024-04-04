@@ -32,7 +32,7 @@ spec:
   - websecure
   routes:
   - kind: Rule
-    match: Host(`CAPTURE_SERVICE_HOST`)
+    match: Host(`capture.nodescript.dev`)
     services:
     - name: capture-invoke
       port: 8080
