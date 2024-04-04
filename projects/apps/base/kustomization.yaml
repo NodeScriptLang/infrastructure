@@ -4,6 +4,7 @@ namespace: argocd
 
 resources:
   - apps/backend.yaml
+  - apps/capture-service.yaml
   - apps/custom-domain-mapping.yaml
   - apps/fetch-service.yaml
   - apps/frontend.yaml
