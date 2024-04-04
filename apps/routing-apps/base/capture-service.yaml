@@ -9,7 +9,7 @@ spec:
     - match: Host(`CAPTURE_SERVICE_HOST`)
       kind: Rule
       services:
-        - name: capture-invoke
+        - name: capture-service
           port: 8080
   tls:
     secretName: nodescript-dev-certificate
