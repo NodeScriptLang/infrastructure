@@ -4,8 +4,7 @@ namespace: default
 
 resources:
   - backend-api.yaml
-  - backend-capture.yaml
-  - backend-invoke.yaml
+  - capture-service.yaml
   - fetch-service.yaml
   - frontend.yaml
   - gateway-service.yaml

@@ -25,38 +25,16 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: route-backend-capture
+  name: route-capture-service
   namespace: default
 spec:
   entryPoints:
   - websecure
   routes:
   - kind: Rule
-    match: Host(`capture.run.staging.nodescript.dev`)
-    middlewares:
-    - name: route-backend-capture-prefix
-    priority: 100
+    match: Host(`CAPTURE_SERVICE_HOST`)
     services:
-    - name: backend-invoke
-      port: 8080
-  tls:
-    secretName: nodescript-dev-certificate
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: route-backend-invoke
-  namespace: default
-spec:
-  entryPoints:
-  - websecure
-  routes:
-  - kind: Rule
-    match: HostRegexp(`{subdomain:[0-9a-z-]+}.run.staging.nodescript.dev`)
-    middlewares:
-    - name: route-backend-invoke-prefix
-    services:
-    - name: backend-invoke
+    - name: capture-invoke
       port: 8080
   tls:
     secretName: nodescript-dev-certificate
@@ -115,12 +93,6 @@ spec:
   - websecure
   routes:
   - kind: Rule
-    match: Host(`w8132bq0.run.nodescript.dev`) || Host(`afjdsem6.run.nodescript.dev`)
-    priority: 1000
-    services:
-    - name: gateway-service
-      port: 8080
-  - kind: Rule
     match: HostRegexp(`{subdomain:[0-9a-z-]+}.run.staging.nodescript.dev`)
     priority: 1000
     services:
@@ -149,23 +121,6 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: route-registry-service
-  namespace: default
-spec:
-  entryPoints:
-  - websecure
-  routes:
-  - kind: Rule
-    match: Host(`registry.staging.nodescript.dev`)
-    services:
-    - name: registry-service
-      port: 8080
-  tls:
-    secretName: nodescript-dev-certificate
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
   name: route-payment-provider-service
   namespace: default
 spec:
@@ -181,6 +136,23 @@ spec:
     secretName: nodescript-dev-certificate
 ---
 apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-registry-service
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`registry.staging.nodescript.dev`)
+    services:
+    - name: registry-service
+      port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
 kind: Middleware
 metadata:
   name: route-backend-api-prefix
@@ -188,21 +160,3 @@ metadata:
 spec:
   addPrefix:
     prefix: /~api
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: route-backend-capture-prefix
-  namespace: default
-spec:
-  addPrefix:
-    prefix: /~capture
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: Middleware
-metadata:
-  name: route-backend-invoke-prefix
-  namespace: default
-spec:
-  addPrefix:
-    prefix: /~invoke
