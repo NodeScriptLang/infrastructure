@@ -21,6 +21,7 @@ metadata:
   namespace: default
 spec:
   replicas: 4
+  revisionHistoryLimit: 1
   selector:
     matchLabels:
       app: fetch-service
