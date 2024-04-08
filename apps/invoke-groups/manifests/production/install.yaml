@@ -180,7 +180,7 @@ spec:
         - --experimental-network-imports
         - --experimental-vm-modules
         - --no-warnings
-        - out/bin/http.js
+        - out/bin/run.js
         env:
         - name: HTTP_PORT
           value: "8080"
@@ -250,7 +250,7 @@ spec:
         - --experimental-network-imports
         - --experimental-vm-modules
         - --no-warnings
-        - out/bin/http.js
+        - out/bin/run.js
         env:
         - name: HTTP_PORT
           value: "8080"
@@ -320,7 +320,7 @@ spec:
         - --experimental-network-imports
         - --experimental-vm-modules
         - --no-warnings
-        - out/bin/http.js
+        - out/bin/run.js
         env:
         - name: HTTP_PORT
           value: "8080"
@@ -390,7 +390,7 @@ spec:
         - --experimental-network-imports
         - --experimental-vm-modules
         - --no-warnings
-        - out/bin/http.js
+        - out/bin/run.js
         env:
         - name: HTTP_PORT
           value: "8080"
@@ -460,7 +460,7 @@ spec:
         - --experimental-network-imports
         - --experimental-vm-modules
         - --no-warnings
-        - out/bin/http.js
+        - out/bin/run.js
         env:
         - name: HTTP_PORT
           value: "8080"
@@ -530,7 +530,7 @@ spec:
         - --experimental-network-imports
         - --experimental-vm-modules
         - --no-warnings
-        - out/bin/http.js
+        - out/bin/run.js
         env:
         - name: HTTP_PORT
           value: "8080"
@@ -600,7 +600,7 @@ spec:
         - --experimental-network-imports
         - --experimental-vm-modules
         - --no-warnings
-        - out/bin/http.js
+        - out/bin/run.js
         env:
         - name: HTTP_PORT
           value: "8080"
@@ -670,7 +670,7 @@ spec:
         - --experimental-network-imports
         - --experimental-vm-modules
         - --no-warnings
-        - out/bin/http.js
+        - out/bin/run.js
         env:
         - name: HTTP_PORT
           value: "8080"
@@ -740,7 +740,7 @@ spec:
         - --experimental-network-imports
         - --experimental-vm-modules
         - --no-warnings
-        - out/bin/http.js
+        - out/bin/run.js
         env:
         - name: HTTP_PORT
           value: "8080"
@@ -810,7 +810,7 @@ spec:
         - --experimental-network-imports
         - --experimental-vm-modules
         - --no-warnings
-        - out/bin/http.js
+        - out/bin/run.js
         env:
         - name: HTTP_PORT
           value: "8080"
