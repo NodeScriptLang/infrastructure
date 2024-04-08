@@ -1,9 +1,0 @@
-kind: Kustomization
-
-namespace: default
-
-resources:
-- deployment-api.yaml
-- deployment-background.yaml
-- service-api.yaml
-- service-background.yaml
