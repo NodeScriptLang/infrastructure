@@ -9,7 +9,7 @@ vars:
     production
     staging
   REPLACEMENTS: |
-    production:BACKEND_API_HOST,api.nodescript.dev
+    production:API_SERVICE_HOST,api.nodescript.dev
     production:CAPTURE_SERVICE_HOST,capture.nodescript.dev
     production:FETCH_SERVICE_HOST,fetch.nodescript.dev
     production:FRONTEND_EDGE_HOST,edge.nodescript.dev
@@ -19,7 +19,7 @@ vars:
     production:INVOKE_HOST,run.nodescript.dev
     production:PAYMENT_PROVIDER_SERVICE_HOST,payment-provider.nodescript.dev
     production:REGISTRY_SERVICE_HOST,registry.nodescript.dev
-    staging:BACKEND_API_HOST,api.staging.nodescript.dev
+    staging:API_SERVICE_HOST,api.staging.nodescript.dev
     staging:CAPTURE_SERVICE_HOST,capture.staging.nodescript.dev
     staging:FETCH_SERVICE_HOST,fetch.staging.nodescript.dev
     staging:FRONTEND_EDGE_HOST,edge.staging.nodescript.dev

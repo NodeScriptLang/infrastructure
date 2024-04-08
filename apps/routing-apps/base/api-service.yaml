@@ -1,0 +1,20 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-api-service
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`API_SERVICE_HOST`) && Path(`/ws`)
+      kind: Rule
+      services:
+        - name: api-service
+          port: 8080
+    - match: Host(`API_SERVICE_HOST`)
+      kind: Rule
+      services:
+        - name: api-service
+          port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
