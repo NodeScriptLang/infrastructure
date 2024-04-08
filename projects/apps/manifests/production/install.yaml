@@ -60,6 +60,26 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: background-service
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  project: apps
+  source:
+    path: apps/background-service/manifests/production/
+    repoURL: git@github.com:NodeScriptLang/infrastructure.git
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: capture-service
   namespace: argocd
 spec:
