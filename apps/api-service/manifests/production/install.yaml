@@ -70,7 +70,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: backend-config-h46cm4g7kd
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.21.1
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.21.2
         livenessProbe:
           failureThreshold: 3
           httpGet:
