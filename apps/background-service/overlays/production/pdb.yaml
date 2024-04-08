@@ -1,0 +1,9 @@
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: background-service
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: background-service
