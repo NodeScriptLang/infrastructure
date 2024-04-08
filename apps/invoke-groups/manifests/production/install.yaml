@@ -198,6 +198,11 @@ spec:
   selector:
     matchLabels:
       app: invoke-group-default-a
+  strategy:
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 2
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -272,6 +277,11 @@ spec:
   selector:
     matchLabels:
       app: invoke-group-default-b
+  strategy:
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 2
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -346,6 +356,11 @@ spec:
   selector:
     matchLabels:
       app: invoke-group-default-c
+  strategy:
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 2
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -420,6 +435,11 @@ spec:
   selector:
     matchLabels:
       app: invoke-group-default-d
+  strategy:
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 2
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -494,6 +514,11 @@ spec:
   selector:
     matchLabels:
       app: invoke-group-default-e
+  strategy:
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 2
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -568,6 +593,11 @@ spec:
   selector:
     matchLabels:
       app: invoke-group-default-f
+  strategy:
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 2
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -642,6 +672,11 @@ spec:
   selector:
     matchLabels:
       app: invoke-group-default-g
+  strategy:
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 2
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -716,6 +751,11 @@ spec:
   selector:
     matchLabels:
       app: invoke-group-default-h
+  strategy:
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 2
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -790,6 +830,11 @@ spec:
   selector:
     matchLabels:
       app: invoke-group-incubator-a
+  strategy:
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 2
+    type: RollingUpdate
   template:
     metadata:
       labels:
@@ -864,6 +909,11 @@ spec:
   selector:
     matchLabels:
       app: invoke-group-incubator-b
+  strategy:
+    rollingUpdate:
+      maxSurge: 5
+      maxUnavailable: 2
+    type: RollingUpdate
   template:
     metadata:
       labels:

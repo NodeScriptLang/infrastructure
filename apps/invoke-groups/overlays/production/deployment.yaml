@@ -15,6 +15,11 @@ spec:
     matchLabels:
       app: invoke-group-default-a
   revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
   template:
@@ -104,6 +109,11 @@ spec:
     matchLabels:
       app: invoke-group-default-b
   revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
   template:
@@ -193,6 +203,11 @@ spec:
     matchLabels:
       app: invoke-group-default-c
   revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
   template:
@@ -282,6 +297,11 @@ spec:
     matchLabels:
       app: invoke-group-default-d
   revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
   template:
@@ -371,6 +391,11 @@ spec:
     matchLabels:
       app: invoke-group-default-e
   revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
   template:
@@ -460,6 +485,11 @@ spec:
     matchLabels:
       app: invoke-group-default-f
   revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
   template:
@@ -549,6 +579,11 @@ spec:
     matchLabels:
       app: invoke-group-default-g
   revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
   template:
@@ -638,6 +673,11 @@ spec:
     matchLabels:
       app: invoke-group-default-h
   revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
   template:
@@ -727,6 +767,11 @@ spec:
     matchLabels:
       app: invoke-group-incubator-a
   revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
   template:
@@ -816,6 +861,11 @@ spec:
     matchLabels:
       app: invoke-group-incubator-b
   revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
   template:

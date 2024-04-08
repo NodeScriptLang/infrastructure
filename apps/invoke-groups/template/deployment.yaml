@@ -7,6 +7,11 @@ spec:
     matchLabels:
       app: invoke-group-$TIER-$GROUP
   revisionHistoryLimit: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 2
+      maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
   template:
