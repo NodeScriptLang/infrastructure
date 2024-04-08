@@ -56,7 +56,7 @@ spec:
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
             httpGet:
-              path: /liveness
+              path: /status
               port: aux
             # Every second, 5 sec timeout, 3 failures in a row => dead.
             initialDelaySeconds: 5
@@ -68,7 +68,7 @@ spec:
           # These can be a little bit less aggressive.
           livenessProbe:
             httpGet:
-              path: /liveness
+              path: /status
               port: aux
             initialDelaySeconds: 10
             periodSeconds: 10

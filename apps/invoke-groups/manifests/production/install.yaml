@@ -220,7 +220,7 @@ spec:
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
@@ -235,7 +235,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
@@ -294,7 +294,7 @@ spec:
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
@@ -309,7 +309,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
@@ -368,7 +368,7 @@ spec:
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
@@ -383,7 +383,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
@@ -442,7 +442,7 @@ spec:
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
@@ -457,7 +457,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
@@ -516,7 +516,7 @@ spec:
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
@@ -531,7 +531,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
@@ -590,7 +590,7 @@ spec:
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
@@ -605,7 +605,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
@@ -664,7 +664,7 @@ spec:
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
@@ -679,7 +679,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
@@ -738,7 +738,7 @@ spec:
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
@@ -753,7 +753,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
@@ -812,7 +812,7 @@ spec:
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
@@ -827,7 +827,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
@@ -886,7 +886,7 @@ spec:
         livenessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
@@ -901,7 +901,7 @@ spec:
         readinessProbe:
           failureThreshold: 3
           httpGet:
-            path: /liveness
+            path: /status
             port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
