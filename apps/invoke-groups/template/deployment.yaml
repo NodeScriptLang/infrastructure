@@ -39,6 +39,8 @@ spec:
           ports:
             - name: http
               containerPort: 8080
+            - name: aux
+              containerPort: 8081
           resources:
             requests:
               cpu: 200m
@@ -48,12 +50,14 @@ spec:
           env:
             - name: HTTP_PORT
               value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
             httpGet:
               path: /liveness
-              port: http
+              port: aux
             # Every second, 5 sec timeout, 3 failures in a row => dead.
             initialDelaySeconds: 5
             periodSeconds: 1
@@ -65,7 +69,7 @@ spec:
           livenessProbe:
             httpGet:
               path: /liveness
-              port: http
+              port: aux
             initialDelaySeconds: 10
             periodSeconds: 10
             failureThreshold: 3

@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    metricsPort: "8080"
+    metricsPort: "8081"
   name: invoke-group-default-a
   namespace: invoke
 spec:
@@ -10,6 +10,9 @@ spec:
   - name: http
     port: 8080
     targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
   selector:
     app: invoke-group-default-a
   type: ClusterIP
@@ -18,7 +21,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    metricsPort: "8080"
+    metricsPort: "8081"
   name: invoke-group-default-b
   namespace: invoke
 spec:
@@ -26,6 +29,9 @@ spec:
   - name: http
     port: 8080
     targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
   selector:
     app: invoke-group-default-b
   type: ClusterIP
@@ -34,7 +40,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    metricsPort: "8080"
+    metricsPort: "8081"
   name: invoke-group-default-c
   namespace: invoke
 spec:
@@ -42,6 +48,9 @@ spec:
   - name: http
     port: 8080
     targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
   selector:
     app: invoke-group-default-c
   type: ClusterIP
@@ -50,7 +59,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    metricsPort: "8080"
+    metricsPort: "8081"
   name: invoke-group-default-d
   namespace: invoke
 spec:
@@ -58,6 +67,9 @@ spec:
   - name: http
     port: 8080
     targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
   selector:
     app: invoke-group-default-d
   type: ClusterIP
@@ -66,7 +78,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    metricsPort: "8080"
+    metricsPort: "8081"
   name: invoke-group-default-e
   namespace: invoke
 spec:
@@ -74,6 +86,9 @@ spec:
   - name: http
     port: 8080
     targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
   selector:
     app: invoke-group-default-e
   type: ClusterIP
@@ -82,7 +97,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    metricsPort: "8080"
+    metricsPort: "8081"
   name: invoke-group-default-f
   namespace: invoke
 spec:
@@ -90,6 +105,9 @@ spec:
   - name: http
     port: 8080
     targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
   selector:
     app: invoke-group-default-f
   type: ClusterIP
@@ -98,7 +116,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    metricsPort: "8080"
+    metricsPort: "8081"
   name: invoke-group-default-g
   namespace: invoke
 spec:
@@ -106,6 +124,9 @@ spec:
   - name: http
     port: 8080
     targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
   selector:
     app: invoke-group-default-g
   type: ClusterIP
@@ -114,7 +135,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    metricsPort: "8080"
+    metricsPort: "8081"
   name: invoke-group-default-h
   namespace: invoke
 spec:
@@ -122,6 +143,9 @@ spec:
   - name: http
     port: 8080
     targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
   selector:
     app: invoke-group-default-h
   type: ClusterIP
@@ -130,7 +154,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    metricsPort: "8080"
+    metricsPort: "8081"
   name: invoke-group-incubator-a
   namespace: invoke
 spec:
@@ -138,6 +162,9 @@ spec:
   - name: http
     port: 8080
     targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
   selector:
     app: invoke-group-incubator-a
   type: ClusterIP
@@ -146,7 +173,7 @@ apiVersion: v1
 kind: Service
 metadata:
   annotations:
-    metricsPort: "8080"
+    metricsPort: "8081"
   name: invoke-group-incubator-b
   namespace: invoke
 spec:
@@ -154,6 +181,9 @@ spec:
   - name: http
     port: 8080
     targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
   selector:
     app: invoke-group-incubator-b
   type: ClusterIP
@@ -184,12 +214,14 @@ spec:
         env:
         - name: HTTP_PORT
           value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:2.1.1
         livenessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
           successThreshold: 1
@@ -198,11 +230,13 @@ spec:
         ports:
         - containerPort: 8080
           name: http
+        - containerPort: 8081
+          name: aux
         readinessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
           successThreshold: 1
@@ -254,12 +288,14 @@ spec:
         env:
         - name: HTTP_PORT
           value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:2.1.1
         livenessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
           successThreshold: 1
@@ -268,11 +304,13 @@ spec:
         ports:
         - containerPort: 8080
           name: http
+        - containerPort: 8081
+          name: aux
         readinessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
           successThreshold: 1
@@ -324,12 +362,14 @@ spec:
         env:
         - name: HTTP_PORT
           value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:2.1.1
         livenessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
           successThreshold: 1
@@ -338,11 +378,13 @@ spec:
         ports:
         - containerPort: 8080
           name: http
+        - containerPort: 8081
+          name: aux
         readinessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
           successThreshold: 1
@@ -394,12 +436,14 @@ spec:
         env:
         - name: HTTP_PORT
           value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:2.1.1
         livenessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
           successThreshold: 1
@@ -408,11 +452,13 @@ spec:
         ports:
         - containerPort: 8080
           name: http
+        - containerPort: 8081
+          name: aux
         readinessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
           successThreshold: 1
@@ -464,12 +510,14 @@ spec:
         env:
         - name: HTTP_PORT
           value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:2.1.1
         livenessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
           successThreshold: 1
@@ -478,11 +526,13 @@ spec:
         ports:
         - containerPort: 8080
           name: http
+        - containerPort: 8081
+          name: aux
         readinessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
           successThreshold: 1
@@ -534,12 +584,14 @@ spec:
         env:
         - name: HTTP_PORT
           value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:2.1.1
         livenessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
           successThreshold: 1
@@ -548,11 +600,13 @@ spec:
         ports:
         - containerPort: 8080
           name: http
+        - containerPort: 8081
+          name: aux
         readinessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
           successThreshold: 1
@@ -604,12 +658,14 @@ spec:
         env:
         - name: HTTP_PORT
           value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:2.1.1
         livenessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
           successThreshold: 1
@@ -618,11 +674,13 @@ spec:
         ports:
         - containerPort: 8080
           name: http
+        - containerPort: 8081
+          name: aux
         readinessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
           successThreshold: 1
@@ -674,12 +732,14 @@ spec:
         env:
         - name: HTTP_PORT
           value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:2.1.1
         livenessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
           successThreshold: 1
@@ -688,11 +748,13 @@ spec:
         ports:
         - containerPort: 8080
           name: http
+        - containerPort: 8081
+          name: aux
         readinessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
           successThreshold: 1
@@ -744,12 +806,14 @@ spec:
         env:
         - name: HTTP_PORT
           value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:2.1.1
         livenessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
           successThreshold: 1
@@ -758,11 +822,13 @@ spec:
         ports:
         - containerPort: 8080
           name: http
+        - containerPort: 8081
+          name: aux
         readinessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
           successThreshold: 1
@@ -814,12 +880,14 @@ spec:
         env:
         - name: HTTP_PORT
           value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
         image: gcr.io/automation-cloud-registry/nodescript-invoke-service:2.1.1
         livenessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 10
           periodSeconds: 10
           successThreshold: 1
@@ -828,11 +896,13 @@ spec:
         ports:
         - containerPort: 8080
           name: http
+        - containerPort: 8081
+          name: aux
         readinessProbe:
           failureThreshold: 3
           httpGet:
             path: /liveness
-            port: http
+            port: aux
           initialDelaySeconds: 5
           periodSeconds: 1
           successThreshold: 1
