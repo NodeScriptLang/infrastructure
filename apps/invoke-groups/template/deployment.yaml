@@ -35,7 +35,7 @@ spec:
             - --experimental-network-imports
             - --experimental-vm-modules
             - --no-warnings
-            - out/bin/http.js
+            - out/bin/run.js
           ports:
             - name: http
               containerPort: 8080

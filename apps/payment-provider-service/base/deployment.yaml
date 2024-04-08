@@ -24,7 +24,7 @@ spec:
           workingDir: /app/packages/payment-provider-service
           command:
             - node
-            - out/bin/http.js
+            - out/bin/run.js
           ports:
             - name: http
               containerPort: 8080
