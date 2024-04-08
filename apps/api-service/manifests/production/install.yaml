@@ -1,0 +1,138 @@
+apiVersion: v1
+data:
+  API_URL: https://api.nodescript.dev
+  DEPLOYMENT_GCP_CONTAINER_IMAGE: gcr.io/automation-cloud-registry/nodescript-service-runner
+  DEPLOYMENT_GCP_SERVICE_ACCOUNT: nodescript-platform@automation-cloud-production.iam.gserviceaccount.com
+  GCLOUD_ARTIFACTS_BUCKET: nodescript-platform-artifacts
+  GCLOUD_LOCATION: europe-west1
+  GCLOUD_PROJECT_ID: automation-cloud-production
+  GRAPH_CAPTURE_URL: https://capture.run.nodescript.dev/g/{graphId}
+  GRAPH_SOURCE_URL: https://nodescript.dev/graph/{graphId}
+  INVOKE_RECYCLE_THRESHOLD: "20000"
+  LOG_LEVEL: info
+  NS_ENV: production
+  NS_FRONTEND_URL: https://nodescript.dev
+  REGISTRY_URL: https://registry.nodescript.dev
+  STRIPE_BILLING_PORTAL_ID: bpc_1P1CjOK3j0VnFpMHImKAuxrn
+  STRIPE_FREE_TIER_PRICE_ID: price_1P1UhHK3j0VnFpMHjxmXdkpD
+  WORKSPACE_DOMAIN_PATTERN: '{id}.run.nodescript.dev'
+kind: ConfigMap
+metadata:
+  name: backend-config-h46cm4g7kd
+  namespace: default
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: api-service
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: api-service
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-service
+  namespace: default
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: api-service
+  template:
+    metadata:
+      labels:
+        app: api-service
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - out/bin/run.js
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        envFrom:
+        - secretRef:
+            name: backend-secrets
+        - configMapRef:
+            name: backend-config-h46cm4g7kd
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.21.1
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /status
+            port: aux
+          initialDelaySeconds: 60
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: api-service
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 5
+          httpGet:
+            path: /status
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          requests:
+            cpu: 50m
+            memory: 400Mi
+        workingDir: /app/packages/api-service
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/default: "true"
+      terminationGracePeriodSeconds: 60
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: api-service
+  namespace: default
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: api-service
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: api-service
+  namespace: default
+spec:
+  maxReplicas: 10
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 80
+        type: Utilization
+    type: Resource
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: api-service

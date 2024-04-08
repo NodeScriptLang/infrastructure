@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-service
+spec:
+  selector:
+    matchLabels:
+      app: api-service
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: api-service
+    spec:
+      terminationGracePeriodSeconds: 60
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      nodeSelector:
+        workload/default: 'true'
+      containers:
+        - name: api-service
+          image: nodescript-backend
+          workingDir: /app/packages/api-service
+          command:
+            - node
+            - out/bin/run.js
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 50m
+              memory: 400Mi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          envFrom:
+            - secretRef:
+                name: backend-secrets
+            - configMapRef:
+                name: backend-config
+          readinessProbe:
+            httpGet:
+              path: /status
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 5
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /status
+              port: aux
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
