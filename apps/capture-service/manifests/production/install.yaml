@@ -37,7 +37,7 @@ spec:
       containers:
       - command:
         - node
-        - out/bin/http.js
+        - out/bin/run.js
         env:
         - name: HTTP_PORT
           value: "8080"
@@ -46,7 +46,7 @@ spec:
         envFrom:
         - secretRef:
             name: backend-secrets
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.20.0
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.21.1
         livenessProbe:
           failureThreshold: 3
           httpGet:
