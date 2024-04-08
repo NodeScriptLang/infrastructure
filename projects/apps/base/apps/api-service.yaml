@@ -1,0 +1,18 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: api-service
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  source:
+    repoURL: git@github.com:NodeScriptLang/infrastructure.git
+    path: apps/api-service/manifests/TARGET/
+  project: apps
+  syncPolicy:
+    syncOptions:
+      - CreateNamespace=true
+      - ApplyOutOfSyncOnly=true
+    automated:
+      selfHeal: true

@@ -20,6 +20,26 @@ spec:
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
+  name: api-service
+  namespace: argocd
+spec:
+  destination:
+    name: in-cluster
+    namespace: argocd
+  project: apps
+  source:
+    path: apps/api-service/manifests/staging/
+    repoURL: git@github.com:NodeScriptLang/infrastructure.git
+  syncPolicy:
+    automated:
+      selfHeal: true
+    syncOptions:
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
   name: backend
   namespace: argocd
 spec:
