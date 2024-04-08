@@ -3,7 +3,7 @@ namespace: default
 images:
   - name: nodescript-backend
     newName: gcr.io/automation-cloud-registry/nodescript-backend
-    newTag: 4.21.1
+    newTag: 4.21.3
 resources:
   - ../../base
   - ./pdb.yaml
