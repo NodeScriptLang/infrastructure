@@ -15,6 +15,7 @@ configMapGenerator:
       - GRAPH_SOURCE_URL=https://nodescript.dev/graph/{graphId}
       - LOG_LEVEL=info
       - NS_FRONTEND_URL=https://nodescript.dev
+      - PAYMENT_PROVIDER_URL=https://payment-provider.nodescript.dev
       - REGISTRY_URL=https://registry.nodescript.dev
       - STRIPE_BILLING_PORTAL_ID=bpc_1P1CjOK3j0VnFpMHImKAuxrn
       - STRIPE_FREE_TIER_PRICE_ID=price_1P1UhHK3j0VnFpMHjxmXdkpD
