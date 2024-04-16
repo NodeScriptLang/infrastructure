@@ -9,7 +9,7 @@ resources:
   - ./hpa.yaml
   - ./pdb.yaml
 configMapGenerator:
-  - name: backend-config
+  - name: api-service-config
     literals:
       - GRAPH_CAPTURE_URL=https://capture.run.nodescript.dev/g/{graphId}
       - GRAPH_SOURCE_URL=https://nodescript.dev/graph/{graphId}
@@ -18,3 +18,5 @@ configMapGenerator:
       - REGISTRY_URL=https://registry.nodescript.dev
       - STRIPE_BILLING_PORTAL_ID=bpc_1P1CjOK3j0VnFpMHImKAuxrn
       - WORKSPACE_DOMAIN_PATTERN={id}.run.nodescript.dev
+    files:
+      - plans.json

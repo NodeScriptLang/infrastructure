@@ -39,11 +39,16 @@ spec:
               value: '8080'
             - name: AUX_HTTP_PORT
               value: '8081'
+            - name: BILLING_PLANS
+              valueFrom:
+                configMapKeyRef:
+                  name: api-service-config
+                  key: tiers.json
           envFrom:
             - secretRef:
                 name: backend-secrets
             - configMapRef:
-                name: backend-config
+                name: api-service-config
           readinessProbe:
             httpGet:
               path: /status
