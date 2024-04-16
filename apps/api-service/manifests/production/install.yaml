@@ -94,7 +94,7 @@ spec:
         - name: BILLING_PLANS
           valueFrom:
             configMapKeyRef:
-              key: tiers.json
+              key: plans.json
               name: api-service-config-mc8tm9g6tf
         envFrom:
         - secretRef:

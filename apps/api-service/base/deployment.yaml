@@ -43,7 +43,7 @@ spec:
               valueFrom:
                 configMapKeyRef:
                   name: api-service-config
-                  key: tiers.json
+                  key: plans.json
           envFrom:
             - secretRef:
                 name: backend-secrets
