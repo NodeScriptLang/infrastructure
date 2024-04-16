@@ -18,7 +18,7 @@
         },
         "creditLimit": 100000000,
         "overspendLimit": 100000000,
-        "stripePriceId": "price_1P46JrK3j0VnFpMHIangVMIP"
+        "stripePriceId": "price_1P28mjK3j0VnFpMH4QPbWP5Y"
     },
     {
         "id": "pro",
@@ -29,6 +29,6 @@
         },
         "creditLimit": 1000000000,
         "overspendLimit": 1000000000,
-        "stripePriceId": "price_1P46KbK3j0VnFpMHIW9bJeFz"
+        "stripePriceId": "price_1P28pAK3j0VnFpMH1fKEMyHa"
     }
 ]

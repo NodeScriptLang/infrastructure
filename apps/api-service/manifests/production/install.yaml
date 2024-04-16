@@ -28,7 +28,7 @@ data:
             },
             "creditLimit": 100000000,
             "overspendLimit": 100000000,
-            "stripePriceId": "price_1P46JrK3j0VnFpMHIangVMIP"
+            "stripePriceId": "price_1P28mjK3j0VnFpMH4QPbWP5Y"
         },
         {
             "id": "pro",
@@ -39,12 +39,12 @@ data:
             },
             "creditLimit": 1000000000,
             "overspendLimit": 1000000000,
-            "stripePriceId": "price_1P46KbK3j0VnFpMHIW9bJeFz"
+            "stripePriceId": "price_1P28pAK3j0VnFpMH1fKEMyHa"
         }
     ]
 kind: ConfigMap
 metadata:
-  name: api-service-config-mc8tm9g6tf
+  name: api-service-config-24f8dtmb47
   namespace: default
 ---
 apiVersion: v1
@@ -95,12 +95,12 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: plans.json
-              name: api-service-config-mc8tm9g6tf
+              name: api-service-config-24f8dtmb47
         envFrom:
         - secretRef:
             name: backend-secrets
         - configMapRef:
-            name: api-service-config-mc8tm9g6tf
+            name: api-service-config-24f8dtmb47
         image: gcr.io/automation-cloud-registry/nodescript-backend:4.24.0
         livenessProbe:
           failureThreshold: 3
