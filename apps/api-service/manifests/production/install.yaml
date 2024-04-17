@@ -7,44 +7,9 @@ data:
   REGISTRY_URL: https://registry.nodescript.dev
   STRIPE_BILLING_PORTAL_ID: bpc_1P1CjOK3j0VnFpMHImKAuxrn
   WORKSPACE_DOMAIN_PATTERN: '{id}.run.nodescript.dev'
-  plans.json: |
-    [
-        {
-            "id": "free",
-            "name": "Free",
-            "price": {
-                "amount": 0,
-                "currency": "usd"
-            },
-            "creditLimit": 10000000,
-            "overspendLimit": 0
-        },
-        {
-            "id": "basic",
-            "name": "Basic",
-            "price": {
-                "amount": 3000,
-                "currency": "usd"
-            },
-            "creditLimit": 100000000,
-            "overspendLimit": 100000000,
-            "stripePriceId": "price_1P28mjK3j0VnFpMH4QPbWP5Y"
-        },
-        {
-            "id": "pro",
-            "name": "Pro",
-            "price": {
-                "amount": 10000,
-                "currency": "usd"
-            },
-            "creditLimit": 1000000000,
-            "overspendLimit": 1000000000,
-            "stripePriceId": "price_1P28pAK3j0VnFpMH1fKEMyHa"
-        }
-    ]
 kind: ConfigMap
 metadata:
-  name: api-service-config-24f8dtmb47
+  name: api-service-config-d5tb495967
   namespace: default
 ---
 apiVersion: v1
@@ -91,16 +56,11 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        - name: BILLING_PLANS
-          valueFrom:
-            configMapKeyRef:
-              key: plans.json
-              name: api-service-config-24f8dtmb47
         envFrom:
         - secretRef:
             name: backend-secrets
         - configMapRef:
-            name: api-service-config-24f8dtmb47
+            name: api-service-config-d5tb495967
         image: gcr.io/automation-cloud-registry/nodescript-backend:4.24.1
         livenessProbe:
           failureThreshold: 3
