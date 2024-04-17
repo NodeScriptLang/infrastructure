@@ -1,0 +1,34 @@
+[
+    {
+        "id": "free",
+        "name": "Free",
+        "price": {
+            "amount": 0,
+            "currency": "usd"
+        },
+        "creditLimit": 10000000,
+        "overspendLimit": 0
+    },
+    {
+        "id": "basic",
+        "name": "Basic",
+        "price": {
+            "amount": 3000,
+            "currency": "usd"
+        },
+        "creditLimit": 100000000,
+        "overspendLimit": 100000000,
+        "stripePriceId": "price_1P28mjK3j0VnFpMH4QPbWP5Y"
+    },
+    {
+        "id": "pro",
+        "name": "Pro",
+        "price": {
+            "amount": 10000,
+            "currency": "usd"
+        },
+        "creditLimit": 1000000000,
+        "overspendLimit": 1000000000,
+        "stripePriceId": "price_1P28pAK3j0VnFpMH1fKEMyHa"
+    }
+]
