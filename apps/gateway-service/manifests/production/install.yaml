@@ -80,7 +80,7 @@ spec:
         envFrom:
         - secretRef:
             name: backend-secrets
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.25.0
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.25.1
         livenessProbe:
           failureThreshold: 5
           httpGet:
