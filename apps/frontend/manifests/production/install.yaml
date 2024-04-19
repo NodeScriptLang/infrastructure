@@ -33,6 +33,10 @@ spec:
         name: frontend
         ports:
         - containerPort: 8080
+        resources:
+          requests:
+            cpu: 50m
+            memory: 400Mi
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:

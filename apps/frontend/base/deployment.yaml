@@ -22,3 +22,7 @@ spec:
           image: nodescript-frontend
           ports:
             - containerPort: 8080
+          resources:
+            requests:
+              cpu: 50m
+              memory: 400Mi
