@@ -38,8 +38,8 @@ spec:
         - containerPort: 8080
         resources:
           requests:
-            cpu: 50m
-            memory: 150Mi
+            cpu: 100m
+            memory: 200Mi
       imagePullSecrets:
       - name: gcp-registry-access
       nodeSelector:
@@ -55,3 +55,23 @@ spec:
   selector:
     matchLabels:
       app: fetch-service
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: fetch-service
+  namespace: default
+spec:
+  maxReplicas: 10
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 80
+        type: Utilization
+    type: Resource
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: fetch-service
