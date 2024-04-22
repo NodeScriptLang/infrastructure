@@ -61,7 +61,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: api-service-config-d5tb495967
-        image: gcr.io/automation-cloud-registry/nodescript-backend:4.25.2
+        image: gcr.io/automation-cloud-registry/nodescript-backend:4.25.3
         livenessProbe:
           failureThreshold: 3
           httpGet:
