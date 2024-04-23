@@ -95,7 +95,7 @@ spec:
         - containerPort: 9090
         resources:
           limits:
-            memory: 8Gi
+            memory: 12Gi
           requests:
             cpu: 10m
             memory: 10Mi
