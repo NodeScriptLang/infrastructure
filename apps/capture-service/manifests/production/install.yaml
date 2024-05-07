@@ -79,7 +79,7 @@ spec:
             memory: 40Mi
         workingDir: /app/packages/capture-service
       imagePullSecrets:
-      - name: gcp-registry-access
+      - name: gcp-registry-secret
       nodeSelector:
         workload/default: "true"
       terminationGracePeriodSeconds: 30

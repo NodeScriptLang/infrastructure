@@ -80,7 +80,7 @@ spec:
         envFrom:
         - secretRef:
             name: backend-secrets
-        image: eu.gcr.io/automation-cloud-registry/nodescript-backend:4.33.1
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend:4.34.0
         livenessProbe:
           failureThreshold: 5
           httpGet:
@@ -113,7 +113,7 @@ spec:
             memory: 400Mi
         workingDir: /app/packages/gateway-service
       imagePullSecrets:
-      - name: gcp-registry-access
+      - name: gcp-registry-secret
       nodeSelector:
         workload/default: "true"
       terminationGracePeriodSeconds: 30

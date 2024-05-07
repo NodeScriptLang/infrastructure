@@ -15,7 +15,7 @@ spec:
       terminationGracePeriodSeconds: 30
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: gcp-registry-access
+        - name: gcp-registry-secret
       nodeSelector:
         workload/default: 'true'
       containers:

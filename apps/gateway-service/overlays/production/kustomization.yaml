@@ -2,8 +2,8 @@ kind: Kustomization
 namespace: default
 images:
   - name: nodescript-backend
-    newName: eu.gcr.io/automation-cloud-registry/nodescript-backend
-    newTag: 4.33.1
+    newName: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend
+    newTag: 4.34.0
 resources:
   - ../../base
   - ./pdb.yaml
