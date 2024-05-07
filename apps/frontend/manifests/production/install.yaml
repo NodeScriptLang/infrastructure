@@ -30,7 +30,7 @@ spec:
     spec:
       automountServiceAccountToken: false
       containers:
-      - image: eu.gcr.io/automation-cloud-registry/nodescript-frontend:4.34.0
+      - image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-frontend:4.34.0
         name: frontend
         ports:
         - containerPort: 8080
