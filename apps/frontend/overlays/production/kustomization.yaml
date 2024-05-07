@@ -2,7 +2,7 @@ kind: Kustomization
 namespace: default
 images:
   - name: nodescript-frontend
-    newName: gcr.io/automation-cloud-registry/nodescript-frontend
+    newName: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-frontend
     newTag: 4.32.1
 resources:
   - ../../base
