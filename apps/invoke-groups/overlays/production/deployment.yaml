@@ -36,7 +36,7 @@ spec:
       # accessing K8s APIs should be prevented at all cost.
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: gcp-registry-access
+        - name: gcp-registry-secret
       # Different tiers will be deployed into separate node pools
       nodeSelector:
         workload/invoke-tier-default: 'true'
@@ -130,7 +130,7 @@ spec:
       # accessing K8s APIs should be prevented at all cost.
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: gcp-registry-access
+        - name: gcp-registry-secret
       # Different tiers will be deployed into separate node pools
       nodeSelector:
         workload/invoke-tier-default: 'true'
@@ -224,7 +224,7 @@ spec:
       # accessing K8s APIs should be prevented at all cost.
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: gcp-registry-access
+        - name: gcp-registry-secret
       # Different tiers will be deployed into separate node pools
       nodeSelector:
         workload/invoke-tier-default: 'true'
@@ -318,7 +318,7 @@ spec:
       # accessing K8s APIs should be prevented at all cost.
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: gcp-registry-access
+        - name: gcp-registry-secret
       # Different tiers will be deployed into separate node pools
       nodeSelector:
         workload/invoke-tier-default: 'true'
@@ -412,7 +412,7 @@ spec:
       # accessing K8s APIs should be prevented at all cost.
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: gcp-registry-access
+        - name: gcp-registry-secret
       # Different tiers will be deployed into separate node pools
       nodeSelector:
         workload/invoke-tier-default: 'true'
@@ -506,7 +506,7 @@ spec:
       # accessing K8s APIs should be prevented at all cost.
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: gcp-registry-access
+        - name: gcp-registry-secret
       # Different tiers will be deployed into separate node pools
       nodeSelector:
         workload/invoke-tier-default: 'true'
@@ -600,7 +600,7 @@ spec:
       # accessing K8s APIs should be prevented at all cost.
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: gcp-registry-access
+        - name: gcp-registry-secret
       # Different tiers will be deployed into separate node pools
       nodeSelector:
         workload/invoke-tier-default: 'true'
@@ -694,7 +694,7 @@ spec:
       # accessing K8s APIs should be prevented at all cost.
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: gcp-registry-access
+        - name: gcp-registry-secret
       # Different tiers will be deployed into separate node pools
       nodeSelector:
         workload/invoke-tier-default: 'true'
@@ -788,7 +788,7 @@ spec:
       # accessing K8s APIs should be prevented at all cost.
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: gcp-registry-access
+        - name: gcp-registry-secret
       # Different tiers will be deployed into separate node pools
       nodeSelector:
         workload/invoke-tier-incubator: 'true'
@@ -882,7 +882,7 @@ spec:
       # accessing K8s APIs should be prevented at all cost.
       automountServiceAccountToken: false
       imagePullSecrets:
-        - name: gcp-registry-access
+        - name: gcp-registry-secret
       # Different tiers will be deployed into separate node pools
       nodeSelector:
         workload/invoke-tier-incubator: 'true'

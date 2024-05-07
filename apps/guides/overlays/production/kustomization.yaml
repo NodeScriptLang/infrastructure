@@ -2,7 +2,7 @@ kind: Kustomization
 namespace: default
 images:
   - name: nodescript-guides
-    newName: eu.gcr.io/automation-cloud-registry/nodescript-guides
-    newTag: 0.0.47
+    newName: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-guides
+    newTag: v0.1.14
 resources:
   - ../../base

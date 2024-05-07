@@ -34,11 +34,11 @@ spec:
     spec:
       automountServiceAccountToken: false
       containers:
-      - image: eu.gcr.io/automation-cloud-registry/nodescript-guides:0.0.47
+      - image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-guides:v0.1.14
         name: guides
         ports:
         - containerPort: 8900
       imagePullSecrets:
-      - name: gcp-registry-access
+      - name: gcp-registry-secret
       nodeSelector:
         workload/default: "true"
