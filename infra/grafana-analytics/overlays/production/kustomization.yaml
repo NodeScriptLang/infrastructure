@@ -3,7 +3,7 @@ kind: Kustomization
 namespace: monitoring
 
 images:
-  - name: grafana
+  - name: grafana-analytics
     newName: grafana/grafana
     newTag: 10.1.5
 

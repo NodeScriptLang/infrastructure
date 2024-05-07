@@ -64,7 +64,7 @@ spec:
       - envFrom:
         - secretRef:
             name: grafana-analytics-secrets
-        image: grafana-analytics
+        image: grafana/grafana:10.1.5
         name: grafana-analytics
         ports:
         - containerPort: 3000
@@ -92,10 +92,10 @@ spec:
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: grafana
+  name: grafana-analytics
   namespace: monitoring
 spec:
   minAvailable: 1
   selector:
     matchLabels:
-      app: grafana
+      app: grafana-analytics
