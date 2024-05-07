@@ -1,0 +1,12 @@
+kind: Kustomization
+
+namespace: monitoring
+
+images:
+  - name: grafana
+    newName: grafana/grafana
+    newTag: 10.1.5
+
+resources:
+  - ../../base
+  - pdb.yaml
