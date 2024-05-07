@@ -46,6 +46,24 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
+  name: route-infra-grafana-analytics
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`analytics.ns.ubio.dev`)
+    services:
+    - name: grafana-analytics
+      namespace: monitoring
+      port: 3000
+  tls:
+    secretName: ubio-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
   name: route-infra-prometheus
   namespace: default
 spec:
