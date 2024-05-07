@@ -2,7 +2,7 @@ kind: Kustomization
 namespace: default
 images:
   - name: nodescript-fetch-service
-    newName: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-fetch-service
+    newName: gcr.io/automation-cloud-registry/nodescript-fetch-service
     newTag: 2.7.2
 resources:
   - ../../base
