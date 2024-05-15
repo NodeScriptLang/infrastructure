@@ -34,7 +34,7 @@ spec:
     spec:
       automountServiceAccountToken: false
       containers:
-      - image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-guides:v0.1.18
+      - image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-guides:v0.2.0
         name: guides
         ports:
         - containerPort: 8900
