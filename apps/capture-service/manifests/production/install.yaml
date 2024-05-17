@@ -46,7 +46,7 @@ spec:
         envFrom:
         - secretRef:
             name: backend-secrets
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend:4.40.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend:4.41.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
