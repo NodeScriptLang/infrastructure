@@ -1,6 +1,5 @@
 apiVersion: v1
 data:
-  GRAPH_CAPTURE_URL: https://capture.run.nodescript.dev/g/{graphId}
   GRAPH_SOURCE_URL: https://nodescript.dev/graph/{graphId}
   LOG_LEVEL: info
   NS_FRONTEND_URL: https://nodescript.dev
@@ -9,7 +8,7 @@ data:
   WORKSPACE_DOMAIN_PATTERN: '{id}.run.nodescript.dev'
 kind: ConfigMap
 metadata:
-  name: api-service-config-d5tb495967
+  name: api-service-config-gk5774fgt5
   namespace: default
 ---
 apiVersion: v1
@@ -60,8 +59,8 @@ spec:
         - secretRef:
             name: backend-secrets
         - configMapRef:
-            name: api-service-config-d5tb495967
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend:4.42.0
+            name: api-service-config-gk5774fgt5
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend:4.43.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
