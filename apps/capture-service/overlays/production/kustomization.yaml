@@ -1,9 +1,0 @@
-kind: Kustomization
-namespace: default
-images:
-  - name: nodescript-backend
-    newName: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend
-    newTag: 4.42.0
-resources:
-  - ../../base
-  - ./pdb.yaml
