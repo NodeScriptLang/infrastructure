@@ -3,7 +3,7 @@ namespace: default
 images:
   - name: nodescript-backend
     newName: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend
-    newTag: 4.42.0
+    newTag: 4.43.0
 resources:
   - ../../base
   - ./hpa.yaml
@@ -11,7 +11,6 @@ resources:
 configMapGenerator:
   - name: api-service-config
     literals:
-      - GRAPH_CAPTURE_URL=https://capture.run.nodescript.dev/g/{graphId}
       - GRAPH_SOURCE_URL=https://nodescript.dev/graph/{graphId}
       - LOG_LEVEL=info
       - NS_FRONTEND_URL=https://nodescript.dev

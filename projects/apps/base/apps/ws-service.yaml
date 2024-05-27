@@ -1,14 +1,14 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: capture-service
+  name: ws-service
 spec:
   destination:
     name: in-cluster
     namespace: argocd
   source:
     repoURL: git@github.com:NodeScriptLang/infrastructure.git
-    path: apps/capture-service/manifests/TARGET/
+    path: apps/ws-service/manifests/TARGET/
   project: apps
   syncPolicy:
     syncOptions:

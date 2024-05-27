@@ -6,5 +6,9 @@ images:
     newTag: 4.43.0
 resources:
   - ../../base
-  - ./pdb.yaml
   - ./hpa.yaml
+  - ./pdb.yaml
+configMapGenerator:
+  - name: ws-service-config
+    literals:
+      - LOG_LEVEL=info
