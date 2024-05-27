@@ -144,3 +144,21 @@ spec:
       port: 8080
   tls:
     secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-ws-service
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`api.nodescript.dev`) && Path(`/ws`)
+    priority: 1000
+    services:
+    - name: ws-service
+      port: 8080
+  tls:
+    secretName: nodescript-dev-certificate

@@ -11,3 +11,4 @@ resources:
   - guides.yaml
   - payment-provider-service.yaml
   - registry-service.yaml
+  - ws-service.yaml
