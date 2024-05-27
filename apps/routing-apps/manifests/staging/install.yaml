@@ -8,11 +8,6 @@ spec:
   - websecure
   routes:
   - kind: Rule
-    match: Host(`api.staging.nodescript.dev`) && Path(`/ws`)
-    services:
-    - name: api-service
-      port: 8080
-  - kind: Rule
     match: Host(`api.staging.nodescript.dev`)
     services:
     - name: api-service
