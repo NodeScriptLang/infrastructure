@@ -16,6 +16,11 @@ spec:
       services:
         - name: frontend
           port: 8080
+    - match: Host(`FRONTEND_NOTEBOOKS_HOST`)
+      kind: Rule
+      services:
+        - name: frontend
+          port: 8080
     - match: HostRegexp(`{subdomain:[0-9a-zA-Z_-]+}.FRONTEND_EDGE_HOST`)
       kind: Rule
       services:

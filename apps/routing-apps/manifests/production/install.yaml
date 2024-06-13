@@ -69,6 +69,11 @@ spec:
     - name: frontend
       port: 8080
   - kind: Rule
+    match: Host(`notebooks.nodescript.dev`)
+    services:
+    - name: frontend
+      port: 8080
+  - kind: Rule
     match: HostRegexp(`{subdomain:[0-9a-zA-Z_-]+}.edge.nodescript.dev`)
     services:
     - name: frontend
