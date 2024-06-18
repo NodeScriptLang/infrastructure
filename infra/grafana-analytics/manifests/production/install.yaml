@@ -23,13 +23,13 @@ data:
     viewers_can_edit = true
 
     [plugins]
-    allow_loading_unsigned_plugins = doitintl-bigquery-datasource,jdbranham-diagram-panel,grafana-mongodb-atlas-datasource,grafana-mongodb-datasource,yesoreyeram-infinity-datasource,grafana-oncall-app
+    allow_loading_unsigned_plugins = grafana-bigquery-datasource
 
     [feature_toggles]
     enable = topnav
 kind: ConfigMap
 metadata:
-  name: grafana-analytics-config-dg7845bhh5
+  name: grafana-analytics-config-kt5dbhgk8k
   namespace: monitoring
 ---
 apiVersion: v1
@@ -60,7 +60,10 @@ spec:
         app: grafana-analytics
     spec:
       containers:
-      - envFrom:
+      - env:
+        - name: GF_INSTALL_PLUGINS
+        - value: grafana-bigquery-datasource
+        envFrom:
         - secretRef:
             name: grafana-analytics-secrets
         image: grafana/grafana:10.1.5
@@ -85,7 +88,7 @@ spec:
         - 0
       volumes:
       - configMap:
-          name: grafana-analytics-config-dg7845bhh5
+          name: grafana-analytics-config-kt5dbhgk8k
         name: config
 ---
 apiVersion: policy/v1

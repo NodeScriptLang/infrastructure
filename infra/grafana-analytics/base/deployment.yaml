@@ -33,6 +33,9 @@ spec:
           envFrom:
             - secretRef:
                 name: grafana-analytics-secrets
+          env:
+            - name: GF_INSTALL_PLUGINS
+            - value: grafana-bigquery-datasource
           resources:
             requests:
               cpu: 100m
