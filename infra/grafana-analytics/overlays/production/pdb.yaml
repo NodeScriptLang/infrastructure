@@ -1,9 +1,0 @@
-apiVersion: policy/v1
-kind: PodDisruptionBudget
-metadata:
-  name: grafana-analytics
-spec:
-  minAvailable: 1
-  selector:
-    matchLabels:
-      app: grafana-analytics
