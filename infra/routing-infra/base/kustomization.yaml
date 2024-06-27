@@ -5,5 +5,4 @@ namespace: default
 resources:
   - cd.yaml
   - grafana.yaml
-  - grafana-analytics.yaml
   - prometheus.yaml
