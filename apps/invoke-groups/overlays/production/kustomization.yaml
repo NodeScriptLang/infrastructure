@@ -3,7 +3,7 @@ namespace: invoke
 images:
   - name: nodescript-invoke-service
     newName: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service
-    newTag: 2.1.11
+    newTag: 2.2.1
 resources:
   - deployment.yaml
   - service.yaml
