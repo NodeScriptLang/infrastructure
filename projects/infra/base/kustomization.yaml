@@ -6,7 +6,6 @@ resources:
   - project.yaml
   - apps/certificates.yaml
   - apps/grafana.yaml
-  - apps/grafana-analytics.yaml
   - apps/prometheus.yaml
   - apps/routing-infra.yaml
   - apps/traefik.yaml
