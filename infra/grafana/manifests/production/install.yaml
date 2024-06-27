@@ -60,7 +60,10 @@ spec:
         app: grafana
     spec:
       containers:
-      - envFrom:
+      - env:
+        - name: GF_INSTALL_PLUGINS
+          value: grafana-bigquery-datasource
+        envFrom:
         - secretRef:
             name: grafana-secrets
         image: grafana/grafana:10.1.5
