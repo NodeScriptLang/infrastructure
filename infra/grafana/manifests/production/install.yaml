@@ -8,13 +8,13 @@ data:
     [auth.github]
     allow_assign_grafana_admin = true
     allow_sign_up = true
-    allowed_organizations = ["ubio"]
+    allowed_organizations = ["NodeScriptLang", "ubio"]
     api_url = https://api.github.com/user
     auth_url = https://github.com/login/oauth/authorize
     enabled = true
     scopes = user:email,read:org
     token_url = https://github.com/login/oauth/access_token
-    role_attribute_path = (contains(groups[*], '@ubio/engineering')) && 'GrafanaAdmin' || 'Viewer';
+    role_attribute_path = (contains(groups[*], '@NodeScriptLang/engineering') || contains(groups[*], '@ubio/engineering')) && 'GrafanaAdmin' || 'Viewer';
 
     [users]
     auto_assign_org_role = Editor
@@ -29,7 +29,7 @@ data:
     enable = topnav
 kind: ConfigMap
 metadata:
-  name: grafana-config-cm7tgdmgct
+  name: grafana-config-t658dkk85h
   namespace: monitoring
 ---
 apiVersion: v1
@@ -88,7 +88,7 @@ spec:
         - 0
       volumes:
       - configMap:
-          name: grafana-config-cm7tgdmgct
+          name: grafana-config-t658dkk85h
         name: config
 ---
 apiVersion: policy/v1
