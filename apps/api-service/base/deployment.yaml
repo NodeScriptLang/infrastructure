@@ -32,7 +32,7 @@ spec:
               containerPort: 8081
           resources:
             requests:
-              cpu: 50m
+              cpu: 100m
               memory: 400Mi
           env:
             - name: HTTP_PORT
