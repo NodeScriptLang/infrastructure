@@ -24,7 +24,7 @@ const notice = `
 
 const baseDir = new URL('.', import.meta.url).pathname;
 const templateDir = path.join(baseDir, 'template');
-const targetDir = path.join(baseDir, 'overlays/production');
+const targetDir = path.join(baseDir, 'overlays/production/generated');
 const templateFiles = await fs.readdir(templateDir)
 
 for (const filename of templateFiles) {
