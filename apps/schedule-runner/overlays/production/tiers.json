@@ -18,5 +18,11 @@
             "invoke-group-incubator-a.invoke.svc.cluster.local:8080",
             "invoke-group-incubator-b.invoke.svc.cluster.local:8080"
         ]
+    },
+    {
+        "tier": "ubio-flight-search",
+        "targets": [
+            "invoke-group-ubio-flight-search.invoke.svc.cluster.local:8080"
+        ]
     }
 ]

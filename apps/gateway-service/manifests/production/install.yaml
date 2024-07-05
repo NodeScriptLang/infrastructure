@@ -21,11 +21,17 @@ data:
                 "invoke-group-incubator-a.invoke.svc.cluster.local:8080",
                 "invoke-group-incubator-b.invoke.svc.cluster.local:8080"
             ]
+        },
+        {
+            "tier": "ubio-flight-search",
+            "targets": [
+                "invoke-group-ubio-flight-search.invoke.svc.cluster.local:8080"
+            ]
         }
     ]
 kind: ConfigMap
 metadata:
-  name: gateway-service-tiers-d97f5dmmdg
+  name: gateway-service-tiers-57c5d55fc2
   namespace: default
 ---
 apiVersion: v1
@@ -76,7 +82,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: tiers.json
-              name: gateway-service-tiers-d97f5dmmdg
+              name: gateway-service-tiers-57c5d55fc2
         envFrom:
         - secretRef:
             name: backend-secrets
