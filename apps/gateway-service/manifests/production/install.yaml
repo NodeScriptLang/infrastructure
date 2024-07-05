@@ -115,7 +115,7 @@ spec:
           limits:
             memory: 1000Mi
           requests:
-            cpu: 100m
+            cpu: 400m
             memory: 400Mi
         workingDir: /app/packages/gateway-service
       imagePullSecrets:
