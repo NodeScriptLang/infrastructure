@@ -5,7 +5,8 @@ images:
     newName: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service
     newTag: 2.2.1
 resources:
-  - deployment.yaml
-  - service.yaml
-  - hpa.yaml
-  - pdb.yaml
+  - ./generated/deployment.yaml
+  - ./generated/hpa.yaml
+  - ./generated/pdb.yaml
+  - ./generated/service.yaml
+  - ../../custom

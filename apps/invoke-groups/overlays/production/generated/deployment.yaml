@@ -46,7 +46,6 @@ spec:
           command:
             - node
             - --experimental-network-imports
-            - --experimental-vm-modules
             - --no-warnings
             - out/bin/run.js
           ports:
@@ -140,7 +139,6 @@ spec:
           command:
             - node
             - --experimental-network-imports
-            - --experimental-vm-modules
             - --no-warnings
             - out/bin/run.js
           ports:
@@ -234,7 +232,6 @@ spec:
           command:
             - node
             - --experimental-network-imports
-            - --experimental-vm-modules
             - --no-warnings
             - out/bin/run.js
           ports:
@@ -328,7 +325,6 @@ spec:
           command:
             - node
             - --experimental-network-imports
-            - --experimental-vm-modules
             - --no-warnings
             - out/bin/run.js
           ports:
@@ -422,7 +418,6 @@ spec:
           command:
             - node
             - --experimental-network-imports
-            - --experimental-vm-modules
             - --no-warnings
             - out/bin/run.js
           ports:
@@ -516,7 +511,6 @@ spec:
           command:
             - node
             - --experimental-network-imports
-            - --experimental-vm-modules
             - --no-warnings
             - out/bin/run.js
           ports:
@@ -610,7 +604,6 @@ spec:
           command:
             - node
             - --experimental-network-imports
-            - --experimental-vm-modules
             - --no-warnings
             - out/bin/run.js
           ports:
@@ -704,7 +697,6 @@ spec:
           command:
             - node
             - --experimental-network-imports
-            - --experimental-vm-modules
             - --no-warnings
             - out/bin/run.js
           ports:
@@ -798,7 +790,6 @@ spec:
           command:
             - node
             - --experimental-network-imports
-            - --experimental-vm-modules
             - --no-warnings
             - out/bin/run.js
           ports:
@@ -892,7 +883,6 @@ spec:
           command:
             - node
             - --experimental-network-imports
-            - --experimental-vm-modules
             - --no-warnings
             - out/bin/run.js
           ports:

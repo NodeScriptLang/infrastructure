@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: invoke-group-$TIER-$GROUP
+  name: invoke-group-ubio-flight-search
 spec:
   selector:
     matchLabels:
-      app: invoke-group-$TIER-$GROUP
+      app: invoke-group-ubio-flight-search
   revisionHistoryLimit: 1
   strategy:
     type: RollingUpdate
     rollingUpdate:
       maxUnavailable: 2
-      maxSurge: 5
+      maxSurge: 10
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
   template:
     metadata:
       labels:
-        app: invoke-group-$TIER-$GROUP
+        app: invoke-group-ubio-flight-search
     spec:
       # Graceful termination should be greater than INVOKE_TIMEOUT in Gateway
       # Also HTTP_TIMEOUT should be greater than INVOKE_TIMEOUT
@@ -31,9 +31,9 @@ spec:
         - name: gcp-registry-secret
       # Different tiers will be deployed into separate node pools
       nodeSelector:
-        workload/invoke-tier-$TIER: 'true'
+        workload/invoke-ubio-flight-search: 'true'
       containers:
-        - name: invoke-group-$TIER-$GROUP
+        - name: invoke-group-ubio-flight-search
           image: nodescript-invoke-service
           command:
             - node
@@ -47,10 +47,10 @@ spec:
               containerPort: 8081
           resources:
             requests:
-              cpu: 200m
-              memory: 400Mi
+              cpu: 400m
+              memory: 800Mi
             limits:
-              memory: 1Gi
+              memory: 1.2Gi
           env:
             - name: HTTP_PORT
               value: '8080'
