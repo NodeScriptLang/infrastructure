@@ -60,7 +60,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: api-service-config-gk5774fgt5
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend:5.9.8
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend:5.10.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -87,7 +87,7 @@ spec:
           timeoutSeconds: 5
         resources:
           requests:
-            cpu: 50m
+            cpu: 100m
             memory: 400Mi
         workingDir: /app/packages/api-service
       imagePullSecrets:
