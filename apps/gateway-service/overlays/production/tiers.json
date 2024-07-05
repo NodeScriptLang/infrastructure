@@ -20,7 +20,7 @@
         ]
     },
     {
-        "tier": "ubio-flight-search",
+        "tier": "custom-ubio-flight-search",
         "targets": [
             "invoke-group-ubio-flight-search.invoke.svc.cluster.local:8080"
         ]

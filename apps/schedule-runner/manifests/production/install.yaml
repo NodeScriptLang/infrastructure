@@ -23,7 +23,7 @@ data:
             ]
         },
         {
-            "tier": "ubio-flight-search",
+            "tier": "custom-ubio-flight-search",
             "targets": [
                 "invoke-group-ubio-flight-search.invoke.svc.cluster.local:8080"
             ]
@@ -31,7 +31,7 @@ data:
     ]
 kind: ConfigMap
 metadata:
-  name: schedule-runner-tiers-57c5d55fc2
+  name: schedule-runner-tiers-bcb2btd56g
   namespace: default
 ---
 apiVersion: v1
@@ -77,7 +77,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: tiers.json
-              name: schedule-runner-tiers-57c5d55fc2
+              name: schedule-runner-tiers-bcb2btd56g
         envFrom:
         - secretRef:
             name: backend-secrets
