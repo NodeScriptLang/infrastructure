@@ -239,7 +239,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.5
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.6
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -317,7 +317,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.5
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.6
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -395,7 +395,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.5
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.6
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -473,7 +473,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.5
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.6
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -551,7 +551,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.5
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.6
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -629,7 +629,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.5
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.6
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -707,7 +707,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.5
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.6
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -785,7 +785,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.5
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.6
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -863,7 +863,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.5
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.6
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -941,7 +941,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.5
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.6
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -1019,7 +1019,7 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.5
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.6
         livenessProbe:
           failureThreshold: 3
           httpGet:
