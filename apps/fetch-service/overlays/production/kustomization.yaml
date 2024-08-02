@@ -3,7 +3,7 @@ namespace: default
 images:
   - name: nodescript-fetch-service
     newName: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-fetch-service
-    newTag: 2.10.4
+    newTag: 2.10.5
 resources:
   - ../../base
   - ./hpa.yaml
