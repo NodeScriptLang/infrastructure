@@ -57,7 +57,7 @@ spec:
             - name: AUX_HTTP_PORT
               value: '8081'
             - name: HTTP_TIMEOUT # Note: custom HTTP socket timeout matches the invoke timeout for the workspace
-              value: 300_000
+              value: "300000"
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
