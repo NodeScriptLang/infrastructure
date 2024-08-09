@@ -1019,6 +1019,8 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
+        - name: HTTP_TIMEOUT
+          value: 300000
         image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.4.6
         livenessProbe:
           failureThreshold: 3
