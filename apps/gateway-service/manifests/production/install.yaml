@@ -78,6 +78,8 @@ spec:
           value: "8080"
         - name: AUX_HTTP_PORT
           value: "8081"
+        - name: HTTP_TIMEOUT
+          value: "300000"
         - name: INVOKE_TIERS
           valueFrom:
             configMapKeyRef:
