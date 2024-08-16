@@ -112,7 +112,7 @@ spec:
     match: Host(`guides.nodescript.dev`)
     services:
     - name: guides
-      port: 8080
+      port: 8900
   tls:
     secretName: nodescript-dev-certificate
 ---
