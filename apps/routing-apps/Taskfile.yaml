@@ -16,6 +16,7 @@ vars:
     production:FRONTEND_HOST,nodescript.dev
     production:FRONTEND_NOTEBOOKS_HOST,notebooks.nodescript.dev
     production:DOCS_HOST,docs.nodescript.dev
+    production:GUIDES_HOST,guides.nodescript.dev
     production:INVOKE_HOST,run.nodescript.dev
     production:PAYMENT_PROVIDER_SERVICE_HOST,payment-provider.nodescript.dev
     production:REGISTRY_SERVICE_HOST,registry.nodescript.dev
@@ -26,6 +27,7 @@ vars:
     staging:FRONTEND_HOST,staging.nodescript.dev
     staging:FRONTEND_NOTEBOOKS_HOST,notebooks.staging.nodescript.dev
     staging:DOCS_HOST,docs.staging.nodescript.dev
+    staging:GUIDES_HOST,guides.staging.nodescript.dev
     staging:INVOKE_HOST,run.staging.nodescript.dev
     staging:PAYMENT_PROVIDER_SERVICE_HOST,payment-provider.staging.nodescript.dev
     staging:REGISTRY_SERVICE_HOST,registry.staging.nodescript.dev

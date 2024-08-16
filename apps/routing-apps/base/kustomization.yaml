@@ -8,6 +8,7 @@ resources:
   - frontend.yaml
   - gateway-service.yaml
   - docs.yaml
+  - guides.yaml
   - payment-provider-service.yaml
   - registry-service.yaml
   - ws-service.yaml

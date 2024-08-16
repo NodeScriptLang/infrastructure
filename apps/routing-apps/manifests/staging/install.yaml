@@ -102,6 +102,23 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
+  name: route-guides
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`guides.staging.nodescript.dev`)
+    services:
+    - name: guides
+      port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
   name: route-payment-provider-service
   namespace: default
 spec:
