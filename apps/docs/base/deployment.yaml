@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: docs
+spec:
+  selector:
+    matchLabels:
+      app: docs
+  replicas: 2
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: docs
+    spec:
+      automountServiceAccountToken: false
+      nodeSelector:
+        workload/default: "true"
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: docs-nginx-config
+        - name: nginx-files
+          configMap:
+            name: docs-nginx-files
+      containers:
+        - name: docs
+          image: nginx:1.27.1
+          ports:
+            - name: http
+              containerPort: 8080
+          volumeMounts:
+            - mountPath: /etc/nginx
+              name: nginx-config
+              readOnly: true
+            - mountPath: /usr/share/nginx/html
+              name: nginx-files
+              readOnly: true
+          resources:
+            requests:
+              cpu: 10m
+              memory: 50Mi

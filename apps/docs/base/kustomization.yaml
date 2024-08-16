@@ -1,0 +1,15 @@
+kind: Kustomization
+
+namespace: default
+
+resources:
+- deployment.yaml
+- service.yaml
+
+configMapGenerator:
+- name: docs-nginx-config
+  files:
+  - nginx.conf
+- name: docs-nginx-files
+  files:
+  - index.html

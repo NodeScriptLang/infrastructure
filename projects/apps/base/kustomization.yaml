@@ -6,6 +6,7 @@ resources:
   - apps/api-service.yaml
   - apps/background-service.yaml
   - apps/custom-domain-mapping.yaml
+  - apps/docs.yaml
   - apps/fetch-service.yaml
   - apps/frontend.yaml
   - apps/gateway-service.yaml

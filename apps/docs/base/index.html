@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <link rel="icon" href="/img/favicon.svg" />
+        <link rel="apple-touch-icon" href="/img/touch-icon.png" />
+        <title>NodeScript</title>
+        <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+            }
+
+            iframe {
+                width: 100vw;
+                height: 100vh;
+                border: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <iframe>
+        </iframe>
+        <script>
+            const baseTitle = 'NodeScript Documentation'
+            const baseUrl = "https://notebooks.nodescript.dev";
+            const pathPrefix = "@nodescript/documentation";
+            const iframe = document.querySelector('iframe');
+
+            function  goto(path) {
+                iframe.src = [baseUrl, pathPrefix, path.replace(/^\//, '')]
+                    .filter(Boolean)
+                    .join('/');
+            }
+
+            goto(location.pathname);
+            window.addEventListener('message', ev => {
+                const { notebook, firstLoad } = JSON.parse(ev.data);
+                document.title = [notebook.label, baseTitle].join(' · ');
+                const newPath = notebook.slug.replace(pathPrefix, '');
+                if (!firstLoad) {
+                    history.pushState({ path: newPath }, '', newPath || '/');
+                }
+            });
+            window.addEventListener('popstate', ev => {
+                if (ev.state) {
+                    goto(ev.state.path);
+                }
+            });
+        </script>
+    </body>
+</html>
