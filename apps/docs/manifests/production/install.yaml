@@ -72,7 +72,8 @@ data:
                 goto(location.pathname);
                 window.addEventListener('message', ev => {
                     const { notebook, firstLoad } = JSON.parse(ev.data);
-                    document.title = [notebook.label, baseTitle].join(' · ');
+                    const label = notebook.label.replace(/^\d+\s+/g, '');
+                    document.title = [label, baseTitle].join(' · ');
                     const newPath = notebook.slug.replace(pathPrefix, '');
                     if (!firstLoad) {
                         history.pushState({ path: newPath }, '', newPath || '/');
@@ -88,7 +89,7 @@ data:
     </html>
 kind: ConfigMap
 metadata:
-  name: docs-nginx-files-286cfh6mmk
+  name: docs-nginx-files-9c649cchtk
   namespace: default
 ---
 apiVersion: v1
@@ -146,7 +147,7 @@ spec:
           name: docs-nginx-config-4d64tt249t
         name: nginx-config
       - configMap:
-          name: docs-nginx-files-286cfh6mmk
+          name: docs-nginx-files-9c649cchtk
         name: nginx-files
 ---
 apiVersion: policy/v1

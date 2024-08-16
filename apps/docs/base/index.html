@@ -39,7 +39,8 @@
             goto(location.pathname);
             window.addEventListener('message', ev => {
                 const { notebook, firstLoad } = JSON.parse(ev.data);
-                document.title = [notebook.label, baseTitle].join(' · ');
+                const label = notebook.label.replace(/^\d+\s+/g, '');
+                document.title = [label, baseTitle].join(' · ');
                 const newPath = notebook.slug.replace(pathPrefix, '');
                 if (!firstLoad) {
                     history.pushState({ path: newPath }, '', newPath || '/');
