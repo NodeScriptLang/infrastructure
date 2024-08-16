@@ -1,15 +1,15 @@
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
-  name: route-guides
+  name: route-docs
 spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`GUIDES_HOST`)
+    - match: Host(`DOCS_HOST`)
       kind: Rule
       services:
-        - name: guides
-          port: 8900
+        - name: docs
+          port: 8080
   tls:
     secretName: nodescript-dev-certificate

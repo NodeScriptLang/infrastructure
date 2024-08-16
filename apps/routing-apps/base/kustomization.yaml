@@ -7,7 +7,7 @@ resources:
   - fetch-service.yaml
   - frontend.yaml
   - gateway-service.yaml
-  - guides.yaml
+  - docs.yaml
   - payment-provider-service.yaml
   - registry-service.yaml
   - ws-service.yaml

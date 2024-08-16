@@ -18,6 +18,23 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
+  name: route-docs
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`docs.staging.nodescript.dev`)
+    services:
+    - name: docs
+      port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
   name: route-fetch-service
   namespace: default
 spec:
@@ -79,23 +96,6 @@ spec:
     services:
     - name: gateway-service
       port: 8080
-  tls:
-    secretName: nodescript-dev-certificate
----
-apiVersion: traefik.containo.us/v1alpha1
-kind: IngressRoute
-metadata:
-  name: route-guides
-  namespace: default
-spec:
-  entryPoints:
-  - websecure
-  routes:
-  - kind: Rule
-    match: Host(`docs.staging.nodescript.dev`)
-    services:
-    - name: guides
-      port: 8900
   tls:
     secretName: nodescript-dev-certificate
 ---
