@@ -5,23 +5,27 @@ data:
         worker_connections 4096;
     }
 
-    server {
-        listen 8080 default_server;
+    http {
 
-        charset utf-8;
-        gzip on;
-        gzip_types text/plain text/xml application/xml text/css application/javascript;
+        server {
+            listen 8080 default_server;
 
-        root /usr/share/nginx/html
+            charset utf-8;
+            gzip on;
+            gzip_types text/plain text/xml application/xml text/css application/javascript;
 
-        location / {
-            try_files /index.html = 404;
+            root /usr/share/nginx/html
+
+            location / {
+                try_files /index.html = 404;
+            }
+
         }
 
     }
 kind: ConfigMap
 metadata:
-  name: docs-nginx-config-k7cg2th7ck
+  name: docs-nginx-config-hd4f9m77dh
   namespace: default
 ---
 apiVersion: v1
@@ -139,7 +143,7 @@ spec:
         workload/default: "true"
       volumes:
       - configMap:
-          name: docs-nginx-config-k7cg2th7ck
+          name: docs-nginx-config-hd4f9m77dh
         name: nginx-config
       - configMap:
           name: docs-nginx-files-286cfh6mmk
