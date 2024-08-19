@@ -10,6 +10,7 @@ configMapGenerator:
 - name: docs-nginx-config
   files:
   - nginx.conf
+  - mime.types
 - name: docs-nginx-files
   files:
   - index.html
