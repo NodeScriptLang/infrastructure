@@ -13,3 +13,4 @@ configMapGenerator:
 - name: docs-nginx-files
   files:
   - index.html
+  - favicon.svg

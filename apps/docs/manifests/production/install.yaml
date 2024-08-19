@@ -30,6 +30,31 @@ metadata:
 ---
 apiVersion: v1
 data:
+  favicon.svg: |
+    <svg width="96" height="96" viewBox="0 0 96 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path class="Line" d="M40.9451 40.4033C39.7321 39.3354 38.1021 38.7987 36 38.7987V31.2C39.4081 31.2 43.0063 32.0943 45.9657 34.6999C48.9192 37.3003 50.7728 41.1971 51.5038 46.2914C52.0801 50.3088 52.8473 53.5008 53.9947 55.6184C55.0231 57.516 56.0634 58.1138 57.4991 58.1138V65.7126C52.5213 65.7126 49.2683 62.8445 47.3145 59.2388C45.4798 55.8529 44.5757 51.5039 43.9827 47.3707C43.4267 43.4953 42.1638 41.4763 40.9451 40.4033Z" fill="#0090F9"/>
+    <path class="Node" d="M22.2285 15.6009C23.469 15.6046 24.5629 16.2314 25.2134 17.1847L39.7842 32.2845C41.1386 33.6882 41.1386 35.9118 39.7842 37.3154L25.2158 52.4128C24.5637 53.3708 23.464 54 22.2175 54H6.02411C4.02258 54 2.4 52.3779 2.4 50.3769V19.224C2.4 17.223 4.02258 15.6009 6.02411 15.6009H22.0621C22.1177 15.5997 22.1732 15.5997 22.2285 15.6009ZM20.6062 22.8471H9.64822V46.7538H20.6053L32.1403 34.7999L20.6062 22.8471Z" fill="#005B9C"/>
+    <path class="Node" d="M94.8 61.2C94.8 71.8039 86.2039 80.4 75.6 80.4C64.9961 80.4 56.4 71.8039 56.4 61.2C56.4 50.5961 64.9961 42 75.6 42C86.2039 42 94.8 50.5961 94.8 61.2ZM75.6 72.6262C81.9105 72.6262 87.0262 67.5105 87.0262 61.2C87.0262 54.8895 81.9105 49.7738 75.6 49.7738C69.2894 49.7738 64.1738 54.8895 64.1738 61.2C64.1738 67.5105 69.2894 72.6262 75.6 72.6262Z" fill="#005B9C"/>
+        <style>
+            .Line {
+                fill: #0090F9;
+            }
+
+            .Node {
+                fill: #005B9C;
+            }
+
+            @media (prefers-color-scheme: dark) {
+                .Line {
+                    fill: #5FBCFF;
+                }
+
+                .Node {
+                    fill: #ffffff;
+                }
+            }
+        </style>
+    </svg>
   index.html: |
     <!DOCTYPE html>
     <html>
@@ -37,8 +62,7 @@ data:
             <meta charset="utf-8" />
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
             <meta name="viewport" content="width=device-width,initial-scale=1.0" />
-            <link rel="icon" href="/img/favicon.svg" />
-            <link rel="apple-touch-icon" href="/img/touch-icon.png" />
+            <link rel="icon" href="/favicon.svg" />
             <title>NodeScript</title>
             <style>
                 html, body {
@@ -91,7 +115,7 @@ data:
     </html>
 kind: ConfigMap
 metadata:
-  name: docs-nginx-files-92fdb86tbh
+  name: docs-nginx-files-k9f69dcftf
   namespace: default
 ---
 apiVersion: v1
@@ -149,7 +173,7 @@ spec:
           name: docs-nginx-config-4d64tt249t
         name: nginx-config
       - configMap:
-          name: docs-nginx-files-92fdb86tbh
+          name: docs-nginx-files-k9f69dcftf
         name: nginx-files
 ---
 apiVersion: policy/v1
