@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-to-workspace
+spec:
+  replicas: 2
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: chat-to-workspace
+  template:
+    metadata:
+      labels:
+        app: chat-to-workspace
+    spec:
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-access
+      nodeSelector:
+        workload/default: "true"
+      containers:
+        - name: chat-to-workspace
+          image: chat-to-workspace
+          ports:
+            - name: http
+              containerPort: 3000
+          resources:
+            requests:
+              cpu: 50m
+              memory: 100Mi
+            limits:
+              memory: 400Mi

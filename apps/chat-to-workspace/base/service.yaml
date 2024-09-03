@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: chat-to-workspace
+  labels:
+    monitor: "false"
+spec:
+  type: ClusterIP
+  selector:
+    app: chat-to-workspace
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
