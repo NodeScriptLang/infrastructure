@@ -3,7 +3,7 @@ namespace: default
 images:
   - name: chat-to-workspace
     newName: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/chat-to-workspace
-    newTag: v1.0.0
+    newTag: v0.2.1
 resources:
   - ../../base
   - pdb.yaml

@@ -5,6 +5,7 @@ namespace: argocd
 resources:
   - apps/api-service.yaml
   - apps/background-service.yaml
+  - apps/chat-to-workspace.yaml
   - apps/custom-domain-mapping.yaml
   - apps/docs.yaml
   - apps/fetch-service.yaml
