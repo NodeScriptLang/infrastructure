@@ -18,6 +18,23 @@ spec:
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:
+  name: route-chat-to-workspace
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`chat.nodescript.dev`)
+    services:
+    - name: chat-to-workspace
+      port: 3000
+  tls:
+    secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
   name: route-docs
   namespace: default
 spec:

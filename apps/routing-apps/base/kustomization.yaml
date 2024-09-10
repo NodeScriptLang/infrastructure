@@ -4,6 +4,7 @@ namespace: default
 
 resources:
   - api-service.yaml
+  - chat-to-workspace.yaml
   - fetch-service.yaml
   - frontend.yaml
   - gateway-service.yaml
