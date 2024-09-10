@@ -1,0 +1,60 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    monitor: "false"
+  name: chat-to-workspace
+  namespace: default
+spec:
+  ports:
+  - name: http
+    port: 80
+    targetPort: http
+  selector:
+    app: chat-to-workspace
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chat-to-workspace
+  namespace: default
+spec:
+  replicas: 2
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: chat-to-workspace
+  template:
+    metadata:
+      labels:
+        app: chat-to-workspace
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/chat-to-workspace:v1.0.0
+        name: chat-to-workspace
+        ports:
+        - containerPort: 3000
+          name: http
+        resources:
+          limits:
+            memory: 400Mi
+          requests:
+            cpu: 50m
+            memory: 100Mi
+      imagePullSecrets:
+      - name: gcp-registry-access
+      nodeSelector:
+        workload/default: "true"
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: chat-to-workspace
+  namespace: default
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: chat-to-workspace
