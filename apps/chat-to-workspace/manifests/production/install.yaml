@@ -33,7 +33,7 @@ spec:
       - envFrom:
         - secretRef:
             name: chat-to-workspace-secrets
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/chat-to-workspace:v0.2.2
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/chat-to-workspace:v0.2.3
         name: chat-to-workspace
         ports:
         - containerPort: 3000
