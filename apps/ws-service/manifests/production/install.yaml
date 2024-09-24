@@ -55,7 +55,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: ws-service-config-hf678c7m2b
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend:5.39.5
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend:5.40.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
