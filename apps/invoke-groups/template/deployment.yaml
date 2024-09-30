@@ -56,6 +56,8 @@ spec:
               value: '8080'
             - name: AUX_HTTP_PORT
               value: '8081'
+            - name: LOG_STACK
+              value: 'true'
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
