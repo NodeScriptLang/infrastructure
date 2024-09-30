@@ -58,6 +58,8 @@ spec:
               value: '8081'
             - name: LOG_STACK
               value: 'true'
+            - name: MAX_INVOCATIONS
+              value: '10000000'
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
