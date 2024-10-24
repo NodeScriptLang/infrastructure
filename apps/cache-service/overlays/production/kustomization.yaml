@@ -1,9 +1,9 @@
 kind: Kustomization
 namespace: default
 images:
-  - name: nodescript-backend
+  - name: cache-service
     newName: ghcr.io/nodescriptlang/cache-service
-    newTag: 1.0.0
+    newTag: 1.0.1
 resources:
   - ../../base
   - ./hpa.yaml
