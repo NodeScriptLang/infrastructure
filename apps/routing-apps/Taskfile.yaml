@@ -10,6 +10,7 @@ vars:
     staging
   REPLACEMENTS: |
     production:API_SERVICE_HOST,api.nodescript.dev
+    production:CACHE_SERVICE_HOST,cache.nodescript.dev
     production:CHAT_TO_WORKSPACE_HOST,chat.nodescript.dev
     production:DOCS_HOST,docs.nodescript.dev
     production:FETCH_SERVICE_HOST,fetch.nodescript.dev
@@ -22,6 +23,7 @@ vars:
     production:PAYMENT_PROVIDER_SERVICE_HOST,payment-provider.nodescript.dev
     production:REGISTRY_SERVICE_HOST,registry.nodescript.dev
     staging:API_SERVICE_HOST,api.staging.nodescript.dev
+    staging:CACHE_SERVICE_HOST,cache.staging.nodescript.dev
     staging:CHAT_TO_WORKSPACE_HOST,chat.staging.nodescript.dev
     staging:DOCS_HOST,docs.staging.nodescript.dev
     staging:FETCH_SERVICE_HOST,fetch.staging.nodescript.dev
