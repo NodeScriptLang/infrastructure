@@ -3,7 +3,7 @@ namespace: default
 images:
   - name: cache-service
     newName: ghcr.io/nodescriptlang/cache-service
-    newTag: 1.1.0
+    newTag: 1.1.1
 resources:
   - ../../base
   - ./hpa.yaml
