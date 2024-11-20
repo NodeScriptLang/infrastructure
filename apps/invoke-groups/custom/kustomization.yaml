@@ -7,3 +7,7 @@ resources:
 - ubio-flight-search/hpa.yaml
 - ubio-flight-search/pdb.yaml
 - ubio-flight-search/service.yaml
+- ubio-smart-feed/deployment.yaml
+- ubio-smart-feed/hpa.yaml
+- ubio-smart-feed/pdb.yaml
+- ubio-smart-feed/service.yaml
