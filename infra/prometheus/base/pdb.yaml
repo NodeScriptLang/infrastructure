@@ -3,8 +3,8 @@ kind: PodDisruptionBudget
 metadata:
   name: prometheus
 spec:
-  # Do not allow to move Prometheus between nodes
-  maxUnavailable: 0
+  # Prometheus can be down when node is undergoing maintenance
+  minAvailable: 0
   selector:
     matchLabels:
       app: prometheus

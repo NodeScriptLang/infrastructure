@@ -141,7 +141,7 @@ metadata:
   name: prometheus
   namespace: monitoring
 spec:
-  maxUnavailable: 0
+  minAvailable: 0
   selector:
     matchLabels:
       app: prometheus
