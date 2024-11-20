@@ -207,6 +207,25 @@ spec:
     app: invoke-group-ubio-flight-search
   type: ClusterIP
 ---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
+  name: invoke-group-ubio-smart-feed
+  namespace: invoke
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: invoke-group-ubio-smart-feed
+  type: ClusterIP
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -1107,6 +1126,86 @@ spec:
         workload/invoke-ubio-flight-search: "true"
       terminationGracePeriodSeconds: 150
 ---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: invoke-group-ubio-smart-feed
+  namespace: invoke
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: invoke-group-ubio-smart-feed
+  strategy:
+    rollingUpdate:
+      maxSurge: 10
+      maxUnavailable: 2
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: invoke-group-ubio-smart-feed
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - command:
+        - node
+        - --experimental-network-imports
+        - --no-warnings
+        - out/bin/run.js
+        env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: HTTP_TIMEOUT
+          value: "300000"
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.10.0
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /status
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: invoke-group-ubio-smart-feed
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /status
+            port: aux
+          initialDelaySeconds: 5
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          limits:
+            memory: 1.2Gi
+          requests:
+            cpu: 400m
+            memory: 800Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          procMount: Default
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      imagePullSecrets:
+      - name: gcp-registry-secret
+      nodeSelector:
+        workload/invoke-ubio-smart-feed: "true"
+      terminationGracePeriodSeconds: 150
+---
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
@@ -1227,6 +1326,17 @@ spec:
   selector:
     matchLabels:
       app: invoke-group-ubio-flight-search
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: invoke-group-ubio-smart-feed
+  namespace: invoke
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-ubio-smart-feed
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
@@ -1447,3 +1557,23 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-ubio-flight-search
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: invoke-group-ubio-smart-feed
+  namespace: invoke
+spec:
+  maxReplicas: 50
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 95
+        type: Utilization
+    type: Resource
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: invoke-group-ubio-smart-feed
