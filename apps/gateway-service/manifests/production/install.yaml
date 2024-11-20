@@ -27,11 +27,17 @@ data:
             "targets": [
                 "invoke-group-ubio-flight-search.invoke.svc.cluster.local:8080"
             ]
+        },
+        {
+            "tier": "custom-ubio-smart-feed",
+            "targets": [
+                "invoke-group-ubio-smart-feed.invoke.svc.cluster.local:8080"
+            ]
         }
     ]
 kind: ConfigMap
 metadata:
-  name: gateway-service-tiers-bcb2btd56g
+  name: gateway-service-tiers-t5fgch5bc4
   namespace: default
 ---
 apiVersion: v1
@@ -84,7 +90,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: tiers.json
-              name: gateway-service-tiers-bcb2btd56g
+              name: gateway-service-tiers-t5fgch5bc4
         envFrom:
         - secretRef:
             name: backend-secrets

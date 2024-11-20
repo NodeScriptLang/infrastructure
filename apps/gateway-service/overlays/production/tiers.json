@@ -24,5 +24,11 @@
         "targets": [
             "invoke-group-ubio-flight-search.invoke.svc.cluster.local:8080"
         ]
+    },
+    {
+        "tier": "custom-ubio-smart-feed",
+        "targets": [
+            "invoke-group-ubio-smart-feed.invoke.svc.cluster.local:8080"
+        ]
     }
 ]
