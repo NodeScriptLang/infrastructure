@@ -239,7 +239,7 @@ spec:
   strategy:
     rollingUpdate:
       maxSurge: 5
-      maxUnavailable: 2
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
@@ -269,7 +269,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-a
@@ -321,7 +321,7 @@ spec:
   strategy:
     rollingUpdate:
       maxSurge: 5
-      maxUnavailable: 2
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
@@ -351,7 +351,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-b
@@ -403,7 +403,7 @@ spec:
   strategy:
     rollingUpdate:
       maxSurge: 5
-      maxUnavailable: 2
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
@@ -433,7 +433,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-c
@@ -485,7 +485,7 @@ spec:
   strategy:
     rollingUpdate:
       maxSurge: 5
-      maxUnavailable: 2
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
@@ -515,7 +515,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-d
@@ -567,7 +567,7 @@ spec:
   strategy:
     rollingUpdate:
       maxSurge: 5
-      maxUnavailable: 2
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
@@ -597,7 +597,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-e
@@ -649,7 +649,7 @@ spec:
   strategy:
     rollingUpdate:
       maxSurge: 5
-      maxUnavailable: 2
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
@@ -679,7 +679,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-f
@@ -731,7 +731,7 @@ spec:
   strategy:
     rollingUpdate:
       maxSurge: 5
-      maxUnavailable: 2
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
@@ -761,7 +761,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-g
@@ -813,7 +813,7 @@ spec:
   strategy:
     rollingUpdate:
       maxSurge: 5
-      maxUnavailable: 2
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
@@ -843,7 +843,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-h
@@ -895,7 +895,7 @@ spec:
   strategy:
     rollingUpdate:
       maxSurge: 5
-      maxUnavailable: 2
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
@@ -925,7 +925,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-incubator-a
@@ -977,7 +977,7 @@ spec:
   strategy:
     rollingUpdate:
       maxSurge: 5
-      maxUnavailable: 2
+      maxUnavailable: 1
     type: RollingUpdate
   template:
     metadata:
@@ -1007,7 +1007,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-incubator-b
@@ -1212,7 +1212,7 @@ metadata:
   name: invoke-group-default-a
   namespace: invoke
 spec:
-  minAvailable: 1
+  maxUnavailable: 1
   selector:
     matchLabels:
       app: invoke-group-default-a
@@ -1223,7 +1223,7 @@ metadata:
   name: invoke-group-default-b
   namespace: invoke
 spec:
-  minAvailable: 1
+  maxUnavailable: 1
   selector:
     matchLabels:
       app: invoke-group-default-b
@@ -1234,7 +1234,7 @@ metadata:
   name: invoke-group-default-c
   namespace: invoke
 spec:
-  minAvailable: 1
+  maxUnavailable: 1
   selector:
     matchLabels:
       app: invoke-group-default-c
@@ -1245,7 +1245,7 @@ metadata:
   name: invoke-group-default-d
   namespace: invoke
 spec:
-  minAvailable: 1
+  maxUnavailable: 1
   selector:
     matchLabels:
       app: invoke-group-default-d
@@ -1256,7 +1256,7 @@ metadata:
   name: invoke-group-default-e
   namespace: invoke
 spec:
-  minAvailable: 1
+  maxUnavailable: 1
   selector:
     matchLabels:
       app: invoke-group-default-e
@@ -1267,7 +1267,7 @@ metadata:
   name: invoke-group-default-f
   namespace: invoke
 spec:
-  minAvailable: 1
+  maxUnavailable: 1
   selector:
     matchLabels:
       app: invoke-group-default-f
@@ -1278,7 +1278,7 @@ metadata:
   name: invoke-group-default-g
   namespace: invoke
 spec:
-  minAvailable: 1
+  maxUnavailable: 1
   selector:
     matchLabels:
       app: invoke-group-default-g
@@ -1289,7 +1289,7 @@ metadata:
   name: invoke-group-default-h
   namespace: invoke
 spec:
-  minAvailable: 1
+  maxUnavailable: 1
   selector:
     matchLabels:
       app: invoke-group-default-h
@@ -1300,7 +1300,7 @@ metadata:
   name: invoke-group-incubator-a
   namespace: invoke
 spec:
-  minAvailable: 1
+  maxUnavailable: 1
   selector:
     matchLabels:
       app: invoke-group-incubator-a
@@ -1311,7 +1311,7 @@ metadata:
   name: invoke-group-incubator-b
   namespace: invoke
 spec:
-  minAvailable: 1
+  maxUnavailable: 1
   selector:
     matchLabels:
       app: invoke-group-incubator-b

@@ -18,7 +18,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 2
+      maxUnavailable: 1
       maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
@@ -87,7 +87,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 10
+            periodSeconds: 5
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -115,7 +115,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 2
+      maxUnavailable: 1
       maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
@@ -184,7 +184,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 10
+            periodSeconds: 5
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -212,7 +212,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 2
+      maxUnavailable: 1
       maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
@@ -281,7 +281,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 10
+            periodSeconds: 5
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -309,7 +309,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 2
+      maxUnavailable: 1
       maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
@@ -378,7 +378,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 10
+            periodSeconds: 5
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -406,7 +406,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 2
+      maxUnavailable: 1
       maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
@@ -475,7 +475,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 10
+            periodSeconds: 5
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -503,7 +503,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 2
+      maxUnavailable: 1
       maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
@@ -572,7 +572,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 10
+            periodSeconds: 5
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -600,7 +600,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 2
+      maxUnavailable: 1
       maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
@@ -669,7 +669,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 10
+            periodSeconds: 5
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -697,7 +697,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 2
+      maxUnavailable: 1
       maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
@@ -766,7 +766,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 10
+            periodSeconds: 5
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -794,7 +794,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 2
+      maxUnavailable: 1
       maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
@@ -863,7 +863,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 10
+            periodSeconds: 5
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -891,7 +891,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 2
+      maxUnavailable: 1
       maxSurge: 5
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
@@ -960,7 +960,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 10
+            periodSeconds: 5
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5

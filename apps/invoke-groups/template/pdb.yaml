@@ -3,7 +3,7 @@ kind: PodDisruptionBudget
 metadata:
   name: invoke-group-$TIER-$GROUP
 spec:
-  minAvailable: 1
+  maxUnavailable: 1
   selector:
     matchLabels:
       app: invoke-group-$TIER-$GROUP
