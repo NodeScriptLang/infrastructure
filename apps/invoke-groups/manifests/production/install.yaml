@@ -1322,7 +1322,7 @@ metadata:
   name: invoke-group-ubio-flight-search
   namespace: invoke
 spec:
-  minAvailable: 1
+  maxUnavailable: 1
   selector:
     matchLabels:
       app: invoke-group-ubio-flight-search
@@ -1333,7 +1333,7 @@ metadata:
   name: invoke-group-ubio-smart-feed
   namespace: invoke
 spec:
-  minAvailable: 1
+  maxUnavailable: 1
   selector:
     matchLabels:
       app: invoke-group-ubio-smart-feed
