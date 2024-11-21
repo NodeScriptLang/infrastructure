@@ -87,7 +87,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 5
+            periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -184,7 +184,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 5
+            periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -281,7 +281,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 5
+            periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -378,7 +378,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 5
+            periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -475,7 +475,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 5
+            periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -572,7 +572,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 5
+            periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -669,7 +669,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 5
+            periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -766,7 +766,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 5
+            periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -863,7 +863,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 5
+            periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5
@@ -960,7 +960,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 5
+            periodSeconds: 10
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5

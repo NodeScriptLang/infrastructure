@@ -269,7 +269,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 5
+          periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-a
@@ -351,7 +351,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 5
+          periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-b
@@ -433,7 +433,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 5
+          periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-c
@@ -515,7 +515,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 5
+          periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-d
@@ -597,7 +597,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 5
+          periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-e
@@ -679,7 +679,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 5
+          periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-f
@@ -761,7 +761,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 5
+          periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-g
@@ -843,7 +843,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 5
+          periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-h
@@ -925,7 +925,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 5
+          periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-incubator-a
@@ -1007,7 +1007,7 @@ spec:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 5
+          periodSeconds: 10
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-incubator-b
