@@ -79,8 +79,8 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 10
-            failureThreshold: 3
+            periodSeconds: 5
+            failureThreshold: 2
             successThreshold: 1
             timeoutSeconds: 5
           # Note stricter container security here.

@@ -264,12 +264,12 @@ spec:
           value: "10000000"
         image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.10.0
         livenessProbe:
-          failureThreshold: 3
+          failureThreshold: 2
           httpGet:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-a
@@ -346,12 +346,12 @@ spec:
           value: "10000000"
         image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.10.0
         livenessProbe:
-          failureThreshold: 3
+          failureThreshold: 2
           httpGet:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-b
@@ -428,12 +428,12 @@ spec:
           value: "10000000"
         image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.10.0
         livenessProbe:
-          failureThreshold: 3
+          failureThreshold: 2
           httpGet:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-c
@@ -510,12 +510,12 @@ spec:
           value: "10000000"
         image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.10.0
         livenessProbe:
-          failureThreshold: 3
+          failureThreshold: 2
           httpGet:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-d
@@ -592,12 +592,12 @@ spec:
           value: "10000000"
         image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.10.0
         livenessProbe:
-          failureThreshold: 3
+          failureThreshold: 2
           httpGet:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-e
@@ -674,12 +674,12 @@ spec:
           value: "10000000"
         image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.10.0
         livenessProbe:
-          failureThreshold: 3
+          failureThreshold: 2
           httpGet:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-f
@@ -756,12 +756,12 @@ spec:
           value: "10000000"
         image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.10.0
         livenessProbe:
-          failureThreshold: 3
+          failureThreshold: 2
           httpGet:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-g
@@ -838,12 +838,12 @@ spec:
           value: "10000000"
         image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.10.0
         livenessProbe:
-          failureThreshold: 3
+          failureThreshold: 2
           httpGet:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-default-h
@@ -920,12 +920,12 @@ spec:
           value: "10000000"
         image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.10.0
         livenessProbe:
-          failureThreshold: 3
+          failureThreshold: 2
           httpGet:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-incubator-a
@@ -1002,12 +1002,12 @@ spec:
           value: "10000000"
         image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.10.0
         livenessProbe:
-          failureThreshold: 3
+          failureThreshold: 2
           httpGet:
             path: /status
             port: aux
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 5
         name: invoke-group-incubator-b
