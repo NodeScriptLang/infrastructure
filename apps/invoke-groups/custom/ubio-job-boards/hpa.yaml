@@ -1,12 +1,12 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: invoke-group-ubio-job-baords
+  name: invoke-group-ubio-job-boards
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: invoke-group-ubio-job-baords
+    name: invoke-group-ubio-job-boards
   minReplicas: 2
   maxReplicas: 50
   metrics:
