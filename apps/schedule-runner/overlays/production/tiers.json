@@ -26,6 +26,12 @@
         ]
     },
     {
+        "tier": "custom-ubio-job-boards",
+        "targets": [
+            "invoke-group-ubio-job-boards.invoke.svc.cluster.local:8080"
+        ]
+    },
+    {
         "tier": "custom-ubio-smart-feed",
         "targets": [
             "invoke-group-ubio-smart-feed.invoke.svc.cluster.local:8080"
