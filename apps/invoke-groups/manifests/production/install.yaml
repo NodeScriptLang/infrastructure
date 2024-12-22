@@ -281,7 +281,7 @@ spec:
           value: "true"
         - name: MAX_INVOCATIONS
           value: "10000000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.11.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.12.0
         livenessProbe:
           failureThreshold: 2
           httpGet:
@@ -363,7 +363,7 @@ spec:
           value: "true"
         - name: MAX_INVOCATIONS
           value: "10000000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.11.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.12.0
         livenessProbe:
           failureThreshold: 2
           httpGet:
@@ -445,7 +445,7 @@ spec:
           value: "true"
         - name: MAX_INVOCATIONS
           value: "10000000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.11.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.12.0
         livenessProbe:
           failureThreshold: 2
           httpGet:
@@ -527,7 +527,7 @@ spec:
           value: "true"
         - name: MAX_INVOCATIONS
           value: "10000000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.11.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.12.0
         livenessProbe:
           failureThreshold: 2
           httpGet:
@@ -609,7 +609,7 @@ spec:
           value: "true"
         - name: MAX_INVOCATIONS
           value: "10000000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.11.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.12.0
         livenessProbe:
           failureThreshold: 2
           httpGet:
@@ -691,7 +691,7 @@ spec:
           value: "true"
         - name: MAX_INVOCATIONS
           value: "10000000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.11.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.12.0
         livenessProbe:
           failureThreshold: 2
           httpGet:
@@ -773,7 +773,7 @@ spec:
           value: "true"
         - name: MAX_INVOCATIONS
           value: "10000000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.11.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.12.0
         livenessProbe:
           failureThreshold: 2
           httpGet:
@@ -855,7 +855,7 @@ spec:
           value: "true"
         - name: MAX_INVOCATIONS
           value: "10000000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.11.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.12.0
         livenessProbe:
           failureThreshold: 2
           httpGet:
@@ -937,7 +937,7 @@ spec:
           value: "true"
         - name: MAX_INVOCATIONS
           value: "10000000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.11.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.12.0
         livenessProbe:
           failureThreshold: 2
           httpGet:
@@ -1019,7 +1019,7 @@ spec:
           value: "true"
         - name: MAX_INVOCATIONS
           value: "10000000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.11.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.12.0
         livenessProbe:
           failureThreshold: 2
           httpGet:
@@ -1099,7 +1099,7 @@ spec:
           value: "8081"
         - name: HTTP_TIMEOUT
           value: "300000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.11.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.12.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -1179,7 +1179,7 @@ spec:
           value: "8081"
         - name: HTTP_TIMEOUT
           value: "300000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.11.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.12.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -1259,7 +1259,7 @@ spec:
           value: "8081"
         - name: HTTP_TIMEOUT
           value: "300000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.11.0
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.12.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
