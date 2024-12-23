@@ -98,7 +98,7 @@ spec:
     - name: frontend
       port: 8080
   - kind: Rule
-    match: Host(`embed.staging.nodescript.dev`)
+    match: Host(`FRONTEND_EMBED_HOST`)
     services:
     - name: frontend
       port: 8080
@@ -111,6 +111,38 @@ spec:
     match: HostRegexp(`{subdomain:[0-9a-zA-Z_-]+}.edge.staging.nodescript.dev`)
     services:
     - name: frontend
+      port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-frontend-next
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`next.staging.nodescript.dev`)
+    services:
+    - name: frontend-next
+      port: 8080
+  - kind: Rule
+    match: Host(`FRONTEND_NEXT_EMBED_HOST`)
+    services:
+    - name: frontend-next
+      port: 8080
+  - kind: Rule
+    match: Host(`notebooks.next.staging.nodescript.dev`)
+    services:
+    - name: frontend-next
+      port: 8080
+  - kind: Rule
+    match: HostRegexp(`{subdomain:[0-9a-zA-Z_-]+}.edge.next.staging.nodescript.dev`)
+    services:
+    - name: frontend-next
       port: 8080
   tls:
     secretName: nodescript-dev-certificate

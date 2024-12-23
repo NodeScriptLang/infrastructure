@@ -8,6 +8,7 @@ resources:
   - chat-to-workspace.yaml
   - fetch-service.yaml
   - frontend.yaml
+  - frontend-next.yaml
   - gateway-service.yaml
   - docs.yaml
   - guides.yaml
