@@ -1,9 +1,0 @@
-kind: Kustomization
-namespace: default
-images:
-  - name: nodescript-frontend-next
-    newName: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-frontend
-    newTag: 6.0.0-0
-resources:
-  - ../../base
-  - pdb.yaml

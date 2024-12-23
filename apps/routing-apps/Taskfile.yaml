@@ -17,9 +17,6 @@ vars:
     production:FRONTEND_EDGE_HOST,edge.nodescript.dev
     production:FRONTEND_HOST,nodescript.dev
     production:FRONTEND_NOTEBOOKS_HOST,notebooks.nodescript.dev
-    production:FRONTEND_NEXT_EDGE_HOST,edge.next.nodescript.dev
-    production:FRONTEND_NEXT_HOST,next.nodescript.dev
-    production:FRONTEND_NEXT_NOTEBOOKS_HOST,notebooks.next.nodescript.dev
     production:GUIDES_HOST,guides.nodescript.dev
     production:INVOKE_HOST,run.nodescript.dev
     production:PAYMENT_PROVIDER_SERVICE_HOST,payment-provider.nodescript.dev
@@ -32,9 +29,6 @@ vars:
     staging:FRONTEND_EDGE_HOST,edge.staging.nodescript.dev
     staging:FRONTEND_HOST,staging.nodescript.dev
     staging:FRONTEND_NOTEBOOKS_HOST,notebooks.staging.nodescript.dev
-    staging:FRONTEND_NEXT_EDGE_HOST,edge.next.staging.nodescript.dev
-    staging:FRONTEND_NEXT_HOST,next.staging.nodescript.dev
-    staging:FRONTEND_NEXT_NOTEBOOKS_HOST,notebooks.next.staging.nodescript.dev
     staging:GUIDES_HOST,guides.staging.nodescript.dev
     staging:INVOKE_HOST,run.staging.nodescript.dev
     staging:PAYMENT_PROVIDER_SERVICE_HOST,payment-provider.staging.nodescript.dev
