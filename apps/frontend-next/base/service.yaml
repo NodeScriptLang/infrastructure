@@ -1,11 +1,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: frontend
+  name: frontend-next
   labels: {}
 spec:
   selector:
-    app: frontend
+    app: frontend-next
   ports:
     - name: http
       port: 8080

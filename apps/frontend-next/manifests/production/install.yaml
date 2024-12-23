@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Service
 metadata:
   labels: {}
-  name: frontend
+  name: frontend-next
   namespace: default
 spec:
   ports:
@@ -10,28 +10,28 @@ spec:
     port: 8080
     targetPort: 8080
   selector:
-    app: frontend
+    app: frontend-next
 ---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: frontend-next
   namespace: default
 spec:
   replicas: 2
   revisionHistoryLimit: 1
   selector:
     matchLabels:
-      app: frontend
+      app: frontend-next
   template:
     metadata:
       labels:
-        app: frontend
+        app: frontend-next
     spec:
       automountServiceAccountToken: false
       containers:
       - image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-frontend:6.0.0-0
-        name: frontend
+        name: frontend-next
         ports:
         - containerPort: 8080
         resources:
@@ -46,10 +46,10 @@ spec:
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: frontend
+  name: frontend-next
   namespace: default
 spec:
   minAvailable: 1
   selector:
     matchLabels:
-      app: frontend
+      app: frontend-next

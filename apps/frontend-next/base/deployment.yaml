@@ -1,17 +1,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: frontend
+  name: frontend-next
 spec:
   selector:
     matchLabels:
-      app: frontend
+      app: frontend-next
   replicas: 2
   revisionHistoryLimit: 1
   template:
     metadata:
       labels:
-        app: frontend
+        app: frontend-next
     spec:
       automountServiceAccountToken: false
       imagePullSecrets:
@@ -19,8 +19,8 @@ spec:
       nodeSelector:
         workload/default: "true"
       containers:
-        - name: frontend
-          image: nodescript-frontend
+        - name: frontend-next
+          image: nodescript-frontend-next
           ports:
             - containerPort: 8080
           resources:
