@@ -11,6 +11,7 @@ resources:
   - apps/docs.yaml
   - apps/fetch-service.yaml
   - apps/frontend.yaml
+  - apps/frontend-next.yaml
   - apps/gateway-service.yaml
   - apps/guides.yaml
   - apps/invoke-groups.yaml

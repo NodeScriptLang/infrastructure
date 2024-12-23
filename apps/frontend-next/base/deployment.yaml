@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  replicas: 2
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: frontend
+    spec:
+      automountServiceAccountToken: false
+      imagePullSecrets:
+        - name: gcp-registry-secret
+      nodeSelector:
+        workload/default: "true"
+      containers:
+        - name: frontend
+          image: nodescript-frontend
+          ports:
+            - containerPort: 8080
+          resources:
+            requests:
+              cpu: 50m
+              memory: 400Mi
