@@ -30,7 +30,7 @@ spec:
     spec:
       automountServiceAccountToken: false
       containers:
-      - image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-frontend:5.63.1
+      - image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-frontend:5.67.0
         name: frontend
         ports:
         - containerPort: 8080
