@@ -7,12 +7,11 @@ spec:
   dnsNames:
   - nodescript.dev
   - '*.nodescript.dev'
-  - '*.staging.nodescript.dev'
-  - '*.adapters.nodescript.dev'
-  - '*.adapters.staging.nodescript.dev'
   - '*.edge.nodescript.dev'
-  - '*.edge.staging.nodescript.dev'
   - '*.run.nodescript.dev'
+  - '*.next.nodescript.dev'
+  - '*.staging.nodescript.dev'
+  - '*.edge.staging.nodescript.dev'
   - '*.run.staging.nodescript.dev'
   issuerRef:
     kind: ClusterIssuer
