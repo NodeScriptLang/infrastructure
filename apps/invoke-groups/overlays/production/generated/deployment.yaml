@@ -43,11 +43,6 @@ spec:
       containers:
         - name: invoke-group-default-a
           image: nodescript-invoke-service
-          command:
-            - node
-            - --experimental-network-imports
-            - --no-warnings
-            - out/bin/run.js
           ports:
             - name: http
               containerPort: 8080
@@ -140,11 +135,6 @@ spec:
       containers:
         - name: invoke-group-default-b
           image: nodescript-invoke-service
-          command:
-            - node
-            - --experimental-network-imports
-            - --no-warnings
-            - out/bin/run.js
           ports:
             - name: http
               containerPort: 8080
@@ -237,11 +227,6 @@ spec:
       containers:
         - name: invoke-group-default-c
           image: nodescript-invoke-service
-          command:
-            - node
-            - --experimental-network-imports
-            - --no-warnings
-            - out/bin/run.js
           ports:
             - name: http
               containerPort: 8080
@@ -334,11 +319,6 @@ spec:
       containers:
         - name: invoke-group-default-d
           image: nodescript-invoke-service
-          command:
-            - node
-            - --experimental-network-imports
-            - --no-warnings
-            - out/bin/run.js
           ports:
             - name: http
               containerPort: 8080
@@ -431,11 +411,6 @@ spec:
       containers:
         - name: invoke-group-default-e
           image: nodescript-invoke-service
-          command:
-            - node
-            - --experimental-network-imports
-            - --no-warnings
-            - out/bin/run.js
           ports:
             - name: http
               containerPort: 8080
@@ -528,11 +503,6 @@ spec:
       containers:
         - name: invoke-group-default-f
           image: nodescript-invoke-service
-          command:
-            - node
-            - --experimental-network-imports
-            - --no-warnings
-            - out/bin/run.js
           ports:
             - name: http
               containerPort: 8080
@@ -625,11 +595,6 @@ spec:
       containers:
         - name: invoke-group-default-g
           image: nodescript-invoke-service
-          command:
-            - node
-            - --experimental-network-imports
-            - --no-warnings
-            - out/bin/run.js
           ports:
             - name: http
               containerPort: 8080
@@ -722,11 +687,6 @@ spec:
       containers:
         - name: invoke-group-default-h
           image: nodescript-invoke-service
-          command:
-            - node
-            - --experimental-network-imports
-            - --no-warnings
-            - out/bin/run.js
           ports:
             - name: http
               containerPort: 8080
@@ -819,11 +779,6 @@ spec:
       containers:
         - name: invoke-group-incubator-a
           image: nodescript-invoke-service
-          command:
-            - node
-            - --experimental-network-imports
-            - --no-warnings
-            - out/bin/run.js
           ports:
             - name: http
               containerPort: 8080
@@ -916,11 +871,6 @@ spec:
       containers:
         - name: invoke-group-incubator-b
           image: nodescript-invoke-service
-          command:
-            - node
-            - --experimental-network-imports
-            - --no-warnings
-            - out/bin/run.js
           ports:
             - name: http
               containerPort: 8080

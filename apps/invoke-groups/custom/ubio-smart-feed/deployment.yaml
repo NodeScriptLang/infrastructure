@@ -35,11 +35,6 @@ spec:
       containers:
         - name: invoke-group-ubio-smart-feed
           image: nodescript-invoke-service
-          command:
-            - node
-            - --experimental-network-imports
-            - --no-warnings
-            - out/bin/run.js
           ports:
             - name: http
               containerPort: 8080
