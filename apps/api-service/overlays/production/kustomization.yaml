@@ -3,7 +3,7 @@ namespace: default
 images:
   - name: nodescript-backend
     newName: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend
-    newTag: 6.8.0
+    newTag: 6.9.0
 resources:
   - ../../base
   - ./hpa.yaml
