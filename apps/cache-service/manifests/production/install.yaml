@@ -42,7 +42,7 @@ spec:
         envFrom:
         - secretRef:
             name: cache-secrets
-        image: ghcr.io/nodescriptlang/cache-service:1.11.0
+        image: ghcr.io/nodescriptlang/cache-service:1.11.1
         livenessProbe:
           failureThreshold: 3
           httpGet:
