@@ -184,6 +184,24 @@ spec:
   tls:
     secretName: nodescript-dev-certificate
 ---
+---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-relay-service
+  namespace: default
+spec:
+  entryPoints:
+  - websecure
+  routes:
+  - kind: Rule
+    match: Host(`relay.nodescript.dev`)
+    services:
+    - name: relay-service
+      port: 8080
+  tls:
+    secretName: nodescript-dev-certificate
+---
 apiVersion: traefik.containo.us/v1alpha1
 kind: IngressRoute
 metadata:

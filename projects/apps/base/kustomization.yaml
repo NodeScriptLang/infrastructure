@@ -16,6 +16,7 @@ resources:
   - apps/invoke-groups.yaml
   - apps/payment-provider-service.yaml
   - apps/registry-service.yaml
+  - apps/relay-service.yaml
   - apps/routing-apps.yaml
   - apps/schedule-runner.yaml
   - apps/ws-service.yaml
