@@ -195,7 +195,7 @@ spec:
   - websecure
   routes:
   - kind: Rule
-    match: Host(`relay.staging.nodescript.dev`)
+    match: HostRegexp(`{subdomain:[0-9a-z-]+}.relay.staging.nodescript.dev`)
     services:
     - name: relay-service
       port: 8080
