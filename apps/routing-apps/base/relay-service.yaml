@@ -6,7 +6,7 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`RELAY_SERVICE_HOST`)
+    - match: HostRegexp(`{subdomain:[0-9a-z-]+}.INVOKE_HOST`)
       kind: Rule
       services:
         - name: relay-service
