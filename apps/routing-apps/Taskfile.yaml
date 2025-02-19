@@ -34,7 +34,7 @@ vars:
     staging:INVOKE_HOST,run.staging.nodescript.dev
     staging:PAYMENT_PROVIDER_SERVICE_HOST,payment-provider.staging.nodescript.dev
     staging:REGISTRY_SERVICE_HOST,registry.staging.nodescript.dev
-    staging:RELAY_SERVICE_HOST,registry.staging.nodescript.dev
+    staging:RELAY_SERVICE_HOST,relay.staging.nodescript.dev
 
 tasks:
   default:
