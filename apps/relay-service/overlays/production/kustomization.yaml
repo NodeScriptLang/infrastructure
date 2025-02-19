@@ -6,5 +6,4 @@ images:
     newTag: 1.11.3
 resources:
   - ../../base
-  - ./hpa.yaml
   - ./pdb.yaml

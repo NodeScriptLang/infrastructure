@@ -69,8 +69,8 @@ spec:
           timeoutSeconds: 5
         resources:
           requests:
-            cpu: 100m
-            memory: 400Mi
+            cpu: 10m
+            memory: 40Mi
       nodeSelector:
         workload/default: "true"
       terminationGracePeriodSeconds: 60
@@ -92,7 +92,7 @@ metadata:
   name: relay-service
   namespace: default
 spec:
-  maxReplicas: 10
+  maxReplicas: 2
   metrics:
   - resource:
       name: cpu

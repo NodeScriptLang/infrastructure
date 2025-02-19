@@ -21,6 +21,7 @@ vars:
     production:INVOKE_HOST,run.nodescript.dev
     production:PAYMENT_PROVIDER_SERVICE_HOST,payment-provider.nodescript.dev
     production:REGISTRY_SERVICE_HOST,registry.nodescript.dev
+    production:RELAY_SERVICE_HOST,relay.nodescript.dev
     staging:API_SERVICE_HOST,api.staging.nodescript.dev
     staging:CACHE_SERVICE_HOST,cache.staging.nodescript.dev
     staging:CHAT_TO_WORKSPACE_HOST,chat.staging.nodescript.dev
@@ -33,6 +34,7 @@ vars:
     staging:INVOKE_HOST,run.staging.nodescript.dev
     staging:PAYMENT_PROVIDER_SERVICE_HOST,payment-provider.staging.nodescript.dev
     staging:REGISTRY_SERVICE_HOST,registry.staging.nodescript.dev
+    staging:RELAY_SERVICE_HOST,registry.staging.nodescript.dev
 
 tasks:
   default:
