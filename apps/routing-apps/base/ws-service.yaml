@@ -5,6 +5,8 @@ metadata:
 spec:
   entryPoints:
     - websecure
+  # Note: we route WS Service to api.nodescript.dev because cookie
+  # authentication uses api.nodescript.dev as the cookie domain.
   routes:
     - match: Host(`API_SERVICE_HOST`) && Path(`/ws`)
       kind: Rule
