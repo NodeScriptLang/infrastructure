@@ -42,7 +42,7 @@ spec:
         envFrom:
         - secretRef:
             name: relay-secrets
-        image: ghcr.io/nodescriptlang/relay-service:1.11.3
+        image: ghcr.io/nodescriptlang/relay-service:1.7.5
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -85,23 +85,3 @@ spec:
   selector:
     matchLabels:
       app: relay-service
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: relay-service
-  namespace: default
-spec:
-  maxReplicas: 2
-  metrics:
-  - resource:
-      name: cpu
-      target:
-        averageUtilization: 80
-        type: Utilization
-    type: Resource
-  minReplicas: 2
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: relay-service
