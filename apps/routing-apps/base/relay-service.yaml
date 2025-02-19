@@ -1,0 +1,15 @@
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: route-relay-service
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`RELAY_SERVICE_HOST`)
+      kind: Rule
+      services:
+        - name: relay-service
+          port: 8080
+  tls:
+    secretName: nodescript-dev-certificate

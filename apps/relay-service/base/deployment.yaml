@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: relay-service
+spec:
+  selector:
+    matchLabels:
+      app: relay-service
+  revisionHistoryLimit: 1
+  template:
+    metadata:
+      labels:
+        app: relay-service
+    spec:
+      terminationGracePeriodSeconds: 60
+      automountServiceAccountToken: false
+      nodeSelector:
+        workload/default: 'true'
+      containers:
+        - name: relay-service
+          image: relay-service
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: aux
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: 10m
+              memory: 40Mi
+          env:
+            - name: HTTP_PORT
+              value: '8080'
+            - name: AUX_HTTP_PORT
+              value: '8081'
+          envFrom:
+            - secretRef:
+                name: relay-secrets
+          readinessProbe:
+            httpGet:
+              path: /status
+              port: aux
+            initialDelaySeconds: 10
+            periodSeconds: 10
+            failureThreshold: 5
+            successThreshold: 1
+            timeoutSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /status
+              port: aux
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            failureThreshold: 3
+            successThreshold: 1
+            timeoutSeconds: 5
