@@ -3,7 +3,7 @@ namespace: default
 images:
   - name: relay-service
     newName: ghcr.io/nodescriptlang/relay-service
-    newTag: 1.7.7
+    newTag: 1.7.8
 resources:
   - ../../base
   - ./pdb.yaml
