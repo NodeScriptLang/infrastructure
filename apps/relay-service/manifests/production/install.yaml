@@ -42,7 +42,7 @@ spec:
         envFrom:
         - secretRef:
             name: relay-secrets
-        image: ghcr.io/nodescriptlang/relay-service:1.9.10
+        image: ghcr.io/nodescriptlang/relay-service:1.10.0
         livenessProbe:
           failureThreshold: 3
           httpGet:
