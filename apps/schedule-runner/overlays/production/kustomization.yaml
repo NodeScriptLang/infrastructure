@@ -3,7 +3,7 @@ namespace: default
 images:
   - name: nodescript-backend
     newName: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend
-    newTag: 6.15.2
+    newTag: 6.16.1
 resources:
   - ../../base
   - ./pdb.yaml
