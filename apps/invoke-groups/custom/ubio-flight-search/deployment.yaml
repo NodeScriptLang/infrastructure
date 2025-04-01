@@ -42,10 +42,10 @@ spec:
               containerPort: 8081
           resources:
             requests:
-              cpu: 600m
-              memory: 1200Mi
-            limits:
+              cpu: 500m
               memory: 2500Mi
+            limits:
+              memory: 3200Mi
           env:
             - name: HTTP_PORT
               value: '8080'
