@@ -36,5 +36,11 @@
         "targets": [
             "invoke-group-ubio-smart-feed.invoke.svc.cluster.local:8080"
         ]
+    },
+    {
+        "tier": "custom-sandbox",
+        "targets": [
+            "invoke-group-sandbox.invoke.svc.cluster.local:8080"
+        ]
     }
 ]

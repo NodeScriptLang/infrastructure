@@ -39,11 +39,17 @@ data:
             "targets": [
                 "invoke-group-ubio-smart-feed.invoke.svc.cluster.local:8080"
             ]
+        },
+        {
+            "tier": "custom-sandbox",
+            "targets": [
+                "invoke-group-sandbox.invoke.svc.cluster.local:8080"
+            ]
         }
     ]
 kind: ConfigMap
 metadata:
-  name: gateway-service-tiers-48c2c95d62
+  name: gateway-service-tiers-chf79f8gd2
   namespace: default
 ---
 apiVersion: v1
@@ -96,7 +102,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: tiers.json
-              name: gateway-service-tiers-48c2c95d62
+              name: gateway-service-tiers-chf79f8gd2
         envFrom:
         - secretRef:
             name: backend-secrets
