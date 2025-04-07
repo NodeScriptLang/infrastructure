@@ -3,7 +3,7 @@ kind: Kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 
 resources:
-  - ubio-flight-search
-  - ubio-job-boards
-  - ubio-smart-feed
-  - sandbox
+  - deployment.yaml
+  - hpa.yaml
+  - pdb.yaml
+  - service.yaml

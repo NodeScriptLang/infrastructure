@@ -193,6 +193,25 @@ kind: Service
 metadata:
   annotations:
     metricsPort: "8081"
+  name: invoke-group-sandbox
+  namespace: invoke
+spec:
+  ports:
+  - name: http
+    port: 8080
+    targetPort: http
+  - name: aux
+    port: 8081
+    targetPort: aux
+  selector:
+    app: invoke-group-sandbox
+  type: ClusterIP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    metricsPort: "8081"
   name: invoke-group-ubio-flight-search
   namespace: invoke
 spec:
@@ -1018,6 +1037,81 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
+  name: invoke-group-sandbox
+  namespace: invoke
+spec:
+  revisionHistoryLimit: 1
+  selector:
+    matchLabels:
+      app: invoke-group-sandbox
+  strategy:
+    rollingUpdate:
+      maxSurge: 10
+      maxUnavailable: 2
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: invoke-group-sandbox
+    spec:
+      automountServiceAccountToken: false
+      containers:
+      - env:
+        - name: HTTP_PORT
+          value: "8080"
+        - name: AUX_HTTP_PORT
+          value: "8081"
+        - name: MAX_INVOCATIONS
+          value: "1000"
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.17.0
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /status
+            port: aux
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 5
+        name: invoke-group-sandbox
+        ports:
+        - containerPort: 8080
+          name: http
+        - containerPort: 8081
+          name: aux
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /status
+            port: aux
+          initialDelaySeconds: 5
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 5
+        resources:
+          limits:
+            memory: 800Gi
+          requests:
+            cpu: 200m
+            memory: 200Mi
+        securityContext:
+          allowPrivilegeEscalation: false
+          capabilities:
+            drop:
+            - ALL
+          procMount: Default
+          readOnlyRootFilesystem: true
+          seccompProfile:
+            type: RuntimeDefault
+      imagePullSecrets:
+      - name: gcp-registry-secret
+      nodeSelector:
+        workload/invoke-sandbox: "true"
+      terminationGracePeriodSeconds: 150
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
   name: invoke-group-ubio-flight-search
   namespace: invoke
 spec:
@@ -1355,6 +1449,17 @@ spec:
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
+  name: invoke-group-sandbox
+  namespace: invoke
+spec:
+  maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: invoke-group-sandbox
+---
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
   name: invoke-group-ubio-flight-search
   namespace: invoke
 spec:
@@ -1584,6 +1689,26 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-incubator-b
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: invoke-group-sandbox
+  namespace: invoke
+spec:
+  maxReplicas: 3
+  metrics:
+  - resource:
+      name: cpu
+      target:
+        averageUtilization: 95
+        type: Utilization
+    type: Resource
+  minReplicas: 2
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: invoke-group-sandbox
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
