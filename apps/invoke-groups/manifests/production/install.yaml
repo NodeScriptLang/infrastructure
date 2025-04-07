@@ -1696,7 +1696,7 @@ metadata:
   name: invoke-group-sandbox
   namespace: invoke
 spec:
-  maxReplicas: 3
+  maxReplicas: 10
   metrics:
   - resource:
       name: cpu
@@ -1704,7 +1704,7 @@ spec:
         averageUtilization: 95
         type: Utilization
     type: Resource
-  minReplicas: 2
+  minReplicas: 5
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
