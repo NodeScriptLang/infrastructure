@@ -10,7 +10,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailable: 2
+      maxUnavailable: 1
       maxSurge: 10
   # Note: these pods MUST NOT have common backend secrets
   # (e.g. do not mount secrets, do not push secrets to env)
@@ -53,6 +53,8 @@ spec:
               value: '8081'
             - name: HTTP_TIMEOUT # Note: custom HTTP socket timeout matches the invoke timeout for the workspace
               value: "300000"
+            - name: MAX_MEAN_UPTIME_SECONDS
+              value: "10800000" # 3 hours
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
@@ -72,7 +74,7 @@ spec:
               path: /status
               port: aux
             initialDelaySeconds: 10
-            periodSeconds: 10
+            periodSeconds: 30
             failureThreshold: 3
             successThreshold: 1
             timeoutSeconds: 5

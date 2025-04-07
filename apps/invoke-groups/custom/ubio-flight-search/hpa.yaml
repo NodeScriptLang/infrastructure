@@ -7,7 +7,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-ubio-flight-search
-  minReplicas: 2
+  minReplicas: 3
   maxReplicas: 50
   metrics:
     - type: Resource
@@ -15,4 +15,4 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 95
+          averageUtilization: 90
