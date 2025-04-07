@@ -1106,7 +1106,7 @@ spec:
       imagePullSecrets:
       - name: gcp-registry-secret
       nodeSelector:
-        workload/invoke-sandbox: "true"
+        workload/invoke-tier-default: "true"
       terminationGracePeriodSeconds: 150
 ---
 apiVersion: apps/v1
