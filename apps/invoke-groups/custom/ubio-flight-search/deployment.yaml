@@ -54,7 +54,7 @@ spec:
             - name: HTTP_TIMEOUT # Note: custom HTTP socket timeout matches the invoke timeout for the workspace
               value: "300000"
             - name: MAX_MEAN_UPTIME_SECONDS
-              value: "10800000" # 3 hours
+              value: "43200000" # 12 hours
           # Pods failing readiness checks will get disconnected from the service.
           # They should run frequently, as we should aggressively remove traffic from failing pods.
           readinessProbe:
