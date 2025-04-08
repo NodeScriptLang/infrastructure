@@ -39,17 +39,11 @@ data:
             "targets": [
                 "invoke-group-ubio-smart-feed.invoke.svc.cluster.local:8080"
             ]
-        },
-        {
-            "tier": "custom-sandbox",
-            "targets": [
-                "invoke-group-sandbox.invoke.svc.cluster.local:8080"
-            ]
         }
     ]
 kind: ConfigMap
 metadata:
-  name: gateway-service-tiers-chf79f8gd2
+  name: gateway-service-tiers-48c2c95d62
   namespace: default
 ---
 apiVersion: v1
@@ -102,11 +96,11 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: tiers.json
-              name: gateway-service-tiers-chf79f8gd2
+              name: gateway-service-tiers-48c2c95d62
         envFrom:
         - secretRef:
             name: backend-secrets
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend:6.16.2
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend:6.16.4
         livenessProbe:
           failureThreshold: 5
           httpGet:
