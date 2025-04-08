@@ -60,7 +60,7 @@ spec:
             name: backend-secrets
         - configMapRef:
             name: api-service-config-gk5774fgt5
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend:6.16.4
+        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-backend:6.16.5
         livenessProbe:
           failureThreshold: 3
           httpGet:
