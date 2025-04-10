@@ -14,8 +14,6 @@ spec:
     - "*.edge.nodescript.dev"
     - "*.run.nodescript.dev"
 
-    - "*.next.nodescript.dev"
-
     - "*.staging.nodescript.dev"
     - "*.edge.staging.nodescript.dev"
     - "*.run.staging.nodescript.dev"
