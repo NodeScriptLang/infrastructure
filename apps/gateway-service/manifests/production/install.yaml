@@ -5,45 +5,45 @@ data:
         {
             "tier": "default",
             "targets": [
-                "invoke-group-default-a.invoke.svc.cluster.local:8080",
-                "invoke-group-default-b.invoke.svc.cluster.local:8080",
-                "invoke-group-default-c.invoke.svc.cluster.local:8080",
-                "invoke-group-default-d.invoke.svc.cluster.local:8080",
-                "invoke-group-default-e.invoke.svc.cluster.local:8080",
-                "invoke-group-default-f.invoke.svc.cluster.local:8080",
-                "invoke-group-default-g.invoke.svc.cluster.local:8080",
-                "invoke-group-default-h.invoke.svc.cluster.local:8080"
+                "10.32.118.176:8080",
+                "10.32.109.245:8080",
+                "10.32.78.191:8080",
+                "10.32.126.23:8080",
+                "10.32.222.217:8080",
+                "10.32.206.113:8080",
+                "10.32.28.54:8080",
+                "10.32.46.159:8080"
             ]
         },
         {
             "tier": "incubator",
             "targets": [
-                "invoke-group-incubator-a.invoke.svc.cluster.local:8080",
-                "invoke-group-incubator-b.invoke.svc.cluster.local:8080"
+                "10.32.155.94:8080",
+                "10.32.206.197:8080"
             ]
         },
         {
             "tier": "custom-ubio-flight-search",
             "targets": [
-                "invoke-group-ubio-flight-search.invoke.svc.cluster.local:8080"
+                "10.32.143.42:8080"
             ]
         },
         {
             "tier": "custom-ubio-job-boards",
             "targets": [
-                "invoke-group-ubio-job-boards.invoke.svc.cluster.local:8080"
+                "10.32.154.42:8080"
             ]
         },
         {
             "tier": "custom-ubio-smart-feed",
             "targets": [
-                "invoke-group-ubio-smart-feed.invoke.svc.cluster.local:8080"
+                "10.32.37.62:8080"
             ]
         }
     ]
 kind: ConfigMap
 metadata:
-  name: gateway-service-tiers-48c2c95d62
+  name: gateway-service-tiers-6tct967h2d
   namespace: default
 ---
 apiVersion: v1
@@ -96,7 +96,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: tiers.json
-              name: gateway-service-tiers-48c2c95d62
+              name: gateway-service-tiers-6tct967h2d
         envFrom:
         - secretRef:
             name: backend-secrets
