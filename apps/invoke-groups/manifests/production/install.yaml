@@ -1075,7 +1075,7 @@ spec:
           limits:
             memory: 3200Mi
           requests:
-            cpu: 500m
+            cpu: 400m
             memory: 2500Mi
         securityContext:
           allowPrivilegeEscalation: false
@@ -1596,7 +1596,7 @@ spec:
   - resource:
       name: cpu
       target:
-        averageUtilization: 75
+        averageUtilization: 80
         type: Utilization
     type: Resource
   minReplicas: 3
