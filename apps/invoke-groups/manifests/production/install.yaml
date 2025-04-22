@@ -1045,7 +1045,7 @@ spec:
         - name: HTTP_TIMEOUT
           value: "300000"
         - name: MAX_MEAN_UPTIME_SECONDS
-          value: "43200000"
+          value: "21600000"
         image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.18.0
         livenessProbe:
           failureThreshold: 3
