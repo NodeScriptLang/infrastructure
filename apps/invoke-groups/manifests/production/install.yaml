@@ -1599,7 +1599,7 @@ spec:
         averageUtilization: 80
         type: Utilization
     type: Resource
-  minReplicas: 3
+  minReplicas: 20
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
