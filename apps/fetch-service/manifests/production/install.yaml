@@ -31,7 +31,7 @@ spec:
     spec:
       automountServiceAccountToken: false
       containers:
-      - image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-fetch-service:2.19.0
+      - image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-fetch-service:2.19.1
         name: fetch-service
         ports:
         - containerPort: 8080
