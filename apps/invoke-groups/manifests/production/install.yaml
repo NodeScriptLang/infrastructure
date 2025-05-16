@@ -193,25 +193,6 @@ kind: Service
 metadata:
   annotations:
     metricsPort: "8081"
-  name: invoke-group-ubio-flight-search
-  namespace: invoke
-spec:
-  ports:
-  - name: http
-    port: 8080
-    targetPort: http
-  - name: aux
-    port: 8081
-    targetPort: aux
-  selector:
-    app: invoke-group-ubio-flight-search
-  type: ClusterIP
----
-apiVersion: v1
-kind: Service
-metadata:
-  annotations:
-    metricsPort: "8081"
   name: invoke-group-ubio-job-boards
   namespace: invoke
 spec:
@@ -1018,83 +999,6 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: invoke-group-ubio-flight-search
-  namespace: invoke
-spec:
-  revisionHistoryLimit: 1
-  selector:
-    matchLabels:
-      app: invoke-group-ubio-flight-search
-  strategy:
-    rollingUpdate:
-      maxSurge: 10
-      maxUnavailable: 1
-    type: RollingUpdate
-  template:
-    metadata:
-      labels:
-        app: invoke-group-ubio-flight-search
-    spec:
-      automountServiceAccountToken: false
-      containers:
-      - env:
-        - name: HTTP_PORT
-          value: "8080"
-        - name: AUX_HTTP_PORT
-          value: "8081"
-        - name: HTTP_TIMEOUT
-          value: "300000"
-        - name: MAX_MEAN_UPTIME_SECONDS
-          value: "21600000"
-        image: europe-west1-docker.pkg.dev/nodescript-production/nodescript-image-registry/nodescript-invoke-service:2.19.3
-        livenessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /status
-            port: aux
-          initialDelaySeconds: 10
-          periodSeconds: 30
-          successThreshold: 1
-          timeoutSeconds: 5
-        name: invoke-group-ubio-flight-search
-        ports:
-        - containerPort: 8080
-          name: http
-        - containerPort: 8081
-          name: aux
-        readinessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /status
-            port: aux
-          initialDelaySeconds: 5
-          periodSeconds: 1
-          successThreshold: 1
-          timeoutSeconds: 5
-        resources:
-          limits:
-            memory: 3200Mi
-          requests:
-            cpu: 400m
-            memory: 2500Mi
-        securityContext:
-          allowPrivilegeEscalation: false
-          capabilities:
-            drop:
-            - ALL
-          procMount: Default
-          readOnlyRootFilesystem: true
-          seccompProfile:
-            type: RuntimeDefault
-      imagePullSecrets:
-      - name: gcp-registry-secret
-      nodeSelector:
-        workload/invoke-ubio-flight-search: "true"
-      terminationGracePeriodSeconds: 150
----
-apiVersion: apps/v1
-kind: Deployment
-metadata:
   name: invoke-group-ubio-job-boards
   namespace: invoke
 spec:
@@ -1355,17 +1259,6 @@ spec:
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: invoke-group-ubio-flight-search
-  namespace: invoke
-spec:
-  maxUnavailable: 1
-  selector:
-    matchLabels:
-      app: invoke-group-ubio-flight-search
----
-apiVersion: policy/v1
-kind: PodDisruptionBudget
-metadata:
   name: invoke-group-ubio-job-boards
   namespace: invoke
 spec:
@@ -1584,26 +1477,6 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: invoke-group-incubator-b
----
-apiVersion: autoscaling/v2
-kind: HorizontalPodAutoscaler
-metadata:
-  name: invoke-group-ubio-flight-search
-  namespace: invoke
-spec:
-  maxReplicas: 50
-  metrics:
-  - resource:
-      name: cpu
-      target:
-        averageUtilization: 60
-        type: Utilization
-    type: Resource
-  minReplicas: 10
-  scaleTargetRef:
-    apiVersion: apps/v1
-    kind: Deployment
-    name: invoke-group-ubio-flight-search
 ---
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
