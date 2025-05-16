@@ -20,12 +20,6 @@
         ]
     },
     {
-        "tier": "custom-ubio-flight-search",
-        "targets": [
-            "10.32.143.42:8080"
-        ]
-    },
-    {
         "tier": "custom-ubio-job-boards",
         "targets": [
             "10.32.154.42:8080"

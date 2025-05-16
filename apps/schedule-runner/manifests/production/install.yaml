@@ -23,12 +23,6 @@ data:
             ]
         },
         {
-            "tier": "custom-ubio-flight-search",
-            "targets": [
-                "10.32.143.42:8080"
-            ]
-        },
-        {
             "tier": "custom-ubio-job-boards",
             "targets": [
                 "10.32.154.42:8080"
@@ -43,7 +37,7 @@ data:
     ]
 kind: ConfigMap
 metadata:
-  name: schedule-runner-tiers-6tct967h2d
+  name: schedule-runner-tiers-6b2f874kmm
   namespace: default
 ---
 apiVersion: v1
@@ -89,7 +83,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: tiers.json
-              name: schedule-runner-tiers-6tct967h2d
+              name: schedule-runner-tiers-6b2f874kmm
         envFrom:
         - secretRef:
             name: backend-secrets
