@@ -284,7 +284,7 @@ spec:
           timeoutSeconds: 5
         resources:
           limits:
-            memory: 1Gi
+            memory: 1.5Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -361,7 +361,7 @@ spec:
           timeoutSeconds: 5
         resources:
           limits:
-            memory: 1Gi
+            memory: 1.5Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -438,7 +438,7 @@ spec:
           timeoutSeconds: 5
         resources:
           limits:
-            memory: 1Gi
+            memory: 1.5Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -515,7 +515,7 @@ spec:
           timeoutSeconds: 5
         resources:
           limits:
-            memory: 1Gi
+            memory: 1.5Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -592,7 +592,7 @@ spec:
           timeoutSeconds: 5
         resources:
           limits:
-            memory: 1Gi
+            memory: 1.5Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -669,7 +669,7 @@ spec:
           timeoutSeconds: 5
         resources:
           limits:
-            memory: 1Gi
+            memory: 1.5Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -746,7 +746,7 @@ spec:
           timeoutSeconds: 5
         resources:
           limits:
-            memory: 1Gi
+            memory: 1.5Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -823,7 +823,7 @@ spec:
           timeoutSeconds: 5
         resources:
           limits:
-            memory: 1Gi
+            memory: 1.5Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -900,7 +900,7 @@ spec:
           timeoutSeconds: 5
         resources:
           limits:
-            memory: 1Gi
+            memory: 1.5Gi
           requests:
             cpu: 200m
             memory: 400Mi
@@ -977,7 +977,7 @@ spec:
           timeoutSeconds: 5
         resources:
           limits:
-            memory: 1Gi
+            memory: 1.5Gi
           requests:
             cpu: 200m
             memory: 400Mi
