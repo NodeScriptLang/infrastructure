@@ -33,11 +33,17 @@ data:
             "targets": [
                 "10.32.37.62:8080"
             ]
+        },
+        {
+            "tier": "custom-ubio-gshopping",
+            "targets": [
+                "10.32.60.121:8080"
+            ]
         }
     ]
 kind: ConfigMap
 metadata:
-  name: schedule-runner-tiers-6b2f874kmm
+  name: schedule-runner-tiers-t2fb7t554c
   namespace: default
 ---
 apiVersion: v1
@@ -83,7 +89,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: tiers.json
-              name: schedule-runner-tiers-6b2f874kmm
+              name: schedule-runner-tiers-t2fb7t554c
         envFrom:
         - secretRef:
             name: backend-secrets

@@ -33,11 +33,17 @@ data:
             "targets": [
                 "10.32.37.62:8080"
             ]
+        },
+        {
+            "tier": "custom-ubio-gshopping",
+            "targets": [
+                "10.32.60.121:8080"
+            ]
         }
     ]
 kind: ConfigMap
 metadata:
-  name: gateway-service-tiers-6b2f874kmm
+  name: gateway-service-tiers-t2fb7t554c
   namespace: default
 ---
 apiVersion: v1
@@ -95,7 +101,7 @@ spec:
           valueFrom:
             configMapKeyRef:
               key: tiers.json
-              name: gateway-service-tiers-6b2f874kmm
+              name: gateway-service-tiers-t2fb7t554c
         envFrom:
         - secretRef:
             name: backend-secrets

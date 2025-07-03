@@ -30,5 +30,11 @@
         "targets": [
             "10.32.37.62:8080"
         ]
+    },
+    {
+        "tier": "custom-ubio-gshopping",
+        "targets": [
+            "10.32.60.121:8080"
+        ]
     }
 ]
