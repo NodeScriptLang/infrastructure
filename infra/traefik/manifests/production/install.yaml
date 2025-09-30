@@ -53,7 +53,7 @@ spec:
         - --metrics=true
         - --metrics.prometheus=true
         - --metrics.prometheus.entryPoint=metrics
-        image: traefik:2.11.13
+        image: traefik:3.5.3
         lifecycle:
           preStop:
             exec:

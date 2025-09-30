@@ -5,7 +5,7 @@ namespace: default
 images:
   - name: traefik
     newName: traefik
-    newTag: 2.11.13
+    newTag: 3.5.3
 
 resources:
   - ../../base
