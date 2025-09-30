@@ -6,8 +6,8 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`RELAY_SERVICE_HOST`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`RELAY_SERVICE_HOST`)
       services:
         - name: relay-service
           port: 8080

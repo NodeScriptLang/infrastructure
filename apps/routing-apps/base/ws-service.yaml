@@ -8,14 +8,14 @@ spec:
   # Note: we route WS Service to api.nodescript.dev because cookie
   # authentication uses api.nodescript.dev as the cookie domain.
   routes:
-    - match: Host(`API_SERVICE_HOST`) && Path(`/ws`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`API_SERVICE_HOST`) && Path(`/ws`)
       priority: 1000
       services:
         - name: ws-service
           port: 8080
-    - match: Host(`API_SERVICE_HOST`) && PathPrefix(`/capture`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`API_SERVICE_HOST`) && PathPrefix(`/capture`)
       priority: 1000
       services:
         - name: ws-service

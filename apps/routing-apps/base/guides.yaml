@@ -6,8 +6,9 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`GUIDES_HOST`)
-      kind: Rule
+    - kind: Rule
+      syntax: v2
+      match: Host(`GUIDES_HOST`)
       services:
         - name: guides
           port: 8900

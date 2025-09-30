@@ -6,23 +6,24 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`FRONTEND_HOST`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`FRONTEND_HOST`)
       services:
         - name: frontend
           port: 8080
-    - match: Host(`FRONTEND_EMBED_HOST`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`FRONTEND_EMBED_HOST`)
       services:
         - name: frontend
           port: 8080
-    - match: Host(`FRONTEND_NOTEBOOKS_HOST`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`FRONTEND_NOTEBOOKS_HOST`)
       services:
         - name: frontend
           port: 8080
-    - match: HostRegexp(`{subdomain:[0-9a-zA-Z_-]+}.FRONTEND_EDGE_HOST`)
-      kind: Rule
+    - kind: Rule
+      syntax: v2
+      match: HostRegexp(`{subdomain:[0-9a-zA-Z_-]+}.FRONTEND_EDGE_HOST`)
       services:
         - name: frontend
           port: 8080

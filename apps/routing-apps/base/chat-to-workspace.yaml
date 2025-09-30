@@ -6,8 +6,8 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`CHAT_TO_WORKSPACE_HOST`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`CHAT_TO_WORKSPACE_HOST`)
       services:
         - name: chat-to-workspace
           port: 3000

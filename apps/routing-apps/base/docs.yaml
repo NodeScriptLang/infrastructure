@@ -6,8 +6,8 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`DOCS_HOST`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`DOCS_HOST`)
       services:
         - name: docs
           port: 8080

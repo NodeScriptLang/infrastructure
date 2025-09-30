@@ -6,8 +6,8 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`PAYMENT_PROVIDER_SERVICE_HOST`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`PAYMENT_PROVIDER_SERVICE_HOST`)
       services:
         - name: payment-provider-service
           port: 8080

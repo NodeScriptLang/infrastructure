@@ -6,13 +6,15 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: HostRegexp(`{subdomain:[0-9a-z-]+}.automation.cloud`)
-      kind: Rule
+    - kind: Rule
+      syntax: v2
+      match: HostRegexp(`{subdomain:[0-9a-z-]+}.automation.cloud`)
       services:
         - name: gateway-service
           port: 8080
-    - match: HostRegexp(`{subdomain:[0-9a-z-]+}.smartfeed.automation.cloud`)
-      kind: Rule
+    - kind: Rule
+      match: HostRegexp(`{subdomain:[0-9a-z-]+}.smartfeed.automation.cloud`)
+      syntax: v2
       services:
         - name: gateway-service
           port: 8080

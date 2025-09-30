@@ -112,6 +112,7 @@ spec:
     services:
     - name: frontend
       port: 8080
+    syntax: v2
   tls:
     secretName: nodescript-dev-certificate
 ---
@@ -130,6 +131,7 @@ spec:
     services:
     - name: gateway-service
       port: 8080
+    syntax: v2
   tls:
     secretName: nodescript-dev-certificate
 ---
@@ -147,6 +149,7 @@ spec:
     services:
     - name: guides
       port: 8900
+    syntax: v2
   tls:
     secretName: nodescript-dev-certificate
 ---

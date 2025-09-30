@@ -27,10 +27,12 @@ spec:
     services:
     - name: gateway-service
       port: 8080
+    syntax: v2
   - kind: Rule
     match: HostRegexp(`{subdomain:[0-9a-z-]+}.smartfeed.automation.cloud`)
     services:
     - name: gateway-service
       port: 8080
+    syntax: v2
   tls:
     secretName: automation-cloud-certificate

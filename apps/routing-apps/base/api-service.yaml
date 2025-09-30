@@ -6,8 +6,8 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`API_SERVICE_HOST`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`API_SERVICE_HOST`)
       services:
         - name: api-service
           port: 8080

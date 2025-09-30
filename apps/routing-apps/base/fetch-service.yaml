@@ -7,8 +7,8 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`FETCH_SERVICE_HOST`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`FETCH_SERVICE_HOST`)
       services:
         - name: fetch-service
           port: 8080

@@ -6,8 +6,9 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: HostRegexp(`{subdomain:[0-9a-z-]+}.INVOKE_HOST`)
-      kind: Rule
+    - kind: Rule
+      syntax: v2
+      match: HostRegexp(`{subdomain:[0-9a-z-]+}.INVOKE_HOST`)
       priority: 1000
       services:
         - name: gateway-service

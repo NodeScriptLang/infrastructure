@@ -6,8 +6,8 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: (Host(`PROMETHEUS_HOST`))
-      kind: Rule
+    - kind: Rule
+      match: Host(`PROMETHEUS_HOST`)
       services:
         - namespace: monitoring
           name: prometheus

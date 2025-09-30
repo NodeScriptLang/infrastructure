@@ -6,8 +6,8 @@ spec:
   entryPoints:
     - websecure
   routes:
-    - match: Host(`CACHE_SERVICE_HOST`)
-      kind: Rule
+    - kind: Rule
+      match: Host(`CACHE_SERVICE_HOST`)
       services:
         - name: cache-service
           port: 8080
