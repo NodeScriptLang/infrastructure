@@ -7,7 +7,6 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      syntax: v2
       match: Host(`GUIDES_HOST`)
       services:
         - name: guides

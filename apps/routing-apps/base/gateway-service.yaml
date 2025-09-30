@@ -7,8 +7,7 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      syntax: v2
-      match: HostRegexp(`{subdomain:[0-9a-z-]+}.INVOKE_HOST`)
+      match: HostRegexp(`[0-9a-z-]+.INVOKE_HOST`)
       priority: 1000
       services:
         - name: gateway-service

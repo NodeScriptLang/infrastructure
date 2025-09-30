@@ -14,8 +14,7 @@ spec:
           name: argocd-server
           port: 80
     - kind: Rule
-      syntax: v2
-      match: Host(`CD_HOST`) && Headers(`Content-Type`, `application/grpc`)
+      match: Host(`CD_HOST`) && Header(`Content-Type`, `application/grpc`)
       priority: 11
       services:
         - namespace: argocd

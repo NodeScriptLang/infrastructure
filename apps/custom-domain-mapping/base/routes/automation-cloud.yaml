@@ -7,14 +7,12 @@ spec:
     - websecure
   routes:
     - kind: Rule
-      syntax: v2
-      match: HostRegexp(`{subdomain:[0-9a-z-]+}.automation.cloud`)
+      match: HostRegexp(`[0-9a-z-]+.automation.cloud`)
       services:
         - name: gateway-service
           port: 8080
     - kind: Rule
-      match: HostRegexp(`{subdomain:[0-9a-z-]+}.smartfeed.automation.cloud`)
-      syntax: v2
+      match: HostRegexp(`[0-9a-z-]+.smartfeed.automation.cloud`)
       services:
         - name: gateway-service
           port: 8080

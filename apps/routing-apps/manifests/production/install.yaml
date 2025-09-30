@@ -108,11 +108,10 @@ spec:
     - name: frontend
       port: 8080
   - kind: Rule
-    match: HostRegexp(`{subdomain:[0-9a-zA-Z_-]+}.edge.nodescript.dev`)
+    match: HostRegexp(`[0-9a-zA-Z_-]+.edge.nodescript.dev`)
     services:
     - name: frontend
       port: 8080
-    syntax: v2
   tls:
     secretName: nodescript-dev-certificate
 ---
@@ -126,12 +125,11 @@ spec:
   - websecure
   routes:
   - kind: Rule
-    match: HostRegexp(`{subdomain:[0-9a-z-]+}.run.nodescript.dev`)
+    match: HostRegexp(`[0-9a-z-]+.run.nodescript.dev`)
     priority: 1000
     services:
     - name: gateway-service
       port: 8080
-    syntax: v2
   tls:
     secretName: nodescript-dev-certificate
 ---
@@ -149,7 +147,6 @@ spec:
     services:
     - name: guides
       port: 8900
-    syntax: v2
   tls:
     secretName: nodescript-dev-certificate
 ---

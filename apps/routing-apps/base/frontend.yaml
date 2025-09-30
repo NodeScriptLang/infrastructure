@@ -22,8 +22,7 @@ spec:
         - name: frontend
           port: 8080
     - kind: Rule
-      syntax: v2
-      match: HostRegexp(`{subdomain:[0-9a-zA-Z_-]+}.FRONTEND_EDGE_HOST`)
+      match: HostRegexp(`[0-9a-zA-Z_-]+.FRONTEND_EDGE_HOST`)
       services:
         - name: frontend
           port: 8080
