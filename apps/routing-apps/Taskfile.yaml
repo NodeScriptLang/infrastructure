@@ -7,7 +7,6 @@ includes:
 vars:
   TARGETS: |
     production
-    staging
   REPLACEMENTS: |
     production:API_SERVICE_HOST,api.nodescript.dev
     production:CACHE_SERVICE_HOST,cache.nodescript.dev
@@ -22,19 +21,6 @@ vars:
     production:PAYMENT_PROVIDER_SERVICE_HOST,payment-provider.nodescript.dev
     production:REGISTRY_SERVICE_HOST,registry.nodescript.dev
     production:RELAY_SERVICE_HOST,relay.nodescript.dev
-    staging:API_SERVICE_HOST,api.staging.nodescript.dev
-    staging:CACHE_SERVICE_HOST,cache.staging.nodescript.dev
-    staging:CHAT_TO_WORKSPACE_HOST,chat.staging.nodescript.dev
-    staging:DOCS_HOST,docs.staging.nodescript.dev
-    staging:FETCH_SERVICE_HOST,fetch.staging.nodescript.dev
-    staging:FRONTEND_EDGE_HOST,edge.staging.nodescript.dev
-    staging:FRONTEND_HOST,staging.nodescript.dev
-    staging:FRONTEND_NOTEBOOKS_HOST,notebooks.staging.nodescript.dev
-    staging:GUIDES_HOST,guides.staging.nodescript.dev
-    staging:INVOKE_HOST,run.staging.nodescript.dev
-    staging:PAYMENT_PROVIDER_SERVICE_HOST,payment-provider.staging.nodescript.dev
-    staging:REGISTRY_SERVICE_HOST,registry.staging.nodescript.dev
-    staging:RELAY_SERVICE_HOST,relay.staging.nodescript.dev
 
 tasks:
   default:
