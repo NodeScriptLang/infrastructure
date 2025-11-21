@@ -39,6 +39,12 @@ data:
             "targets": [
                 "10.32.60.121:8080"
             ]
+        },
+        {
+            "tier": "custom-ubio-flights",
+            "targets": [
+                "10.32.113.254:8080"
+            ]
         }
     ]
 kind: ConfigMap
