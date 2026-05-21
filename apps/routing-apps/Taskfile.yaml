@@ -14,7 +14,7 @@ vars:
     production:DOCS_HOST,docs.nodescript.dev
     production:FETCH_SERVICE_HOST,fetch.nodescript.dev
     production:FRONTEND_EDGE_HOST,edge.nodescript.dev
-    production:FRONTEND_HOST,nodescript.dev
+    production:FRONTEND_HOST,frontend.nodescript.dev
     production:FRONTEND_NOTEBOOKS_HOST,notebooks.nodescript.dev
     production:GUIDES_HOST,guides.nodescript.dev
     production:INVOKE_HOST,run.nodescript.dev

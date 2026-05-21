@@ -93,7 +93,7 @@ spec:
   - websecure
   routes:
   - kind: Rule
-    match: Host(`nodescript.dev`)
+    match: Host(`frontend.nodescript.dev`)
     services:
     - name: frontend
       port: 8080
